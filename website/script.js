@@ -6,11 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!hamburger || !mobileMenu) {
         console.warn('Hamburger menu elements not found');
-        return;
     }
     
-    // Toggle mobile menu
-    function toggleMobileMenu() {
+    // Toggle mobile menu - make it globally accessible
+    window.toggleMobileMenu = function() {
         const isActive = hamburger.classList.contains('active');
         
         if (isActive) {
@@ -31,32 +30,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add click event to hamburger button
-    hamburger.addEventListener('click', toggleMobileMenu);
+    if (hamburger) {
+        hamburger.addEventListener('click', window.toggleMobileMenu);
+    }
     
     // Close menu when clicking outside
-    mobileMenu.addEventListener('click', function(e) {
-        if (e.target === mobileMenu) {
-            toggleMobileMenu();
-        }
-    });
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                window.toggleMobileMenu();
+            }
+        });
+    }
     
     // Close menu when clicking on menu items
     const mobileMenuItems = document.querySelectorAll('.mobile-menu__item');
     mobileMenuItems.forEach(item => {
-        item.addEventListener('click', toggleMobileMenu);
+        item.addEventListener('click', window.toggleMobileMenu);
     });
     
     // Close menu on escape key
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-            toggleMobileMenu();
+        if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) {
+            window.toggleMobileMenu();
         }
     });
     
     // Handle window resize - close menu if window becomes too wide
     window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && mobileMenu.classList.contains('active')) {
-            toggleMobileMenu();
+        if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains('active')) {
+            window.toggleMobileMenu();
         }
     });
 
@@ -79,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Robust smooth scroll with fallback
     function smoothScrollTo(element) {
-        const headerOffset = 120; // Increased for sticky nav
+        const headerOffset = 100;
         const elementPosition = element.offsetTop;
         const offsetPosition = elementPosition - headerOffset;
 
@@ -140,9 +143,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (targetElement) {
                         // Close mobile menu if open
-                        if (mobileMenu && mobileMenu.classList.contains('active')) {
+                        const currentMobileMenu = document.querySelector('.mobile-menu');
+                        if (currentMobileMenu && currentMobileMenu.classList.contains('active')) {
                             console.log('Closing mobile menu first...');
-                            toggleMobileMenu();
+                            window.toggleMobileMenu();
                             setTimeout(() => {
                                 console.log('Scrolling to element...');
                                 smoothScrollTo(targetElement);
@@ -161,140 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     setupSmoothScrolling();
     
-    // Sticky navigation with logo animation
-    function setupStickyNavigation() {
-        const nav = document.querySelector('.hero__nav');
-        const navItems = document.querySelectorAll('.nav__item');
-        const logo = document.querySelector('.nav__logo');
-        const heroSection = document.querySelector('.hero');
-        
-        if (!nav || !logo || !heroSection) return;
-        
-        let isSticky = false;
-        let isHoveringLogo = false;
-        
-        function handleScroll() {
-            const heroHeight = heroSection.offsetHeight;
-            const scrollY = window.pageYOffset;
-            
-            if (scrollY > heroHeight - 100 && !isSticky) {
-                // Make navigation sticky
-                isSticky = true;
-                nav.classList.add('nav--sticky');
-                
-                // Hide nav items, show only logo
-                navItems.forEach(item => {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(-10px)';
-                    // Don't disable pointer events to keep links working
-                });
-                
-                // Center the logo
-                logo.style.transform = 'translateX(0)';
-                
-            } else if (scrollY <= heroHeight - 100 && isSticky) {
-                // Remove sticky state
-                isSticky = false;
-                nav.classList.remove('nav--sticky');
-                
-                // Show nav items
-                navItems.forEach(item => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                    item.style.pointerEvents = 'auto';
-                });
-                
-                // Reset logo position
-                logo.style.transform = '';
-            }
-        }
-        
-        function handleLogoHover() {
-            if (!isSticky) return;
-            
-            isHoveringLogo = true;
-            
-            // Show nav items on hover
-            navItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                    item.style.pointerEvents = 'auto';
-                }, index * 50); // Staggered animation
-            });
-        }
-        
-        function handleLogoLeave() {
-            if (!isSticky) return;
-            
-            isHoveringLogo = false;
-            
-            // Hide nav items after a short delay
-            setTimeout(() => {
-                if (!isHoveringLogo && isSticky) {
-                    navItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.style.opacity = '0';
-                            item.style.transform = 'translateY(-10px)';
-                            item.style.pointerEvents = 'none';
-                        }, index * 30);
-                    });
-                }
-            }, 200);
-        }
-        
-        // Event listeners
-        window.addEventListener('scroll', handleScroll);
-        logo.addEventListener('mouseenter', handleLogoHover);
-        logo.addEventListener('mouseleave', handleLogoLeave);
-        
-        // Also handle hover on nav container for better UX
-        nav.addEventListener('mouseenter', () => {
-            if (isSticky) {
-                isHoveringLogo = true;
-                handleLogoHover();
-            }
-        });
-        
-        nav.addEventListener('mouseleave', () => {
-            if (isSticky) {
-                isHoveringLogo = false;
-                handleLogoLeave();
-            }
-        });
-    }
-    
-    setupStickyNavigation();
-    
-    // Intersection Observer for scroll animations
-    function setupScrollAnimations() {
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
-        
-        if (!animatedElements.length) return;
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Add staggered delay for multiple elements in same section
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * 100);
-                    
-                    // Stop observing once animated
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        animatedElements.forEach(element => {
-            observer.observe(element);
-        });
-    }
-    
-    setupScrollAnimations();
+    // Test anchor functionality
+    console.log('Testing anchor elements:');
+    console.log('welcome element:', document.getElementById('welcome'));
+    console.log('five-principles element:', document.getElementById('five-principles'));
+    console.log('about element:', document.getElementById('about'));
 });
