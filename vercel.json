@@ -1,20 +1,4 @@
 {
-  "version": 2,
-  "public": true,
-  "buildCommand": null,
-  "outputDirectory": "website",
-  "installCommand": null,
-  "builds": [
-    {
-      "src": "website/**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/website/$1"
-    }
-  ],
-  "functions": {}
+  "cleanUrls": true,
+  "trailingSlash": false
 }

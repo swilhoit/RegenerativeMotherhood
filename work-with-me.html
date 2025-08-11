@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Me - Regenerative Motherhood</title>
+    
+    <!-- Main styles from home page -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Page-specific styles -->
+    <link rel="stylesheet" href="work-with-me-styles.css?v=2025-final-update">
+    <link rel="stylesheet" href="cursor-effects.css">
+    
+    <!-- Font imports -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Concrette TRIAL';
+            src: url('fonts/ConcretteMTRIAL-Light.woff2') format('woff2');
+            font-weight: 200;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'ABC Diatype';
+            src: url('fonts/ABCDiatype-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-display: swap;
+        }
+        
+        /* Fix for content visibility - ensure all content is visible */
+        .animate-on-scroll {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        
+        /* Fix text color for service packages */
+        .service-package__description,
+        .service-package__booking {
+            color: #49492F !important;
+        }
+        
+        /* Using original sleep-guidance.jpg image */
+        .service-package__image--1 {
+            background-image: url('sleep-guidance.jpg?original=2025') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            width: 100% !important;
+            height: 600px !important;
+            min-height: 600px !important;
+            display: block !important;
+            opacity: 1 !important;
+        }
+        
+        /* Ensure no other styles are interfering */
+        .service-package__image--1::before,
+        .service-package__image--1::after {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar - Same as homepage with proper links -->
+    <nav class="hero__nav hero__nav--light" aria-label="Main navigation">
+        <div class="nav__container">
+            <!-- EXACT FIGMA POSITIONED ITEMS (Desktop) -->
+            <a href="index.html#welcome" class="nav__item" data-item="story">
+                <span class="nav__text">STORY</span>
+            </a>
+            
+            <a href="index.html#five-principles" class="nav__item" data-item="principles">
+                <span class="nav__text">PRINCIPLES</span>
+            </a>
+            
+            <a href="index.html#about" class="nav__item" data-item="about">
+                <span class="nav__text">ABOUT</span>
+            </a>
+            
+            <a href="work-with-me.html" class="nav__item" data-item="work">
+                <span class="nav__text">WORK WITH ME</span>
+            </a>
+            
+            <!-- RESPONSIVE NAVIGATION (Mobile/Tablet) -->
+            <div class="nav__left">
+                <a href="index.html#welcome" class="nav__item">
+                    <span class="nav__text">STORY</span>
+                </a>
+                <a href="index.html#five-principles" class="nav__item">
+                    <span class="nav__text">PRINCIPLES</span>
+                </a>
+            </div>
+            
+            <!-- Logo/Brand - Responsive -->
+            <div class="nav__logo">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo-olive.svg" alt="Regenerative Motherhood" width="273" height="64">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="nav__right">
+                <a href="index.html#about" class="nav__item">
+                    <span class="nav__text">ABOUT</span>
+                </a>
+                <a href="work-with-me.html" class="nav__item">
+                    <span class="nav__text">WORK WITH ME</span>
+                </a>
+            </div>
+            
+            <!-- MOBILE HAMBURGER NAVIGATION -->
+            <div class="mobile-nav">
+                <div class="mobile-nav__logo">
+                    <a href="index.html">
+                        <img src="logo-olive.svg" alt="Regenerative Motherhood" width="120" height="29">
+                    </a>
+                </div>
+                
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleMobileMenu()">
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                </button>
+            </div>
+            
+            <!-- MOBILE MENU OVERLAY -->
+            <div class="mobile-menu" aria-hidden="true">
+                <div class="mobile-menu__content">
+                    <a href="index.html#welcome" class="mobile-menu__item">
+                        <span class="mobile-menu__text">STORY</span>
+                    </a>
+                    <a href="index.html#five-principles" class="mobile-menu__item">
+                        <span class="mobile-menu__text">PRINCIPLES</span>
+                    </a>
+                    <a href="index.html#about" class="mobile-menu__item">
+                        <span class="mobile-menu__text">ABOUT</span>
+                    </a>
+                    <a href="work-with-me.html" class="mobile-menu__item">
+                        <span class="mobile-menu__text">WORK WITH ME</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header__container">
+                <div class="page-header__eyebrow">WORK WITH ME</div>
+                <h1 class="page-header__title">Guidance Packages</h1>
+            </div>
+        </section>
+
+        <!-- Service Package 1 - Image Left, Content Right -->
+        <section class="service-package">
+            <div class="service-package__container">
+                <div class="service-package__image service-package__image--1 animate-on-scroll">
+                    <!-- Image will be added via CSS background -->
+                </div>
+                <div class="service-package__content animate-on-scroll">
+                    <h2 class="service-package__title">1:1 Sleep Infant & Toddler Sleep Guidance Call</h2>
+                    <div class="service-package__details">
+                        <p class="service-package__subtitle">Need a little support as you support your child's sleep?</p>
+                        <p class="service-package__price">50 Minutes | $145</p>
+                        <p class="service-package__description">Whether you are looking for tailored education to help you better understand your baby's sleep, or just need to double check that what you and your child are experiencing is normal, this support option is for you.</p>
+                        <a href="sleep-guidance-call.html" class="service-package__cta">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Package 2 - Image Left, Content Right -->
+        <section class="service-package">
+            <div class="service-package__container">
+                <div class="service-package__image service-package__image--2 animate-on-scroll">
+                    <!-- Image will be added via CSS background -->
+                </div>
+                <div class="service-package__content animate-on-scroll">
+                    <h2 class="service-package__title">1:1 Sleep Infant and Toddler 3 Call Sleep Support Package</h2>
+                    <div class="service-package__details">
+                        <p class="service-package__subtitle">Looking for ongoing support on your child's sleep journey?</p>
+                        <p class="service-package__description">I'm here to offer ONGOING guidance that honors, elevates, and supports you and your child as you both find mutually nourishing rest.</p>
+                        <p class="service-package__price">3 x 50 Minute Sessions | $345</p>
+                        <p class="service-package__booking">After booking your FIRST session on my calendar, Venmo @claire-fagin to reserve your spot! I will send you a follow up email within 24 hours to confirm our session, and we can book our following 2 sessions after our first call.</p>
+                        <a href="3-call-sleep-support.html" class="service-package__cta">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Package 3 - Image Left, Content Right -->
+        <section class="service-package">
+            <div class="service-package__container">
+                <div class="service-package__image service-package__image--3 animate-on-scroll">
+                    <!-- Image will be added via CSS background -->
+                </div>
+                <div class="service-package__content animate-on-scroll">
+                    <h2 class="service-package__title">1:1 Sleep Infant & Toddler Comprehensive Sleep Support</h2>
+                    <div class="service-package__details">
+                        <p class="service-package__subtitle">Need compassionate guidance, every step of the way?</p>
+                        <p class="service-package__description">I'm here to offer COMPREHENSIVE guidance and quick, responsive support that honors, elevates, and supports you and your child as you both find mutually nourishing rest.</p>
+                        <p class="service-package__price">3 x 50 Minute Sessions & Ongoing Support via Text | $545</p>
+                        <p class="service-package__booking">After booking your FIRST session on my calendar, Venmo @claire-fagin to reserve your spot! I will send you a follow up email within 24 hours to confirm our session, and we can book our following 2 sessions after our first call.</p>
+                        <a href="comprehensive-sleep-support.html" class="service-package__cta">LEARN MORE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="contact-section__container animate-on-scroll">
+                <div class="contact-section__eyebrow">SOMETHING ELSE?</div>
+                <p class="contact-section__text">Send Me An <a href="mailto:clairefagin@gmail.com" class="underlined">Email</a>. I Can't Wait To Hear From You!</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="site-footer" aria-labelledby="footer-tagline">
+        <div class="site-footer__container">
+            <div class="footer__content">
+                <img src="Layer_1.svg" alt="Regenerative Motherhood Logo" class="footer__logo" />
+                <p id="footer-tagline" class="footer__tagline">the paradigm of generative infant sleep</p>
+                <nav class="footer__links" aria-label="Footer links">
+                    <a href="work-with-me.html" class="footer-link">WORK WITH ME</a>
+                    <a href="https://www.instagram.com/clairefagin/?hl=en" target="_blank" rel="noopener" class="footer-link">INSTAGRAM</a>
+                    <a href="mailto:clairefagin@gmail.com" class="footer-link">CONTACT</a>
+                </nav>
+            </div>
+            <div class="footer__bottom">
+                <hr class="footer__rule" />
+                <div class="footer__meta">
+                    <span class="footer__meta-left">Regenerative Motherhood</span>
+                    <span class="footer__meta-right">Copyright © 2025</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu -->
+    <script src="cursor-effects.js"></script>
+</body>
+</html>
