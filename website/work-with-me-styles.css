@@ -122,7 +122,7 @@ body {
 }
 
 .service-package__image--2 {
-    background-image: url('https://raw.githubusercontent.com/millanfabiola1/RegenerativeMotherhood/main/Frame%201627810.jpg');
+    background-image: url('Frame 1627810.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -131,7 +131,7 @@ body {
 }
 
 .service-package__image--3 {
-    background-image: url('https://raw.githubusercontent.com/millanfabiola1/RegenerativeMotherhood/main/Frame%201162781.jpg');
+    background-image: url('Frame 1162781.jpg') !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anchor Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .section { height: 500px; padding: 50px; margin: 20px 0; border: 3px solid #333; }
+        .nav { position: fixed; top: 10px; right: 10px; background: white; padding: 20px; border: 2px solid #000; }
+        .nav a { display: block; margin: 10px 0; color: blue; text-decoration: underline; }
+        #welcome { background: #ffcccc; }
+        #five-principles { background: #ccffcc; }
+        #about { background: #ccccff; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h3>TEST NAVIGATION</h3>
+        <a href="#welcome">Story → Welcome</a>
+        <a href="#five-principles">Principles</a>
+        <a href="#about">About</a>
+    </div>
+
+    <h1>Anchor Test Page</h1>
+    <p>This is a simple test to see if basic anchors work</p>
+
+    <div id="welcome" class="section">
+        <h2>WELCOME SECTION</h2>
+        <p>This is where "Story" should scroll to</p>
+    </div>
+
+    <div id="five-principles" class="section">
+        <h2>FIVE PRINCIPLES SECTION</h2>
+        <p>This is where "Principles" should scroll to</p>
+    </div>
+
+    <div id="about" class="section">
+        <h2>ABOUT SECTION</h2>
+        <p>This is where "About" should scroll to</p>
+    </div>
+
+    <script>
+        console.log('🧪 Simple anchor test starting...');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM loaded');
+            
+            const links = document.querySelectorAll('a[href^="#"]');
+            console.log(`Found ${links.length} anchor links`);
+            
+            links.forEach(function(link, index) {
+                console.log(`Link ${index + 1}: ${link.href}`);
+                
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const target = document.getElementById(targetId);
+                    
+                    console.log(`🎯 Clicked: ${targetId}`);
+                    console.log(`Target found: ${!!target}`);
+                    
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        console.log(`✅ Scrolled to: ${targetId}`);
+                    } else {
+                        console.error(`❌ Not found: ${targetId}`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

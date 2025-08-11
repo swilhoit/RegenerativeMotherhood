@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Debug Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; background: #f0f0f0; }
+        .nav-link { display: inline-block; margin: 10px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+        .target-section { margin: 50px 0; padding: 40px; background: #e9ecef; min-height: 200px; }
+        .debug-info { background: #fff3cd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Navigation Debug Test</h1>
+    
+    <div class="test-section">
+        <h2>Test Navigation Links</h2>
+        <a href="#welcome" class="nav-link">Go to Welcome</a>
+        <a href="#five-principles" class="nav-link">Go to Principles</a>
+        <a href="#about" class="nav-link">Go to About</a>
+    </div>
+    
+    <div class="debug-info">
+        <h3>Debug Information</h3>
+        <div id="debug-output"></div>
+    </div>
+    
+    <div id="welcome" class="target-section">
+        <h2>Welcome Section</h2>
+        <p>This is the target for the "Story" navigation link.</p>
+    </div>
+    
+    <div id="five-principles" class="target-section">
+        <h2>Five Principles Section</h2>
+        <p>This is the target for the "Principles" navigation link.</p>
+    </div>
+    
+    <div id="about" class="target-section">
+        <h2>About Section</h2>
+        <p>This is the target for the "About" navigation link.</p>
+    </div>
+
+    <script>
+        console.log('Debug script loaded');
+        
+        function debugNavigation() {
+            const debugOutput = document.getElementById('debug-output');
+            let html = '';
+            
+            // Test if elements exist
+            const welcome = document.getElementById('welcome');
+            const principles = document.getElementById('five-principles');
+            const about = document.getElementById('about');
+            
+            html += `<p><strong>Element Check:</strong></p>`;
+            html += `<p>Welcome element: ${welcome ? '✅ Found' : '❌ Not found'}</p>`;
+            html += `<p>Principles element: ${principles ? '✅ Found' : '❌ Not found'}</p>`;
+            html += `<p>About element: ${about ? '✅ Found' : '❌ Not found'}</p>`;
+            
+            // Test anchor links
+            const anchors = document.querySelectorAll('a[href^="#"]');
+            html += `<p><strong>Anchor Links Found:</strong> ${anchors.length}</p>`;
+            
+            anchors.forEach((link, index) => {
+                html += `<p>Link ${index + 1}: ${link.href} → ${link.textContent.trim()}</p>`;
+            });
+            
+            debugOutput.innerHTML = html;
+        }
+        
+        // Test basic anchor functionality
+        function setupBasicAnchors() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            console.log(`Found ${links.length} anchor links`);
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    console.log(`Clicked link to: ${targetId}`);
+                    console.log(`Target element found:`, targetElement);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        console.log(`Scrolling to: ${targetId}`);
+                    } else {
+                        console.error(`Target element not found: ${targetId}`);
+                    }
+                });
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+            debugNavigation();
+            setupBasicAnchors();
+        });
+    </script>
+</body>
+</html>
