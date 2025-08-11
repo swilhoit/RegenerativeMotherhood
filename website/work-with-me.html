@@ -53,10 +53,22 @@
             opacity: 1 !important;
         }
         
-        /* Ensure no other styles are interfering */
+        /* Ensure all images display properly */
         .service-package__image--1::before,
-        .service-package__image--1::after {
+        .service-package__image--1::after,
+        .service-package__image--2::before,
+        .service-package__image--2::after,
+        .service-package__image--3::before,
+        .service-package__image--3::after {
             display: none !important;
+        }
+        
+        /* Ensure images 2 and 3 are visible */
+        .service-package__image--2,
+        .service-package__image--3 {
+            display: block !important;
+            opacity: 1 !important;
+            min-height: 600px !important;
         }
     </style>
 </head>
