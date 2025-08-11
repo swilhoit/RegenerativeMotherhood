@@ -2,6 +2,21 @@
    SERVICE PACKAGE PAGE STYLES
    ========================================= */
 
+/* NAVIGATION STYLES FOR SERVICE PAGES */
+/* Static navigation - no fixed/sticky behavior */
+.hero__nav,
+.hero__nav.nav--sticky,
+nav.hero__nav {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    background: #EDE8D5 !important;
+    padding: 20px 63px !important;
+    transform: none !important;
+    z-index: auto !important;
+}
+
 /* NAVIGATION COLOR OVERRIDE FOR LIGHT BACKGROUND */
 .hero__nav--light .nav__text {
     color: #49492F !important;
@@ -40,13 +55,13 @@
 body {
     background-color: #EDE8D5 !important;
     margin-top: 0;
-    padding-top: 120px; /* Ensure content doesn't overlap with fixed navigation */
+    padding-top: 0; /* No padding needed since navigation is static */
 }
 
 /* SERVICE HEADER */
 .service-header {
     background-color: #EDE8D5;
-    padding: 60px 80px 40px 80px;
+    padding: 80px 80px 40px 80px; /* Reduced since nav is now static */
     text-align: center;
 }
 
@@ -69,7 +84,7 @@ body {
 /* MAIN CONTENT SECTION */
 .service-main {
     background-color: #EDE8D5;
-    padding: 40px 0 80px 0;
+    padding: 120px 0 80px 0;
 }
 
 .service-main__container {
@@ -337,42 +352,132 @@ body {
     }
 }
 
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
+    /* Mobile Navigation */
+    .hero__nav,
+    .hero__nav.nav--sticky,
+    nav.hero__nav {
+        padding: 15px 20px !important;
+        position: static !important;
+        background: #EDE8D5 !important;
+    }
+    
+    .nav__container {
+        flex-direction: column !important;
+        gap: 20px !important;
+        align-items: center !important;
+    }
+    
+    .nav__logo {
+        order: -1 !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .logo img {
+        height: 40px !important;
+        width: auto !important;
+    }
+    
+    .nav__item {
+        padding: 10px 20px !important;
+        min-width: auto !important;
+        font-size: 12px !important;
+    }
+    
+    /* Hide desktop nav items, show mobile versions */
+    .nav__item[data-item] {
+        display: none !important;
+    }
+    
+    .nav__left,
+    .nav__right {
+        display: flex !important;
+        gap: 15px !important;
+    }
+    
+    /* Mobile Body */
     body {
-        padding-top: 80px;
+        padding-top: 0 !important;
     }
     
+    /* Mobile Service Header - removed since we deleted these sections */
     .service-header {
-        padding: 80px 24px 20px 24px;
+        display: none !important;
     }
     
-    .service-header__title {
-        font-size: 32px;
+    /* Mobile Service Main */
+    .service-main {
+        padding: 40px 0 80px 0 !important;
+    }
+    
+    .service-main__container {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .service-main__image {
+        height: 300px !important;
+        order: 1 !important;
+        margin: 0 !important;
     }
     
     .service-main__content {
-        padding: 40px 24px;
+        order: 2 !important;
+        padding: 40px 20px !important;
+        text-align: center !important;
+        gap: 20px !important;
     }
     
     .service-main__title {
-        font-size: 32px;
+        font-size: 24px !important;
+        line-height: 1.2 !important;
+    }
+    
+    .service-main__subtitle {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .service-main__price {
+        font-size: 14px !important;
+    }
+    
+    .service-main__description {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+    
+    .service-main__booking {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+    
+    .service-main__cta {
+        padding: 12px 24px !important;
+        font-size: 12px !important;
+        margin-top: 20px !important;
+        display: inline-block !important;
+        text-align: center !important;
     }
     
     .service-features {
-        padding: 40px 24px;
+        padding: 40px 20px !important;
     }
     
     .service-contact {
-        padding: 40px 24px 60px 24px;
+        padding: 40px 20px 60px 20px !important;
     }
     
     .feature-item {
-        gap: 16px;
+        gap: 16px !important;
     }
     
     .feature-item__icon {
-        width: 20px;
-        height: 20px;
+        width: 20px !important;
+        height: 20px !important;
     }
 }
 

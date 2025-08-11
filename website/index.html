@@ -35,7 +35,7 @@
 </head>
 <body>
     <!-- Hero Section -->
-    <main class="hero">
+    <main id="hero" class="hero">
         <!-- Background Image with Overlay -->
         <div class="hero__background"></div>
         <div class="hero__overlay"></div>
@@ -44,17 +44,17 @@
         <nav class="hero__nav" aria-label="Main navigation">
             <div class="nav__container">
                 <!-- EXACT FIGMA POSITIONED ITEMS (Desktop) -->
-                <a href="#welcome" class="nav__item" data-item="story">
+                <button class="nav__item" data-item="story" onclick="document.querySelector('#welcome').scrollIntoView({behavior: 'smooth'}); return false;">
                     <span class="nav__text">STORY</span>
-                </a>
+                </button>
                 
-                <a href="#five-principles" class="nav__item" data-item="principles">
+                <button class="nav__item" data-item="principles" onclick="document.querySelector('#five-principles').scrollIntoView({behavior: 'smooth'}); return false;">
                     <span class="nav__text">PRINCIPLES</span>
-                </a>
+                </button>
                 
-                <a href="#about" class="nav__item" data-item="about">
+                <button class="nav__item" data-item="about" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'}); return false;">
                     <span class="nav__text">ABOUT</span>
-                </a>
+                </button>
                 
                 <a href="work-with-me.html" class="nav__item" data-item="work">
                     <span class="nav__text">WORK WITH ME</span>
@@ -62,12 +62,12 @@
                 
                 <!-- RESPONSIVE NAVIGATION (Mobile/Tablet) -->
                 <div class="nav__left">
-                    <a href="#welcome" class="nav__item">
+                    <button class="nav__item" onclick="document.querySelector('#welcome').scrollIntoView({behavior: 'smooth'}); return false;">
                         <span class="nav__text">STORY</span>
-                    </a>
-                    <a href="#five-principles" class="nav__item">
+                    </button>
+                    <button class="nav__item" onclick="document.querySelector('#five-principles').scrollIntoView({behavior: 'smooth'}); return false;">
                         <span class="nav__text">PRINCIPLES</span>
-                    </a>
+                    </button>
                 </div>
                 
                 <!-- Logo/Brand - Responsive -->
@@ -78,9 +78,9 @@
                 </div>
                 
                 <div class="nav__right">
-                    <a href="#about" class="nav__item">
+                    <button class="nav__item" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'}); return false;">
                         <span class="nav__text">ABOUT</span>
-                    </a>
+                    </button>
                     <a href="work-with-me.html" class="nav__item">
                         <span class="nav__text">WORK WITH ME</span>
                     </a>
@@ -102,15 +102,15 @@
                 <!-- MOBILE MENU OVERLAY -->
                 <div class="mobile-menu" aria-hidden="true">
                     <div class="mobile-menu__content">
-                        <a href="#welcome" class="mobile-menu__item">
+                        <button class="mobile-menu__item" onclick="document.querySelector('#welcome').scrollIntoView({behavior: 'smooth'}); return false;">
                             <span class="mobile-menu__text">STORY</span>
-                        </a>
-                        <a href="#five-principles" class="mobile-menu__item">
+                        </button>
+                        <button class="mobile-menu__item" onclick="document.querySelector('#five-principles').scrollIntoView({behavior: 'smooth'}); return false;">
                             <span class="mobile-menu__text">PRINCIPLES</span>
-                        </a>
-                        <a href="#about" class="mobile-menu__item">
+                        </button>
+                        <button class="mobile-menu__item" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'}); return false;">
                             <span class="mobile-menu__text">ABOUT</span>
-                        </a>
+                        </button>
                         <a href="work-with-me.html" class="mobile-menu__item">
                             <span class="mobile-menu__text">WORK WITH ME</span>
                         </a>
@@ -133,21 +133,21 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Animated Marquee - Now part of hero -->
+        <section class="hero__marquee marquee" aria-label="Nourish marquee">
+            <div class="marquee__track">
+                <div class="marquee__group">
+                    <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
+                    <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
+                </div>
+                <div class="marquee__group" aria-hidden="true">
+                    <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
+                    <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
+                </div>
+            </div>
+        </section>
     </main>
-
-    <!-- Animated Marquee (from Figma node 313:9528) -->
-    <section class="marquee" aria-label="Nourish marquee">
-        <div class="marquee__track">
-            <div class="marquee__group">
-                <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
-                <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
-            </div>
-            <div class="marquee__group" aria-hidden="true">
-                <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
-                <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
-            </div>
-        </div>
-    </section>
 
     <!-- STORY INTRO (314:216) -->
     <section id="welcome" class="section section--beige story-intro" aria-labelledby="story-eyebrow">
@@ -186,13 +186,7 @@
         </div>
     </section>
 
-        <!-- PORTAL CTA (315:269) -->
-    <section id="portal-cta" class="section section--beige portal-cta">
-        <div class="section__container portal-cta__container animate-on-scroll">
-            <h3 class="display-title display-title--42 olive portal-cta__title">Motherhood can and should feel regenerative<br>and mutually nourishing. And sleep is our portal.</h3>
-            <a href="work-with-me.html" class="link-underlined link-underlined--32 olive portal-cta__cta">Learn More</a>
-        </div>
-    </section>
+
 
     <!-- PRINCIPLES (317:284) -->
     <section id="five-principles" class="section principles" aria-labelledby="principles-title">
@@ -312,8 +306,846 @@
         </div>
     </footer>
 
-    <!-- JavaScript for mobile menu -->
-    <script src="script.js"></script>
+    <!-- Advanced Animation System -->
+    <style>
+        /* Full Height Hero with Marquee at Bottom */
+        .hero {
+            min-height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            position: relative !important;
+        }
+        
+        .hero__content {
+            flex: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding-bottom: 120px !important; /* Move content up more from marquee */
+        }
+        
+        .hero__marquee {
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 10 !important;
+        }
+        
+        /* Set marquee height - override main styles */
+        .hero__marquee {
+            padding: 0 !important; /* Remove the 32px padding from styles.css */
+        }
+        
+        .hero__marquee .marquee__track {
+            display: flex !important;
+            align-items: center !important;
+            padding: 20px 0 !important; /* A little more for the perfect height */
+        }
+        /* Global Animation Base Classes - Hardware Accelerated */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px) translateZ(0);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transition-delay: 0s;
+            will-change: opacity, transform;
+        }
+        
+        .animate-on-scroll.animate-visible {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+            will-change: auto; /* Reset will-change after animation */
+        }
+        
+        /* Staggered Animation Delays */
+        .animate-on-scroll:nth-child(1) { transition-delay: 0.05s; }
+        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { transition-delay: 0.15s; }
+        .animate-on-scroll:nth-child(4) { transition-delay: 0.2s; }
+        .animate-on-scroll:nth-child(5) { transition-delay: 0.25s; }
+        
+        /* Typography Animations */
+        
+        /* Title Reveal Animations - Hardware Accelerated */
+        .hero__title,
+        .display-title,
+        .about__title,
+        .work__title,
+        .service-package__title {
+            opacity: 0;
+            transform: translateY(25px) translateZ(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+        
+        .hero__title.animate-visible,
+        .display-title.animate-visible,
+        .about__title.animate-visible,
+        .work__title.animate-visible,
+        .service-package__title.animate-visible {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+            will-change: auto;
+        }
+        
+        /* Subtitle Fade-in */
+        .hero__subtitle,
+        .eyebrow,
+        .about__subtitle,
+        .service-package__subtitle,
+        .portal-cta__title {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease-out;
+            transition-delay: 0.1s;
+        }
+        
+        .hero__subtitle.animate-visible,
+        .eyebrow.animate-visible,
+        .about__subtitle.animate-visible,
+        .service-package__subtitle.animate-visible,
+        .portal-cta__title.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Body Text Gentle Reveal */
+        .body-text,
+        .about__copy-text,
+        .service-package__description,
+        .principle__text {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease-out;
+            transition-delay: 0.2s;
+        }
+        
+        .body-text.animate-visible,
+        .about__copy-text.animate-visible,
+        .service-package__description.animate-visible,
+        .principle__text.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Letter Spacing removed - no hover effects on text */
+        
+        /* Eyebrow Text Highlight Effect - Only for principles section */
+        .principles .eyebrow {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .principles .eyebrow::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition-delay: 0.8s;
+        }
+        
+        .principles .eyebrow.animate-visible::after {
+            width: 100%;
+        }
+        
+        /* Hero Title - Clean and Simple */
+        .hero__title {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeUp 1s ease-out forwards;
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes heroFadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hero Subtitle - Simple follow */
+        .hero__subtitle {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeUp 0.8s ease-out forwards;
+            animation-delay: 1.0s;
+        }
+        
+        /* Hero CTA Button - Clean appearance */
+        .hero__cta {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: heroFadeUp 0.7s ease-out forwards;
+            animation-delay: 1.0s;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Link hover effects removed */
+        
+        /* 5 Principles Enhanced Animations - Hardware Accelerated */
+        .principles__row {
+            opacity: 0;
+            transform: translateX(-40px) translateZ(0);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            position: relative;
+            will-change: opacity, transform;
+        }
+        
+        .principles__row.animate-visible {
+            opacity: 1;
+            transform: translateX(0) translateZ(0);
+            will-change: auto;
+        }
+        
+        /* Principle Icon Animation */
+        .principle__icon {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.4s ease-out;
+            transition-delay: 0.1s;
+        }
+        
+        .principles__row.animate-visible .principle__icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Principle Content Animation */
+        .principle__content {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.5s ease-out;
+            transition-delay: 0.15s;
+        }
+        
+        .principles__row.animate-visible .principle__content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Remove all principle divider lines */
+        .principles__row::after {
+            display: none;
+        }
+        
+        /* Additional Content Animations */
+        .story-intro__content,
+        .why__content,
+        .solution__content,
+        .portal-cta__container,
+        .about__header,
+        .about__contact,
+        .work__intro {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out;
+        }
+        
+        .story-intro__content.animate-visible,
+        .why__content.animate-visible,
+        .solution__content.animate-visible,
+        .portal-cta__container.animate-visible,
+        .about__header.animate-visible,
+        .about__contact.animate-visible,
+        .work__intro.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Subtle Button Hover Effects */
+        .cta-button,
+        .service-package__cta,
+        .about__toggle {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cta-button:hover,
+        .service-package__cta:hover,
+        .about__toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Ensure smooth scrolling works */
+        html {
+            scroll-behavior: smooth !important;
+        }
+        
+        /* Add offset for sticky navigation */
+        #welcome, #five-principles, #about {
+            scroll-margin-top: 0px;
+        }
+        
+        /* Button styling - filled selected state */
+        .nav__item:active,
+        .nav__item:focus {
+            background-color: rgba(73, 73, 47, 0.7) !important;
+            color: #EDE8D5 !important;
+            border: 1px solid rgba(73, 73, 47, 0.7) !important;
+            outline: none !important;
+        }
+        
+        .mobile-menu__item:active,
+        .mobile-menu__item:focus {
+            background-color: rgba(73, 73, 47, 0.7) !important;
+            color: #EDE8D5 !important;
+            border: 1px solid rgba(73, 73, 47, 0.7) !important;
+            outline: none !important;
+        }
+        
+        /* Hover Navigation Styles */
+        .hero__nav.nav--visible {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            background: rgba(237, 232, 213, 0.85) !important;
+            backdrop-filter: blur(10px) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+            border-radius: 0 0 12px 12px !important;
+            z-index: 1000 !important;
+            padding: 15px 63px !important;
+        }
+        
+        /* Ensure smooth transitions */
+        .hero__nav {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+    </style>
+
+
+    <!-- Scroll-Based Hover Navigation -->
+    <script>
+        console.log('🚀 Enhanced hover nav loading...');
+        
+        const nav = document.querySelector('.hero__nav');
+        const heroSection = document.getElementById('hero');
+        
+        if (!nav || !heroSection) {
+            console.error('❌ Missing required elements');
+            return;
+        }
+        
+        let isInHeroSection = true;
+        let isHoveringTop = false;
+        let hideTimeout = null;
+        
+        // Force initial state
+        nav.style.transition = 'all 0.3s ease';
+        nav.style.position = 'absolute'; // Start as absolute in hero
+        
+        function showHoverNav() {
+            console.log('✅ SHOWING hover nav');
+            clearTimeout(hideTimeout);
+            nav.classList.add('nav--visible');
+            nav.style.opacity = '1';
+            nav.style.transform = 'translateY(0)';
+            nav.style.pointerEvents = 'auto';
+        }
+        
+        function hideHoverNav() {
+            console.log('❌ HIDING hover nav');
+            nav.classList.remove('nav--visible');
+            nav.style.opacity = '0';
+            nav.style.transform = 'translateY(-30px)';
+            nav.style.pointerEvents = 'none';
+        }
+        
+        function showNormalNav() {
+            console.log('📍 NORMAL nav (hero section)');
+            clearTimeout(hideTimeout);
+            nav.classList.remove('nav--visible');
+            nav.style.position = 'absolute';
+            nav.style.opacity = '1';
+            nav.style.transform = 'translateY(0)';
+            nav.style.pointerEvents = 'auto';
+        }
+        
+        // Check scroll position
+        function checkScroll() {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            const scrollY = window.pageYOffset || window.scrollY;
+            const wasInHero = isInHeroSection;
+            
+            isInHeroSection = (scrollY + 100) < heroBottom; // Add 100px buffer
+            
+            console.log('📊 Scroll:', scrollY, 'Hero bottom:', heroBottom, 'In hero:', isInHeroSection);
+            
+            if (isInHeroSection && !wasInHero) {
+                // Just entered hero
+                showNormalNav();
+            } else if (!isInHeroSection && wasInHero) {
+                // Just left hero
+                if (!isHoveringTop) {
+                    hideHoverNav();
+                }
+            }
+        }
+        
+        // Handle mouse movement
+        function handleMouseMove(e) {
+            if (isInHeroSection) return;
+            
+            const mouseY = e.clientY;
+            const hoverZone = 120; // Reduced for easier testing
+            const inTopZone = mouseY <= hoverZone;
+            
+            console.log('🖱️ Mouse Y:', mouseY, 'In top zone:', inTopZone, 'Currently hovering:', isHoveringTop);
+            
+            if (inTopZone && !isHoveringTop) {
+                isHoveringTop = true;
+                console.log('🎯 ENTERING hover zone');
+                showHoverNav();
+            } else if (!inTopZone && isHoveringTop) {
+                isHoveringTop = false;
+                console.log('🚪 LEAVING hover zone');
+                hideTimeout = setTimeout(() => {
+                    if (!isHoveringTop && !isInHeroSection) {
+                        hideHoverNav();
+                    }
+                }, 200);
+            }
+        }
+        
+        // Event listeners
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        document.addEventListener('mousemove', handleMouseMove, { passive: true });
+        
+        // Initial setup
+        checkScroll();
+        
+        console.log('✨ Enhanced nav setup complete!');
+    </script>
+    
+    <!-- Bring back the glitter cursor! -->
     <script src="cursor-effects.js"></script>
+    
+    <!-- About section Read More functionality -->
+    <script src="shared-scripts.js"></script>
+    
+    <!-- Advanced Animation Controller -->
+    <script>
+        console.log('🎬 Advanced Animation System Loading...');
+        
+        // Optimized Intersection Observer with requestAnimationFrame
+        const animationObserver = new IntersectionObserver((entries) => {
+            // Use requestAnimationFrame to prevent scroll lag
+            requestAnimationFrame(() => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-visible');
+                        animationObserver.unobserve(entry.target);
+                    }
+                });
+            });
+        }, {
+            threshold: 0.1, // Lower threshold for smoother performance
+            rootMargin: '0px 0px -50px 0px' // Reduced margin for better performance
+        });
+        
+        // Remove separate principles observer for better performance
+        // Use single observer for all elements
+        
+        // Optimized single initialization function
+        function initializeAnimations() {
+            // Single query for all animated elements - better performance
+            const allElements = document.querySelectorAll(`
+                .animate-on-scroll,
+                .principles__row,
+                .story-intro__content,
+                .why__content,
+                .solution__content,
+                .portal-cta__container,
+                .about__header,
+                .about__contact,
+                .work__intro
+            `);
+            
+            // Batch observe for better performance
+            allElements.forEach(el => animationObserver.observe(el));
+            
+            console.log(`✨ Observing ${allElements.length} elements with optimized observer`);
+        }
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeAnimations);
+        } else {
+            initializeAnimations();
+        }
+        
+        // Merge typography into main initialization for better performance
+        function initializeTypographyAnimations() {
+            const typographyElements = document.querySelectorAll(`
+                .display-title,
+                .eyebrow,
+                .about__title,
+                .about__subtitle,
+                .work__title,
+                .service-package__title,
+                .service-package__subtitle,
+                .body-text,
+                .about__copy-text,
+                .service-package__description,
+                .principle__text,
+                .portal-cta__title
+            `);
+            
+            typographyElements.forEach(el => animationObserver.observe(el));
+            
+            console.log(`📝 Observing ${typographyElements.length} typography elements`);
+        }
+        
+        // Initialize typography with main animations
+        initializeTypographyAnimations();
+        
+        console.log('⚡ Optimized animation system ready!');
+    </script>
+
+    <!-- Mobile Responsive Styles -->
+    <style>
+        /* Mobile Navigation - Based on Figma frames */
+        @media (max-width: 768px) {
+            .hero__nav {
+                padding: 15px 20px !important;
+                position: static !important;
+                background: #EDE8D5 !important;
+            }
+            
+            .nav__container {
+                flex-direction: column !important;
+                gap: 20px !important;
+                align-items: center !important;
+            }
+            
+            .nav__logo {
+                order: -1 !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .logo img {
+                height: 40px !important;
+                width: auto !important;
+            }
+            
+            .nav__item {
+                padding: 10px 20px !important;
+                min-width: auto !important;
+                font-size: 12px !important;
+            }
+            
+            /* Hide desktop nav items, show mobile versions */
+            .nav__item[data-item] {
+                display: none !important;
+            }
+            
+            .nav__left,
+            .nav__right {
+                display: flex !important;
+                gap: 15px !important;
+            }
+            
+            /* Mobile Hero Content */
+            .hero {
+                min-height: 100vh !important;
+                padding-bottom: 0 !important;
+            }
+            
+            .hero__content {
+                padding: 40px 20px 100px 20px !important;
+                text-align: center !important;
+            }
+            
+            .content__container {
+                max-width: 100% !important;
+                gap: 24px !important;
+            }
+            
+            .hero__title {
+                font-size: 36px !important;
+                line-height: 1.1 !important;
+                margin: 0 !important;
+            }
+            
+            .hero__subtitle {
+                font-size: 16px !important;
+                line-height: 1.4 !important;
+                max-width: 90% !important;
+                margin: 0 auto !important;
+            }
+            
+            .hero__cta {
+                margin-top: 20px !important;
+            }
+            
+            .cta-button {
+                padding: 14px 28px !important;
+                font-size: 12px !important;
+                width: auto !important;
+                min-width: 140px !important;
+            }
+            
+            /* Mobile Marquee */
+            .hero__marquee .marquee__track {
+                height: 40px !important;
+                padding: 10px 0 !important;
+            }
+            
+            .marquee__text {
+                font-size: 14px !important;
+            }
+            
+            /* Mobile Sections */
+            .section {
+                padding: 60px 20px !important;
+            }
+            
+            .section__container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            /* Mobile Story Section */
+            .story-intro__container {
+                flex-direction: column !important;
+                gap: 40px !important;
+            }
+            
+            .story-intro__content {
+                order: 2 !important;
+                text-align: center !important;
+            }
+            
+            .media-block--story {
+                order: 1 !important;
+                height: 300px !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            .eyebrow {
+                font-size: 12px !important;
+            }
+            
+            .display-title {
+                font-size: 28px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .body-text {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* Mobile Why & Solution Sections */
+            .why__container,
+            .solution__container {
+                flex-direction: column !important;
+                gap: 40px !important;
+                text-align: center !important;
+            }
+            
+            .why__content,
+            .solution__content {
+                order: 2 !important;
+            }
+            
+            .media-block--why,
+            .media-block--solution {
+                order: 1 !important;
+                height: 300px !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            /* Mobile Principles Section */
+            .principles__container {
+                padding: 0 !important;
+            }
+            
+            .principles__header {
+                text-align: center !important;
+                margin-bottom: 40px !important;
+            }
+            
+            .principles__row {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 20px !important;
+                padding: 30px 0 !important;
+                transform: translateX(0) !important;
+            }
+            
+            .principle__icon {
+                align-self: center !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .principle__content {
+                transform: translateX(0) !important;
+            }
+            
+            .principle__text {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* Mobile About Section */
+            .about__container {
+                flex-direction: column !important;
+                gap: 40px !important;
+                text-align: center !important;
+            }
+            
+            .about__header {
+                order: 2 !important;
+            }
+            
+            .about__contact {
+                order: 1 !important;
+                height: 300px !important;
+                width: 100% !important;
+            }
+            
+            .about__title {
+                font-size: 28px !important;
+            }
+            
+            .about__subtitle {
+                font-size: 18px !important;
+            }
+            
+            .about__copy-text {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+            }
+            
+            .about__toggle {
+                padding: 12px 24px !important;
+                font-size: 12px !important;
+            }
+            
+            /* Mobile Work Section */
+            .work__container {
+                padding: 60px 20px !important;
+                text-align: center !important;
+            }
+            
+            .work__intro {
+                margin-bottom: 40px !important;
+            }
+            
+            .work__title {
+                font-size: 28px !important;
+            }
+            
+            .service-package__container {
+                grid-template-columns: 1fr !important;
+                gap: 0 !important;
+            }
+            
+            .service-package__image {
+                height: 300px !important;
+                order: 1 !important;
+            }
+            
+            .service-package__content {
+                order: 2 !important;
+                padding: 40px 20px !important;
+                text-align: center !important;
+            }
+            
+            .service-package__title {
+                font-size: 24px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .service-package__subtitle {
+                font-size: 16px !important;
+            }
+            
+            .service-package__description {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+            
+            .service-package__cta {
+                padding: 12px 24px !important;
+                font-size: 12px !important;
+                margin-top: 20px !important;
+            }
+            
+            /* Mobile Footer */
+            .site-footer {
+                padding: 40px 20px !important;
+            }
+            
+            .footer__content {
+                flex-direction: column !important;
+                gap: 30px !important;
+                text-align: center !important;
+            }
+            
+            .footer__logo {
+                height: 40px !important;
+            }
+            
+            .footer__tagline {
+                font-size: 18px !important;
+            }
+            
+            .footer__links {
+                flex-direction: column !important;
+                gap: 15px !important;
+            }
+            
+            .footer-link {
+                font-size: 12px !important;
+            }
+            
+            .footer__meta {
+                flex-direction: column !important;
+                gap: 10px !important;
+                text-align: center !important;
+            }
+        }
+        
+        /* Tablet Styles */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .hero__title {
+                font-size: 42px !important;
+            }
+            
+            .hero__subtitle {
+                font-size: 18px !important;
+            }
+            
+            .section {
+                padding: 80px 40px !important;
+            }
+            
+            .display-title {
+                font-size: 32px !important;
+            }
+            
+            .service-package__container {
+                grid-template-columns: 1fr !important;
+                gap: 0 !important;
+            }
+            
+            .service-package__content {
+                padding: 60px 40px !important;
+            }
+        }
+    </style>
 </body>
 </html>
