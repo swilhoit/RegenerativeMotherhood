@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EMERGENCY IMAGE TEST</title>
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; }
+        .test-box { 
+            width: 300px; 
+            height: 200px; 
+            margin: 20px 0; 
+            border: 3px solid #333;
+            background-size: cover;
+            background-position: center;
+        }
+        .working { border-color: green; }
+        .broken { border-color: red; }
+        h2 { color: #333; margin: 30px 0 10px 0; }
+        p { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>EMERGENCY IMAGE DEBUG TEST</h1>
+    
+    <h2>1. Working Image (sleep-guidance.jpg)</h2>
+    <div class="test-box working" style="background-image: url('sleep-guidance.jpg');"></div>
+    <p><strong>Path:</strong> sleep-guidance.jpg</p>
+    
+    <h2>2. Original Problem Image 1</h2>
+    <div class="test-box broken" style="background-image: url('Frame 1627810.jpg');"></div>
+    <p><strong>Path:</strong> Frame 1627810.jpg</p>
+    
+    <h2>3. Original Problem Image 2</h2>
+    <div class="test-box broken" style="background-image: url('Frame 1162781.jpg');"></div>
+    <p><strong>Path:</strong> Frame 1162781.jpg</p>
+    
+    <h2>4. Simple Name Test 1</h2>
+    <div class="test-box" style="background-image: url('package2.jpg');"></div>
+    <p><strong>Path:</strong> package2.jpg (copy of Frame 1627810.jpg)</p>
+    
+    <h2>5. Simple Name Test 2</h2>
+    <div class="test-box" style="background-image: url('package3.jpg');"></div>
+    <p><strong>Path:</strong> package3.jpg (copy of Frame 1162781.jpg)</p>
+    
+    <h2>6. GitHub Direct URL Test 1</h2>
+    <div class="test-box" style="background-image: url('https://raw.githubusercontent.com/millanfabiola1/RegenerativeMotherhood/main/Frame%201627810.jpg');"></div>
+    <p><strong>Path:</strong> GitHub Raw URL</p>
+    
+    <h2>7. GitHub Direct URL Test 2</h2>
+    <div class="test-box" style="background-image: url('https://raw.githubusercontent.com/millanfabiola1/RegenerativeMotherhood/main/Frame%201162781.jpg');"></div>
+    <p><strong>Path:</strong> GitHub Raw URL</p>
+    
+    <script>
+        console.log('=== IMAGE TEST RESULTS ===');
+        ['sleep-guidance.jpg', 'Frame 1627810.jpg', 'Frame 1162781.jpg', 'package2.jpg', 'package3.jpg'].forEach(src => {
+            const img = new Image();
+            img.onload = () => console.log(`✅ ${src} - LOADED`);
+            img.onerror = () => console.log(`❌ ${src} - FAILED`);
+            img.src = src;
+        });
+    </script>
+</body>
+</html>
