@@ -90,13 +90,11 @@
                 <!-- MOBILE HAMBURGER NAVIGATION -->
                 <div class="mobile-nav">
                     <div class="mobile-nav__logo">
-                        <img src="logo.svg" alt="Regenerative Motherhood" width="120" height="29">
+                        <img src="website/Group 32212.svg" alt="Regenerative Motherhood" width="120" height="29">
                     </div>
                     
                     <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-                        <span class="hamburger__line"></span>
-                        <span class="hamburger__line"></span>
-                        <span class="hamburger__line"></span>
+                        <img src="website/mobile-menu.svg" alt="Menu" width="24" height="24" />
                     </button>
                 </div>
                 
@@ -198,35 +196,35 @@
             </div>
             <div class="principles__list">
                 <div class="principles__row animate-on-scroll">
-                    <img src="icons/harmony.svg" alt="Harmony" class="principle__icon" />
+                    <img src="website/icons/harmony.svg" alt="Harmony" class="principle__icon" />
                     <div class="principle__content">
                         <div class="principle__eyebrow"><span class="mono">01</span><span class="concrete">HARMONY</span></div>
                         <p class="principle__text">Working in harmony with nature rather than against it</p>
                     </div>
                 </div>
                 <div class="principles__row animate-on-scroll">
-                    <img src="icons/individuality.svg" alt="Individuality" class="principle__icon" />
+                    <img src="website/icons/individuality.svg" alt="Individuality" class="principle__icon" />
                     <div class="principle__content">
                         <div class="principle__eyebrow"><span class="mono">02</span><span class="concrete">INDIVIDUALITY</span></div>
                         <p class="principle__text">Honoring nuance and individuality</p>
                     </div>
                 </div>
                 <div class="principles__row animate-on-scroll">
-                    <img src="icons/nourishment.svg" alt="Nourishment" class="principle__icon" />
+                    <img src="website/icons/nourishment.svg" alt="Nourishment" class="principle__icon" />
                     <div class="principle__content">
                         <div class="principle__eyebrow"><span class="mono">03</span><span class="concrete">NOURISHMENT</span></div>
                         <p class="principle__text">Elevating mutual nourishment for both mom and baby</p>
                     </div>
                 </div>
                 <div class="principles__row animate-on-scroll">
-                    <img src="icons/connection.svg" alt="Connection" class="principle__icon" />
+                    <img src="website/icons/connection.svg" alt="Connection" class="principle__icon" />
                     <div class="principle__content">
                         <div class="principle__eyebrow"><span class="mono">04</span><span class="concrete">CONNECTION</span></div>
                         <p class="principle__text">Putting connection at the forefront of all decisions</p>
                     </div>
                 </div>
                 <div class="principles__row animate-on-scroll">
-                    <img src="icons/life.svg" alt="Life" class="principle__icon" />
+                    <img src="website/icons/life.svg" alt="Life" class="principle__icon" />
                     <div class="principle__content">
                         <div class="principle__eyebrow"><span class="mono">05</span><span class="concrete">LIFE</span></div>
                         <p class="principle__text">Recognizing the interconnectedness of all life</p>
@@ -603,23 +601,25 @@
             outline: none !important;
         }
         
-        /* Hover Navigation Styles */
-        .hero__nav.nav--visible {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            background: rgba(237, 232, 213, 0.85) !important;
-            backdrop-filter: blur(10px) !important;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
-            border-radius: 0 0 12px 12px !important;
-            z-index: 1000 !important;
-            padding: 15px 63px !important;
-        }
-        
-        /* Ensure smooth transitions */
-        .hero__nav {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        /* Hover Navigation Styles - Only for desktop */
+        @media (min-width: 769px) {
+            .hero__nav.nav--visible {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                background: rgba(237, 232, 213, 0.85) !important;
+                backdrop-filter: blur(10px) !important;
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+                border-radius: 0 0 12px 12px !important;
+                z-index: 1000 !important;
+                padding: 15px 63px !important;
+            }
+            
+            /* Ensure smooth transitions */
+            .hero__nav {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            }
         }
     </style>
 
@@ -633,6 +633,21 @@
         
         if (!nav || !heroSection) {
             console.error('❌ Missing required elements');
+            return;
+        }
+
+        // Disable hover/sticky nav behavior entirely on mobile to avoid blurred bar
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            console.log('📱 Mobile detected — disabling hover nav logic');
+            nav.classList.remove('nav--visible');
+            nav.style.position = 'absolute';
+            nav.style.background = 'transparent';
+            nav.style.backdropFilter = 'none';
+            nav.style.boxShadow = 'none';
+            nav.style.opacity = '1';
+            nav.style.transform = 'translateY(0)';
+            nav.style.pointerEvents = 'auto';
+            // Do not attach any listeners on mobile
             return;
         }
         
@@ -728,10 +743,10 @@
     </script>
     
     <!-- Bring back the glitter cursor! -->
-    <script src="cursor-effects.js"></script>
+    <script src="website/cursor-effects.js"></script>
     
-    <!-- About section Read More functionality -->
-    <script src="shared-scripts.js"></script>
+    <!-- About section Read More functionality & Mobile menu toggle -->
+    <script src="website/shared-scripts.js"></script>
     
     <!-- Advanced Animation Controller -->
     <script>
@@ -814,97 +829,209 @@
 
     <!-- Mobile Responsive Styles -->
     <style>
-        /* Mobile Navigation - Based on Figma frames */
+        /* Mobile Navigation - Clean and Simple */
         @media (max-width: 768px) {
+            /* Hide desktop navigation completely */
+            .nav__item[data-item],
+            .nav__left,
+            .nav__right,
+            .nav__logo { display: none !important; }
+
+            /* Mobile nav container - no blur effects */
             .hero__nav {
-                padding: 15px 20px !important;
-                position: static !important;
-                background: #EDE8D5 !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                background: transparent !important;
+                backdrop-filter: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                z-index: 1000 !important;
+                padding: 20px !important;
+            }
+            
+            /* Force no blur effects on mobile nav */
+            .hero__nav * {
+                backdrop-filter: none !important;
+                box-shadow: none !important;
             }
             
             .nav__container {
-                flex-direction: column !important;
-                gap: 20px !important;
+                display: flex !important;
                 align-items: center !important;
             }
-            
-            .nav__logo {
-                order: -1 !important;
-                margin-bottom: 15px !important;
-            }
-            
-            .logo img {
-                height: 40px !important;
-                width: auto !important;
-            }
-            
-            .nav__item {
-                padding: 10px 20px !important;
-                min-width: auto !important;
-                font-size: 12px !important;
-            }
-            
-            /* Hide desktop nav items, show mobile versions */
-            .nav__item[data-item] {
-                display: none !important;
-            }
-            
-            .nav__left,
-            .nav__right {
+
+            /* Mobile navigation bar with logo and menu */
+            .mobile-nav {
                 display: flex !important;
-                gap: 15px !important;
-            }
-            
-            /* Mobile Hero Content */
-            .hero {
-                min-height: 100vh !important;
-                padding-bottom: 0 !important;
-            }
-            
-            .hero__content {
-                padding: 40px 20px 100px 20px !important;
-                text-align: center !important;
-            }
-            
-            .content__container {
-                max-width: 100% !important;
-                gap: 24px !important;
-            }
-            
-            .hero__title {
-                font-size: 36px !important;
-                line-height: 1.1 !important;
-                margin: 0 !important;
-            }
-            
-            .hero__subtitle {
-                font-size: 16px !important;
-                line-height: 1.4 !important;
-                max-width: 90% !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100% !important;
+                max-width: calc(100vw - 40px) !important;
                 margin: 0 auto !important;
             }
             
-            .hero__cta {
-                margin-top: 20px !important;
+            .mobile-nav__logo img {
+                height: 48px !important;
+                width: auto !important;
+                filter: brightness(0) invert(1) !important;
             }
             
-            .cta-button {
-                padding: 14px 28px !important;
+            .hamburger {
+                background: transparent !important;
+                border: none !important;
+                padding: 8px !important;
+                cursor: pointer !important;
+            }
+            
+            .hamburger img {
+                width: 24px !important;
+                height: 24px !important;
+                filter: brightness(0) invert(1) !important;
+            }
+
+            /* Mobile menu overlay */
+            .mobile-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                background: rgba(0,0,0,0.95) !important;
+                z-index: 2000 !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: opacity 0.3s ease, visibility 0.3s ease !important;
+            }
+            
+            .mobile-menu.active {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .mobile-menu__content {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 40px !important;
+                height: 100% !important;
+                padding: 40px 20px !important;
+            }
+            
+            .mobile-menu__item {
+                color: #fcf9f1 !important;
+                background: transparent !important;
+                border: 1px solid rgba(252,249,241,0.2) !important;
+                padding: 16px 24px !important;
+                border-radius: 12px !important;
+                text-decoration: none !important;
+                min-width: 200px !important;
+                text-align: center !important;
+            }
+            
+            /* Mobile Hero Layout - Match Figma exactly */
+            .hero {
+                min-height: 100vh !important;
+                display: flex !important;
+                flex-direction: column !important;
+                position: relative !important;
+            }
+
+            .hero__content {
+                position: absolute !important;
+                top: 50% !important;
+                left: 20px !important;
+                right: 20px !important;
+                transform: translateY(-50%) !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 32px !important;
+                z-index: 100 !important;
+            }
+
+            .content__container {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 32px !important;
+            }
+
+            .hero__title {
+                color: #FCF9F1 !important;
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 32px !important;
+                font-weight: 200 !important;
+                line-height: 90% !important;
+                letter-spacing: -1.6px !important;
+                text-transform: capitalize !important;
+                margin: 0 !important;
+                max-width: 334px !important;
+            }
+
+            .hero__subtitle {
+                color: #FCF9F1 !important;
+                font-family: "DM Mono", monospace !important;
                 font-size: 12px !important;
+                font-weight: 400 !important;
+                line-height: 150% !important;
+                letter-spacing: 0.24px !important;
+                text-transform: uppercase !important;
+                margin: 0 !important;
+                max-width: 334px !important;
+            }
+
+            .cta-button {
+                height: 44px !important;
+                padding: 12px 24px !important;
+                border: 1px solid #ffffff !important;
+                border-radius: 0 !important;
+                background: transparent !important;
+                color: #FCF9F1 !important;
+                font-size: 14px !important;
                 width: auto !important;
-                min-width: 140px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
             }
             
             /* Mobile Marquee */
+            .hero__marquee {
+                position: absolute !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                height: 60px !important;
+                background: #49492f !important;
+                z-index: 10 !important;
+            }
+            
             .hero__marquee .marquee__track {
-                height: 40px !important;
-                padding: 10px 0 !important;
+                height: 60px !important;
+                padding: 16px 0 !important;
+                display: flex !important;
+                align-items: center !important;
             }
-            
-            .marquee__text {
-                font-size: 14px !important;
-            }
-            
+        }
+        
+        /* Remove all rounded corners from images globally */
+        img,
+        .media-block,
+        .media-block--story,
+        .media-block--why,
+        .media-block--solution,
+        .about__image,
+        .service-package__image,
+        .work__image,
+        .hero__background,
+        figure,
+        .image-container,
+        [class*="image"],
+        [class*="media"] {
+            border-radius: 0 !important;
+        }
+        
+        @media (max-width: 768px) {
             /* Mobile Sections */
             .section {
                 padding: 60px 20px !important;
@@ -915,22 +1042,61 @@
                 padding: 0 !important;
             }
             
-            /* Mobile Story Section */
-            .story-intro__container {
+            /* Mobile Story/WELCOME Section — exact Figma (node 343-2094) */
+            .story-intro__container { 
+                display: flex !important;
                 flex-direction: column !important;
-                gap: 40px !important;
-            }
-            
-            .story-intro__content {
-                order: 2 !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                max-width: 374px !important;
+                padding: 44px 20px !important; 
+                gap: 8px !important;
                 text-align: center !important;
+                margin: 0 auto !important;
             }
             
             .media-block--story {
                 order: 1 !important;
-                height: 300px !important;
+                width: 171px !important;
+                height: 150px !important;
+                border-radius: 0 !important;
+                margin: 0 auto !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .story-intro__content {
+                order: 2 !important;
                 width: 100% !important;
+                max-width: 334px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+                text-align: center !important;
+                margin: 0 auto !important;
+            }
+            
+            .story-intro__content .eyebrow {
+                font-family: "DM Mono", monospace !important;
+                font-size: 11px !important;
+                font-weight: 400 !important;
+                letter-spacing: 2.2px !important;
+                text-transform: uppercase !important;
+                color: #49492F !important;
                 margin: 0 !important;
+                line-height: normal !important;
+            }
+            
+            .story-intro__content .display-title {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 20px !important;
+                line-height: 1.2 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.4px !important;
+                color: #49492F !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                text-transform: none !important;
             }
             
             .eyebrow {
@@ -968,85 +1134,416 @@
                 margin: 0 !important;
             }
             
-            /* Mobile Principles Section */
+            /* Mobile Principles Section - Figma node-id=343-2114 */
+            .principles {
+                min-height: 100vh !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
             .principles__container {
-                padding: 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                max-width: 374px !important;
+                padding: 44px 20px !important;
+                gap: 32px !important;
+                margin: 0 auto !important;
             }
             
             .principles__header {
-                text-align: center !important;
-                margin-bottom: 40px !important;
-            }
-            
-            .principles__row {
+                display: flex !important;
                 flex-direction: column !important;
+                align-items: center !important;
+                gap: 16px !important;
                 text-align: center !important;
-                gap: 20px !important;
-                padding: 30px 0 !important;
-                transform: translateX(0) !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 334px !important;
+                order: 1 !important;
             }
             
-            .principle__icon {
-                align-self: center !important;
-                margin-bottom: 10px !important;
+            .principles__header .eyebrow {
+                font-family: "DM Mono", monospace !important;
+                font-size: 11px !important;
+                font-weight: 400 !important;
+                letter-spacing: 2.2px !important;
+                text-transform: uppercase !important;
+                color: #FCF9F1 !important;
+                margin: 0 !important;
+                line-height: normal !important;
             }
             
-            .principle__content {
-                transform: translateX(0) !important;
+            .principles__header .display-title {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 20px !important;
+                line-height: 1.2 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.4px !important;
+                color: #FCF9F1 !important;
+                margin: 0 !important;
+                text-transform: none !important;
+                max-width: 100% !important;
             }
             
-            .principle__text {
-                font-size: 16px !important;
-                line-height: 1.5 !important;
-            }
-            
-            /* Mobile About Section */
-            .about__container {
+            .principles__list {
+                display: flex !important;
                 flex-direction: column !important;
-                gap: 40px !important;
-                text-align: center !important;
-            }
-            
-            .about__header {
+                align-items: center !important;
+                gap: 0 !important;
+                width: 100% !important;
+                max-width: 334px !important;
+                margin: 0 auto !important;
                 order: 2 !important;
             }
             
-            .about__contact {
+            .principles__row {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 20px !important;
+                padding: 40px 0 !important;
+                text-align: center !important;
+                transform: translateX(0) !important;
+                width: 100% !important;
+                border: none !important;
+                border-bottom: 1px solid #FCF9F1 !important;
+                position: relative !important;
+            }
+            
+            .principles__row:last-child {
+                border-bottom: none !important;
+            }
+            
+            .principle__icon {
+                width: 80px !important;
+                height: 80px !important;
+                flex-shrink: 0 !important;
+                margin: 0 auto 20px auto !important;
+                filter: brightness(0) invert(1) !important;
+            }
+            
+            .principle__content {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 12px !important;
+                text-align: center !important;
+                transform: translateX(0) !important;
+                width: 100% !important;
+                max-width: 280px !important;
+            }
+            
+            .principle__eyebrow {
+                display: flex !important;
+                align-items: center !important;
+                gap: 8px !important;
+                justify-content: center !important;
+                margin-bottom: 8px !important;
+            }
+            
+            .principle__eyebrow .mono {
+                font-family: "DM Mono", monospace !important;
+                font-size: 11px !important;
+                font-weight: 400 !important;
+                letter-spacing: 2.2px !important;
+                color: #FCF9F1 !important;
+                text-transform: uppercase !important;
+            }
+            
+            .principle__eyebrow .concrete {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 20px !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.4px !important;
+                color: #FCF9F1 !important;
+                text-transform: uppercase !important;
+                line-height: normal !important;
+            }
+            
+            .principle__text {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 14px !important;
+                font-weight: 400 !important;
+                line-height: 1.4 !important;
+                letter-spacing: -0.28px !important;
+                color: #FCF9F1 !important;
+                text-align: center !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+            
+            /* Mobile About Section */
+            .about {
+                min-height: 100vh !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 44px 20px !important;
+            }
+            
+            .about__container {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                width: 100% !important;
+                max-width: 374px !important;
+                gap: 32px !important;
+                margin: 0 auto !important;
+            }
+            
+            .about__header {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 24px !important;
+                width: 100% !important;
+                max-width: 334px !important;
                 order: 1 !important;
-                height: 300px !important;
+            }
+            
+            .about__intro {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
                 width: 100% !important;
             }
             
+            .about__eyebrow {
+                font-family: "DM Mono", monospace !important;
+                font-size: 11px !important;
+                font-weight: 400 !important;
+                letter-spacing: 2.2px !important;
+                text-transform: uppercase !important;
+                color: #49492F !important;
+                margin: 0 !important;
+                line-height: normal !important;
+            }
+            
             .about__title {
-                font-size: 28px !important;
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 32px !important;
+                line-height: 1.1 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.64px !important;
+                color: #49492F !important;
+                margin: 0 !important;
+                text-transform: none !important;
             }
             
             .about__subtitle {
-                font-size: 18px !important;
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 16px !important;
+                line-height: 1.3 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.32px !important;
+                color: #49492F !important;
+                margin: 0 !important;
+            }
+            
+            .about__text-content {
+                width: 100% !important;
+            }
+            
+            .about__copy {
+                width: 100% !important;
             }
             
             .about__copy-text {
-                font-size: 16px !important;
-                line-height: 1.5 !important;
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.28px !important;
+                color: #49492F !important;
+                margin: 0 0 16px 0 !important;
+                text-align: left !important;
             }
             
             .about__toggle {
-                padding: 12px 24px !important;
-                font-size: 12px !important;
+                display: none !important;
             }
             
-            /* Mobile Work Section */
-            .work__container {
-                padding: 60px 20px !important;
+            .about__images {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 12px !important;
+                width: 100% !important;
+                max-width: 334px !important;
+                order: 2 !important;
+                margin: 0 auto !important;
+            }
+            
+            .about__image {
+                width: calc(33.333% - 8px) !important;
+                height: 120px !important;
+                border-radius: 0 !important;
+                background-size: cover !important;
+                background-position: center !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .about__contact {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 16px !important;
+                text-align: center !important;
+                width: 100% !important;
+                max-width: 334px !important;
+                margin: 0 auto !important;
+                order: 3 !important;
+            }
+            
+            .about__contact-eyebrow {
+                font-family: "DM Mono", monospace !important;
+                font-size: 11px !important;
+                font-weight: 400 !important;
+                letter-spacing: 2.2px !important;
+                text-transform: uppercase !important;
+                color: #49492F !important;
+                margin: 0 !important;
+                line-height: normal !important;
+            }
+            
+            .about__contact-title {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 20px !important;
+                line-height: 1.2 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.4px !important;
+                color: #49492F !important;
+                margin: 0 !important;
+                text-transform: none !important;
                 text-align: center !important;
             }
             
+            /* Mobile Work Section - Figma node-id=343-2185 */
+            .work {
+                min-height: 100vh !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 44px 20px !important;
+                position: relative !important;
+            }
+            
+            .work__container {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+                max-width: 374px !important;
+                gap: 32px !important;
+                margin: 0 auto !important;
+                position: relative !important;
+            }
+            
             .work__intro {
-                margin-bottom: 40px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 16px !important;
+                text-align: center !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 334px !important;
+                order: 1 !important;
+            }
+            
+            .work__eyebrow {
+                font-family: "DM Mono", monospace !important;
+                font-size: 11px !important;
+                font-weight: 400 !important;
+                letter-spacing: 2.2px !important;
+                text-transform: uppercase !important;
+                color: #49492F !important;
+                margin: 0 !important;
+                line-height: normal !important;
             }
             
             .work__title {
-                font-size: 28px !important;
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 20px !important;
+                line-height: 1.2 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.4px !important;
+                color: #49492F !important;
+                margin: 0 !important;
+                text-transform: none !important;
+                max-width: 100% !important;
+                text-align: center !important;
+            }
+            
+            .work__image {
+                position: relative !important;
+                width: 100% !important;
+                max-width: 334px !important;
+                height: 500px !important;
+                border-radius: 0 !important;
+                background-size: cover !important;
+                background-position: center !important;
+                order: 2 !important;
+                margin: 0 auto !important;
+            }
+            
+            .work__cta {
+                position: absolute !important;
+                bottom: 20px !important;
+                left: 20px !important;
+                right: 20px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                padding: 0 !important;
+                background: transparent !important;
+                color: #FCF9F1 !important;
+            }
+            
+            .work__cta-title {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 24px !important;
+                line-height: 1.2 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.48px !important;
+                color: #FCF9F1 !important;
+                margin: 0 !important;
+                text-transform: none !important;
+            }
+            
+            .work__cta-text {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.28px !important;
+                color: #FCF9F1 !important;
+                margin: 0 0 16px 0 !important;
+                max-width: 100% !important;
+            }
+            
+            .work__cta-button {
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 12px 24px !important;
+                height: 44px !important;
+                border: 1px solid #FCF9F1 !important;
+                border-radius: 0 !important;
+                background: transparent !important;
+                color: #FCF9F1 !important;
+                font-family: "DM Mono", monospace !important;
+                font-size: 12px !important;
+                font-weight: 400 !important;
+                text-decoration: none !important;
+                text-transform: uppercase !important;
+                letter-spacing: 2.4px !important;
+                line-height: normal !important;
+                width: auto !important;
+                align-self: flex-start !important;
             }
             
             .service-package__container {

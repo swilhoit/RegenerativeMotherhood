@@ -115,6 +115,15 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('ℹ️ Mobile menu elements not found');
             return;
         }
+
+        // Ensure mobile logo and hamburger are visible on load
+        const logoImg = document.querySelector('.mobile-nav__logo img');
+        if (logoImg) {
+            logoImg.style.opacity = '1';
+            logoImg.style.visibility = 'visible';
+        }
+        hamburger.style.opacity = '1';
+        hamburger.style.visibility = 'visible';
         
         // Make functions globally accessible
         window.closeMobileMenu = function() {
@@ -311,3 +320,6 @@ window.testAnchors = function() {
         console.log(`${id}: ${element ? '✅ Found' : '❌ Missing'}`);
     });
 };
+
+
+

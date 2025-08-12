@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Debug</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #333;
+            color: white;
+            padding: 20px;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #666;
+            border-radius: 8px;
+        }
+        
+        .mobile-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            margin: 20px 0;
+        }
+        
+        .hamburger {
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+        
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            gap: 20px;
+        }
+        
+        .mobile-menu__item {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 15px 30px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .status {
+            color: #00ff00;
+            font-weight: bold;
+        }
+        
+        .error {
+            color: #ff0000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Menu Debug Test</h1>
+    
+    <div class="test-section">
+        <h2>Element Check</h2>
+        <div id="element-status"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Mobile Navigation Test</h2>
+        <div class="mobile-nav">
+            <div>TEST LOGO</div>
+            <button class="hamburger" onclick="testToggle()">☰ MENU</button>
+        </div>
+    </div>
+    
+    <div class="mobile-menu" id="test-mobile-menu">
+        <div class="mobile-menu__content">
+            <button class="mobile-menu__item" onclick="testClose()">STORY</button>
+            <button class="mobile-menu__item" onclick="testClose()">PRINCIPLES</button>
+            <button class="mobile-menu__item" onclick="testClose()">ABOUT</button>
+            <button class="mobile-menu__item" onclick="testClose()">WORK WITH ME</button>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Console Output</h2>
+        <div id="console-output"></div>
+    </div>
+    
+    <script>
+        function log(message) {
+            const output = document.getElementById('console-output');
+            output.innerHTML += '<div>' + new Date().toLocaleTimeString() + ': ' + message + '</div>';
+        }
+        
+        function checkElements() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const status = document.getElementById('element-status');
+            
+            let html = '';
+            html += hamburger ? '<div class="status">✅ Hamburger found</div>' : '<div class="error">❌ Hamburger missing</div>';
+            html += mobileMenu ? '<div class="status">✅ Mobile menu found</div>' : '<div class="error">❌ Mobile menu missing</div>';
+            
+            status.innerHTML = html;
+            
+            log('Hamburger: ' + (hamburger ? 'Found' : 'Missing'));
+            log('Mobile menu: ' + (mobileMenu ? 'Found' : 'Missing'));
+        }
+        
+        function testToggle() {
+            const mobileMenu = document.getElementById('test-mobile-menu');
+            const isActive = mobileMenu.classList.contains('active');
+            
+            if (isActive) {
+                mobileMenu.classList.remove('active');
+                log('Menu closed');
+            } else {
+                mobileMenu.classList.add('active');
+                log('Menu opened');
+            }
+        }
+        
+        function testClose() {
+            const mobileMenu = document.getElementById('test-mobile-menu');
+            mobileMenu.classList.remove('active');
+            log('Menu closed via item click');
+        }
+        
+        // Run checks on load
+        document.addEventListener('DOMContentLoaded', function() {
+            log('DOM loaded');
+            checkElements();
+        });
+        
+        // Test if shared-scripts.js functions exist
+        setTimeout(function() {
+            if (typeof window.toggleMobileMenu === 'function') {
+                log('✅ toggleMobileMenu function exists');
+            } else {
+                log('❌ toggleMobileMenu function missing');
+            }
+            
+            if (typeof window.closeMobileMenu === 'function') {
+                log('✅ closeMobileMenu function exists');
+            } else {
+                log('❌ closeMobileMenu function missing');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
