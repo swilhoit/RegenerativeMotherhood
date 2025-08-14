@@ -486,13 +486,7 @@ body {
     }
     
     .service-main__cta {
-        padding: 12px 24px !important;
-        font-size: 12px !important;
-        margin-top: 20px !important;
-        display: inline-flex !important;
-        justify-content: center !important;
-        text-align: center !important;
-        align-self: flex-start !important; /* button aligns with left edge, text remains centered */
+        align-self: center !important;
     }
     
     .service-features {
