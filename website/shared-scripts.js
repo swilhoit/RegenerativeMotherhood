@@ -21,8 +21,9 @@ console.log('🌱 Regenerative Motherhood site loading...');
     function initializeAnchorNavigation() {
         console.log('🔗 Setting up anchor navigation...');
         
-        const anchorLinks = document.querySelectorAll('a[href^="#"]');
-        console.log(`Found ${anchorLinks.length} anchor links`);
+        // Only handle non-mobile-menu anchors here to avoid conflicts
+        const anchorLinks = document.querySelectorAll('a[href^="#"]:not(.mobile-menu__item)');
+        console.log(`Found ${anchorLinks.length} non-mobile anchor links`);
         
         anchorLinks.forEach(function(link, index) {
             const href = link.getAttribute('href');
@@ -31,7 +32,7 @@ console.log('🌱 Regenerative Motherhood site loading...');
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                const targetId = href.substring(1);
+                const targetId = (this.getAttribute('data-target') || href.substring(1)).replace(/^#/, '');
                 const targetElement = document.getElementById(targetId);
                 
                 console.log(`🎯 Clicked anchor: ${targetId}`);
@@ -42,7 +43,9 @@ console.log('🌱 Regenerative Motherhood site loading...');
                     const mobileMenu = document.querySelector('.mobile-menu');
                     if (mobileMenu && mobileMenu.classList.contains('active')) {
                         console.log('📱 Closing mobile menu...');
-                        closeMobileMenu();
+                        if (window.closeMobileMenu) {
+                            window.closeMobileMenu();
+                        }
                         setTimeout(() => {
                             scrollToElement(targetElement);
                         }, 300);
@@ -56,7 +59,9 @@ console.log('🌱 Regenerative Motherhood site loading...');
         });
         
         function scrollToElement(element) {
-            const offset = 120; // Account for sticky nav
+            // Use a smaller offset on mobile to account for the shorter nav bar
+            const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+            const offset = isMobile ? 80 : 120;
             const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
             const offsetPosition = elementPosition - offset;
             
@@ -223,35 +228,67 @@ console.log('🌱 Regenerative Motherhood site loading...');
             }
         });
         
-        // Close menu items when clicked + perform smooth scroll like desktop
-        const mobileMenuItems = document.querySelectorAll('.mobile-menu__item');
-        mobileMenuItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                const href = item.getAttribute('href');
+        function bindMobileMenuAnchor(el) {
+            el.addEventListener('click', function(e) {
+                const href = el.getAttribute('href');
+                console.log('Mobile menu item clicked:', href);
+                
                 if (href && href.startsWith('#')) {
+                    // Handle anchor links
                     e.preventDefault();
                     e.stopPropagation();
-                    const targetId = href.substring(1);
-                    const perform = () => {
-                        if (window.scrollToTargetId) {
-                            window.scrollToTargetId(targetId);
+                    const targetId = (el.getAttribute('data-target') || href).replace('#','');
+                    console.log('Scrolling to:', targetId);
+                    
+                    // Close menu first
+                    window.closeMobileMenu();
+                    
+                    // Then scroll after a delay
+                    setTimeout(() => {
+                        const elTarget = document.getElementById(targetId);
+                        if (elTarget) {
+                            const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+                            const offset = isMobile ? 80 : 120;
+                            const y = elTarget.getBoundingClientRect().top + window.pageYOffset - offset;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                            try { history.replaceState(null, '', '#' + targetId); } catch {}
                         } else {
-                            const el = document.getElementById(targetId);
-                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            console.error('Target element not found:', targetId);
                         }
-                    };
-                    // Scroll after close animation; fallback with timeout
-                    const onEnd = () => perform();
-                    mobileMenu.addEventListener('transitionend', onEnd, { once: true });
-                    // Move focus to the toggle to avoid aria-hidden focus warning
-                    if (hamburger) { try { hamburger.focus(); } catch {} }
+                    }, 300);
+                } else if (href && href.startsWith('mailto:')) {
+                    // Handle mailto links - just close menu, let default behavior happen
                     window.closeMobileMenu();
-                    setTimeout(perform, 350);
-                } else {
+                    // Don't prevent default for mailto links
+                } else if (href) {
+                    // Handle external links - close menu and navigate
                     window.closeMobileMenu();
+                    // Don't prevent default for external links
                 }
-            });
-        });
+            }, { passive: false });
+        }
+
+        document.querySelectorAll('.mobile-menu__item').forEach(bindMobileMenuAnchor);
+
+        // Delegated fallback: catch any hash links inside the popup even if listeners didn't bind
+        document.addEventListener('click', function(e) {
+            const a = e.target && e.target.closest ? e.target.closest('.mobile-menu__content a[href^="#"]') : null;
+            if (!a) return;
+            const href = a.getAttribute('href');
+            const targetId = (a.getAttribute('data-target') || href).replace('#','');
+            const elTarget = document.getElementById(targetId);
+            if (!elTarget) return;
+            e.preventDefault();
+            e.stopPropagation();
+            if (hamburger) { try { hamburger.focus(); } catch {} }
+            window.closeMobileMenu();
+            setTimeout(() => {
+                const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+                const offset = isMobile ? 80 : 120;
+                const y = elTarget.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }, 200);
+        }, { passive: false });
         
         // Close on escape key
         document.addEventListener('keydown', function(e) {
@@ -384,9 +421,11 @@ console.log('🌱 Regenerative Motherhood site loading...');
     // ========================================================================
     
     try {
+        // Initialize mobile menu FIRST so window.closeMobileMenu is available
+        initializeMobileMenu();
+        // Then initialize anchor navigation which may use closeMobileMenu
         initializeAnchorNavigation();
         initializeAboutToggle();
-        initializeMobileMenu();
         initializeStickyNavigation();
         initializeScrollAnimations();
         // Mount reusable mobile header if slot present; don't duplicate if page already includes one

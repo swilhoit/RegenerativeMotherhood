@@ -110,10 +110,10 @@
                 </svg>
             </button>
                 <div class="mobile-menu__content">
-                        <a href="#welcome" class="mobile-menu__item" onclick="window.closeMobileMenu && window.closeMobileMenu(); if (window.scrollToTargetId) { window.scrollToTargetId('welcome'); } else { const el=document.getElementById('welcome'); if(el) el.scrollIntoView({behavior:'smooth'}); } return false;"><span class="mobile-menu__text">STORY</span></a>
-                        <a href="#five-principles" class="mobile-menu__item" onclick="window.closeMobileMenu && window.closeMobileMenu(); if (window.scrollToTargetId) { window.scrollToTargetId('five-principles'); } else { const el=document.getElementById('five-principles'); if(el) el.scrollIntoView({behavior:'smooth'}); } return false;"><span class="mobile-menu__text">PRINCIPLES</span></a>
+                        <a href="#welcome" class="mobile-menu__item" data-target="welcome"><span class="mobile-menu__text">STORY</span></a>
+                        <a href="#five-principles" class="mobile-menu__item" data-target="five-principles"><span class="mobile-menu__text">PRINCIPLES</span></a>
                         <a href="work-with-me.html" class="mobile-menu__item"><span class="mobile-menu__text">WORK WITH ME</span></a>
-                        <a href="#about" class="mobile-menu__item" onclick="window.closeMobileMenu && window.closeMobileMenu(); if (window.scrollToTargetId) { window.scrollToTargetId('about'); } else { const el=document.getElementById('about'); if(el) el.scrollIntoView({behavior:'smooth'}); } return false;"><span class="mobile-menu__text">ABOUT</span></a>
+                        <a href="#about" class="mobile-menu__item" data-target="about"><span class="mobile-menu__text">ABOUT</span></a>
                 <a href="mailto:clairefagin@gmail.com" class="mobile-menu__item"><span class="mobile-menu__text">CONTACT</span></a>
             </div>
         </div>
@@ -963,7 +963,8 @@
             
             /* Mobile Hero Content */
             .hero {
-                min-height: 100vh !important;
+                min-height: 100svh !important; /* ensure marquee is visible in the initial viewport */
+                height: 100svh !important;
                 padding-bottom: 0 !important;
             }
             
@@ -1102,7 +1103,7 @@
             
             .story-intro__content .eyebrow {
                 font-family: "DM Mono", monospace !important;
-                font-size: 11px !important;
+                font-size: 14px !important;
                 font-weight: 400 !important;
                 letter-spacing: 0 !important; /* remove character spacing */
                 text-transform: uppercase !important;
@@ -1130,9 +1131,7 @@
                 margin: 0 !important;
             }
             
-            .eyebrow {
-                font-size: 12px !important;
-            }
+            .eyebrow { font-size: 14px !important; letter-spacing: 0 !important; }
             
             .display-title {
                 font-size: 28px !important;
@@ -1203,6 +1202,8 @@
                 text-align: center !important;
                 margin-bottom: 40px !important;
             }
+            /* Principles title size on mobile */
+            #principles-title { font-size: 24px !important; }
             
             .principles__row {
                 flex-direction: column !important;
@@ -1211,6 +1212,7 @@
                 padding: 30px 0 !important;
                 transform: translateX(0) !important;
             }
+            .principles__row:first-child { padding-top: 12px !important; }
             
             .principle__icon {
                 align-self: center !important;
@@ -1228,7 +1230,7 @@
             
             /* Mobile About Section ONLY */
             #about.section {
-                padding: 36px 20px !important;
+                padding: 36px 20px 60px 20px !important;
             }
             
             .about__container {
@@ -1352,7 +1354,7 @@
             
             .work__eyebrow {
                 font-family: "DM Mono", monospace !important;
-                font-size: 11px !important;
+                font-size: 14px !important;
                 font-weight: 400 !important;
                 letter-spacing: 0 !important; /* remove character spacing on mobile */
                 text-transform: uppercase !important;

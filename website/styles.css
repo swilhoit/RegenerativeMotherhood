@@ -1059,9 +1059,9 @@ body {
 .story-intro__container { display:flex; align-items:center; justify-content:center; gap:192px; padding:96px 80px; max-width:1512px; }
 .media-block--story {
     width:278.5px; height:244px;
+    background-image: url('welcome-1.jpg');
     background-size: cover; background-position: center;
-    /* Apply tint without affecting child opacity */
-    background-image: linear-gradient(rgba(125,107,56,0.43), rgba(125,107,56,0.43)), url('image 14.jpg');
+    /* Removed warm tint overlay */
 }
 .story-intro__content { width:734px; display:flex; flex-direction:column; gap:35px; }
 
@@ -1370,10 +1370,11 @@ body {
   
   .footer__meta {
     width: 100% !important;
-    flex-direction: column !important;
-    gap: 6px !important;
+    flex-direction: row !important;
+    gap: 0 !important;
     align-items: center !important;
-    text-align: center;
+    justify-content: space-between !important;
+    text-align: left !important;
     padding: 8px 0 !important;
   }
   
@@ -1381,8 +1382,9 @@ body {
   .footer__meta-right {
     font-size: 10px !important;
     color: #FCF9F1;
-    text-align: center !important;
+    text-align: left !important;
   }
+  .footer__meta-right { text-align: right !important; }
 }
 
 /* Additional Mobile Refinements */
@@ -1406,6 +1408,9 @@ body {
     height: 150px;
     border-radius: 0;
     margin: 0 auto;
+    background-image: url('welcome-1.jpg');
+    background-size: cover;
+    background-position: center;
   }
   
   .story-intro__content {
@@ -1784,10 +1789,10 @@ body {
   
   .about__eyebrow {
     font-family: "DM Sans", sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 300;
     line-height: 150%;
-    letter-spacing: 0.24px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: #49492F;
     text-align: left !important;
@@ -1805,10 +1810,10 @@ body {
   
   .about__subtitle {
     font-family: "DM Sans", sans-serif;
-    font-size: 12px !important;
+    font-size: 14px !important;
     font-weight: 300;
     line-height: 150% !important;
-    letter-spacing: 0.24px;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: #49492F;
     text-align: left !important;

@@ -101,17 +101,20 @@
                 <!-- MOBILE MENU OVERLAY -->
                 <div class="mobile-menu" aria-hidden="true">
                     <div class="mobile-menu__content">
-                        <button class="mobile-menu__item" onclick="document.querySelector('#welcome').scrollIntoView({behavior: 'smooth'}); return false;">
+                        <a href="#welcome" class="mobile-menu__item" data-target="welcome">
                             <span class="mobile-menu__text">STORY</span>
-                        </button>
-                        <button class="mobile-menu__item" onclick="document.querySelector('#five-principles').scrollIntoView({behavior: 'smooth'}); return false;">
+                        </a>
+                        <a href="#five-principles" class="mobile-menu__item" data-target="five-principles">
                             <span class="mobile-menu__text">PRINCIPLES</span>
-                        </button>
-                        <button class="mobile-menu__item" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'}); return false;">
+                        </a>
+                        <a href="#about" class="mobile-menu__item" data-target="about">
                             <span class="mobile-menu__text">ABOUT</span>
-                        </button>
+                        </a>
                         <a href="work-with-me.html" class="mobile-menu__item">
                             <span class="mobile-menu__text">WORK WITH ME</span>
+                        </a>
+                        <a href="mailto:clairefagin@gmail.com" class="mobile-menu__item">
+                            <span class="mobile-menu__text">CONTACT</span>
                         </a>
                     </div>
                 </div>
@@ -628,28 +631,30 @@
     <script>
         console.log('🚀 Enhanced hover nav loading...');
         
-        const nav = document.querySelector('.hero__nav');
-        const heroSection = document.getElementById('hero');
-        
-        if (!nav || !heroSection) {
-            console.error('❌ Missing required elements');
-            return;
-        }
+        // Wrap in a function to avoid global scope issues
+        (function() {
+            const nav = document.querySelector('.hero__nav');
+            const heroSection = document.getElementById('hero');
+            
+            if (!nav || !heroSection) {
+                console.error('❌ Missing required elements');
+                return;
+            }
 
-        // Disable hover/sticky nav behavior entirely on mobile to avoid blurred bar
-        if (window.matchMedia('(max-width: 768px)').matches) {
-            console.log('📱 Mobile detected — disabling hover nav logic');
-            nav.classList.remove('nav--visible');
-            nav.style.position = 'absolute';
-            nav.style.background = 'transparent';
-            nav.style.backdropFilter = 'none';
-            nav.style.boxShadow = 'none';
-            nav.style.opacity = '1';
-            nav.style.transform = 'translateY(0)';
-            nav.style.pointerEvents = 'auto';
-            // Do not attach any listeners on mobile
-            return;
-        }
+            // Disable hover/sticky nav behavior entirely on mobile to avoid blurred bar
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                console.log('📱 Mobile detected — disabling hover nav logic');
+                nav.classList.remove('nav--visible');
+                nav.style.position = 'absolute';
+                nav.style.background = 'transparent';
+                nav.style.backdropFilter = 'none';
+                nav.style.boxShadow = 'none';
+                nav.style.opacity = '1';
+                nav.style.transform = 'translateY(0)';
+                nav.style.pointerEvents = 'auto';
+                // Do not attach any listeners on mobile
+                return;
+            }
         
         let isInHeroSection = true;
         let isHoveringTop = false;
@@ -740,16 +745,25 @@
         checkScroll();
         
         console.log('✨ Enhanced nav setup complete!');
+        })(); // Close the function wrapper
     </script>
     
     <!-- Bring back the glitter cursor! -->
     <script src="website/cursor-effects.js"></script>
     
     <!-- About section Read More functionality & Mobile menu toggle -->
-    <script src="website/shared-scripts.js"></script>
+    <script src="website/shared-scripts.js?v=2025-01-14-fix"></script>
     
     <!-- Advanced Animation Controller -->
     <script>
+        // Debug mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuItems = document.querySelectorAll('.mobile-menu__item');
+            console.log('Mobile menu items found:', menuItems.length);
+            menuItems.forEach((item, i) => {
+                console.log(`Item ${i+1}:`, item.textContent.trim(), 'href:', item.getAttribute('href'));
+            });
+        });
         console.log('🎬 Advanced Animation System Loading...');
         
         // Optimized Intersection Observer with requestAnimationFrame

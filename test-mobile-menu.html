@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-section {
+            height: 100vh;
+            padding: 20px;
+            border: 2px solid #333;
+            margin-bottom: 20px;
+        }
+        #welcome { background: #f0f0f0; }
+        #five-principles { background: #e0e0e0; }
+        #about { background: #d0d0d0; }
+        
+        .debug-output {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border: 2px solid #333;
+            padding: 10px;
+            max-width: 300px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Menu Test Page</h1>
+    
+    <div class="mobile-menu-test">
+        <h2>Test Links (simulating mobile menu):</h2>
+        <a href="#welcome" class="test-link" data-target="welcome">Story (#welcome)</a><br>
+        <a href="#five-principles" class="test-link" data-target="five-principles">Principles (#five-principles)</a><br>
+        <a href="#about" class="test-link" data-target="about">About (#about)</a><br>
+        <a href="work-with-me.html" class="test-link">Work with me (external)</a><br>
+        <a href="mailto:clairefagin@gmail.com" class="test-link">Contact (mailto)</a><br>
+    </div>
+    
+    <div id="welcome" class="test-section">
+        <h2>Welcome Section</h2>
+        <p>This is the welcome/story section</p>
+    </div>
+    
+    <div id="five-principles" class="test-section">
+        <h2>Five Principles Section</h2>
+        <p>This is the principles section</p>
+    </div>
+    
+    <div id="about" class="test-section">
+        <h2>About Section</h2>
+        <p>This is the about section</p>
+    </div>
+    
+    <div class="debug-output" id="debug"></div>
+    
+    <script>
+        const debug = document.getElementById('debug');
+        
+        function log(msg) {
+            console.log(msg);
+            debug.innerHTML += msg + '<br>';
+            debug.scrollTop = debug.scrollHeight;
+        }
+        
+        // Test basic anchor functionality
+        document.querySelectorAll('.test-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                log(`Clicked: ${href}`);
+                
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const target = document.getElementById(targetId);
+                    
+                    if (target) {
+                        log(`Found target: ${targetId}`);
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        log(`ERROR: Target not found: ${targetId}`);
+                    }
+                }
+            });
+        });
+        
+        log('Test page loaded');
+    </script>
+</body>
+</html>
