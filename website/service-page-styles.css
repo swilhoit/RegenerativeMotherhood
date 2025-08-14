@@ -167,8 +167,8 @@ body {
     padding: 14px 16px;
     height: 46px;
     border: 1px solid #49492F;
-    background: transparent;
-    color: #49492F;
+    background: #49492F;
+    color: #FBF9F6;
     font-family: 'DM Mono', monospace;
     font-size: 16px;
     font-weight: 300;
@@ -184,8 +184,8 @@ body {
 }
 
 .service-main__cta:hover {
-    background: rgba(73, 73, 47, 0.1);
-    border-color: #49492F;
+    background: #3A3A24;
+    border-color: #3A3A24;
     transform: translateY(-1px);
 }
 
