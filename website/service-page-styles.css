@@ -22,9 +22,7 @@ nav.hero__nav {
     color: #49492F !important;
 }
 
-.hero__nav--light .mobile-menu__text {
-    color: #49492F !important;
-}
+/* Removed page-specific popup overrides to reuse global homepage popup styles */
 
 .hero__nav--light .hamburger__line {
     background-color: #49492F !important;
@@ -408,7 +406,14 @@ body {
     
     /* Mobile Service Main */
     .service-main {
-        padding: 40px 0 80px 0 !important;
+        padding: 12px 0 60px 0 !important; /* reduce empty space above image */
+        margin: 0 20px !important; /* 20px side margins on first section */
+    }
+    /* Remove global mobile offset on these pages to pull image up */
+    body.has-mobile-header.no-hero main,
+    body.has-mobile-header .service-main,
+    body.has-mobile-header .service-main__container {
+        margin-top: 0 !important;
     }
     
     .service-main__container {
@@ -426,28 +431,53 @@ body {
     
     .service-main__content {
         order: 2 !important;
-        padding: 40px 20px !important;
-        text-align: center !important;
-        gap: 20px !important;
+        padding: 16px 0 20px 0 !important; /* flush with 20px section margins */
+        text-align: left !important;
+        gap: 16px !important;
     }
     
     .service-main__title {
-        font-size: 24px !important;
-        line-height: 1.2 !important;
+        color: #49492F !important;
+        font-family: 'DM Sans', sans-serif !important;
+        font-size: 12px !important;
+        font-style: normal !important;
+        font-weight: 300 !important;
+        line-height: 150% !important; /* 18px */
+        letter-spacing: 0.24px !important;
+        text-transform: uppercase !important;
+        text-align: left !important;
     }
     
     .service-main__subtitle {
-        font-size: 16px !important;
-        line-height: 1.3 !important;
+        color: #49492F !important;
+        font-family: 'Concrette TRIAL', Georgia, serif !important;
+        font-size: 18px !important;
+        font-style: normal !important;
+        font-weight: 350 !important;
+        line-height: 98% !important; /* 17.64px */
+        letter-spacing: -0.36px !important;
+        text-transform: capitalize !important;
+        text-align: left !important;
     }
     
     .service-main__price {
-        font-size: 14px !important;
+        color: #49492F !important;
+        font-family: 'Concrette TRIAL', Georgia, serif !important;
+        font-size: 18px !important;
+        font-style: normal !important;
+        font-weight: 350 !important;
+        line-height: 98% !important; /* 17.64px */
+        letter-spacing: -0.36px !important;
+        text-transform: capitalize !important;
+        text-align: left !important;
+        margin-bottom: 4px !important;
+        opacity: 0.9 !important;
     }
     
     .service-main__description {
         font-size: 14px !important;
-        line-height: 1.4 !important;
+        line-height: 1.5 !important;
+        text-align: left !important;
     }
     
     .service-main__booking {
@@ -459,12 +489,39 @@ body {
         padding: 12px 24px !important;
         font-size: 12px !important;
         margin-top: 20px !important;
-        display: inline-block !important;
+        display: inline-flex !important;
+        justify-content: center !important;
         text-align: center !important;
+        align-self: flex-start !important; /* button aligns with left edge, text remains centered */
     }
     
     .service-features {
         padding: 40px 20px !important;
+    }
+    
+    /* Reduce space between title and points */
+    .service-features__container {
+        gap: 20px !important; /* slight increase */
+    }
+    
+    .service-features__intro {
+        color: #FCF9F1 !important;
+        text-align: center !important;
+        font-family: 'Concrette TRIAL', Georgia, serif !important;
+        font-size: 24px !important;
+        font-style: normal !important;
+        font-weight: 200 !important;
+        line-height: 98% !important; /* 19.6px */
+        letter-spacing: -1px !important;
+        text-transform: capitalize !important;
+    }
+    
+    /* Stack feature points as a single column on mobile */
+    .service-features__list {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
+        gap: 24px !important; /* a bit more space between points */
     }
     
     .service-contact {

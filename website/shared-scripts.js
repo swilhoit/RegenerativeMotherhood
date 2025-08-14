@@ -1,8 +1,18 @@
 // REGENERATIVE MOTHERHOOD - MAIN SITE FUNCTIONALITY
 console.log('🌱 Regenerative Motherhood site loading...');
 
-document.addEventListener('DOMContentLoaded', function() {
+(function initWhenReady() {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initWhenReady);
+        return;
+    }
     console.log('✅ DOM loaded - initializing functionality...');
+    // Mark whether this page has a hero section so CSS can offset content on non-hero pages
+    try {
+        const hasHero = !!document.getElementById('hero');
+        document.body.classList.toggle('has-hero', hasHero);
+        document.body.classList.toggle('no-hero', !hasHero);
+    } catch {}
     
     // ========================================================================
     // ANCHOR NAVIGATION - SIMPLE AND BULLETPROOF
@@ -57,6 +67,16 @@ document.addEventListener('DOMContentLoaded', function() {
             
             console.log(`✅ Scrolled to element at position: ${offsetPosition}`);
         }
+        // Expose smooth scroll helpers for other modules (e.g., mobile menu)
+        window.scrollToElementWithOffset = scrollToElement;
+        window.scrollToTargetId = function(targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                scrollToElement(targetElement);
+            } else {
+                console.error(`❌ Target element not found: ${targetId}`);
+            }
+        };
         
         console.log('✅ Anchor navigation setup complete');
     }
@@ -107,14 +127,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function initializeMobileMenu() {
         console.log('📱 Setting up mobile menu...');
         
-        const hamburger = document.querySelector('.hamburger');
+        let hamburger = document.querySelector('.hamburger');
         const mobileMenu = document.querySelector('.mobile-menu');
         const body = document.body;
         
-        if (!hamburger || !mobileMenu) {
-            console.log('ℹ️ Mobile menu elements not found');
+        if (!mobileMenu) {
+            console.log('ℹ️ Mobile menu overlay not found');
             return;
         }
+
+        const headerToggles = Array.from(document.querySelectorAll('.mobile-header__toggle'));
+        let toggles = [hamburger, ...headerToggles].filter(Boolean);
 
         // Ensure mobile logo and hamburger are visible on load
         const logoImg = document.querySelector('.mobile-nav__logo img');
@@ -122,29 +145,54 @@ document.addEventListener('DOMContentLoaded', function() {
             logoImg.style.opacity = '1';
             logoImg.style.visibility = 'visible';
         }
-        hamburger.style.opacity = '1';
-        hamburger.style.visibility = 'visible';
+        if (hamburger) {
+            hamburger.style.opacity = '1';
+            hamburger.style.visibility = 'visible';
+        }
         
         // Make functions globally accessible
+        function defocusActiveElement() {
+            try {
+                if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                    document.activeElement.blur();
+                }
+            } catch {}
+        }
+
         window.closeMobileMenu = function() {
-            hamburger.classList.remove('active');
+            if (hamburger) hamburger.classList.remove('active');
             mobileMenu.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
-            mobileMenu.setAttribute('aria-hidden', 'true');
+            toggles.forEach(t => t && t.setAttribute('aria-expanded', 'false'));
+            // Prevent focus trap errors: defocus first, then mark inert
+            defocusActiveElement();
+            mobileMenu.setAttribute('inert', '');
+            // Defer aria-hidden until after defocus to avoid a11y error
+            requestAnimationFrame(() => mobileMenu.setAttribute('aria-hidden', 'true'));
             body.style.overflow = '';
             console.log('📱 Mobile menu closed');
+            // Allow clicks through as we fade out
+            mobileMenu.style.pointerEvents = 'none';
         };
         
         window.openMobileMenu = function() {
-            hamburger.classList.add('active');
+            if (hamburger) hamburger.classList.add('active');
             mobileMenu.classList.add('active');
-            hamburger.setAttribute('aria-expanded', 'true');
+            toggles.forEach(t => t && t.setAttribute('aria-expanded', 'true'));
+            mobileMenu.removeAttribute('inert');
             mobileMenu.setAttribute('aria-hidden', 'false');
             body.style.overflow = 'hidden';
             console.log('📱 Mobile menu opened');
+            // Ensure element is clickable and visible
+            mobileMenu.style.display = 'block';
+            mobileMenu.style.pointerEvents = 'auto';
         };
         
         window.toggleMobileMenu = function() {
+            // In case header was injected after init, refresh references lazily
+            if (!hamburger || !document.body.contains(hamburger)) {
+                hamburger = document.querySelector('.hamburger');
+                toggles = [hamburger, ...Array.from(document.querySelectorAll('.mobile-header__toggle'))].filter(Boolean);
+            }
             if (hamburger.classList.contains('active')) {
                 window.closeMobileMenu();
             } else {
@@ -152,8 +200,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         
-        // Event listeners
-        hamburger.addEventListener('click', window.toggleMobileMenu);
+        // Event listeners for all toggles (hamburger + reusable header toggle)
+        toggles.forEach(t => t && t.addEventListener('click', window.toggleMobileMenu));
+        // Robust delegation in case header is injected after init or DOM order changes
+        document.addEventListener('click', function(e) {
+            const btn = e.target && e.target.closest ? e.target.closest('.hamburger') : null;
+            if (!btn) return;
+            e.preventDefault();
+            window.toggleMobileMenu();
+        });
+        
+        // Close button inside mobile menu
+        const closeButton = document.querySelector('.mobile-menu__close');
+        if (closeButton) {
+            closeButton.addEventListener('click', window.closeMobileMenu);
+        }
         
         // Close on outside click
         mobileMenu.addEventListener('click', function(e) {
@@ -162,10 +223,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Close menu items when clicked
+        // Close menu items when clicked + perform smooth scroll like desktop
         const mobileMenuItems = document.querySelectorAll('.mobile-menu__item');
         mobileMenuItems.forEach(item => {
-            item.addEventListener('click', window.closeMobileMenu);
+            item.addEventListener('click', function(e) {
+                const href = item.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const targetId = href.substring(1);
+                    const perform = () => {
+                        if (window.scrollToTargetId) {
+                            window.scrollToTargetId(targetId);
+                        } else {
+                            const el = document.getElementById(targetId);
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    };
+                    // Scroll after close animation; fallback with timeout
+                    const onEnd = () => perform();
+                    mobileMenu.addEventListener('transitionend', onEnd, { once: true });
+                    // Move focus to the toggle to avoid aria-hidden focus warning
+                    if (hamburger) { try { hamburger.focus(); } catch {} }
+                    window.closeMobileMenu();
+                    setTimeout(perform, 350);
+                } else {
+                    window.closeMobileMenu();
+                }
+            });
         });
         
         // Close on escape key
@@ -304,13 +389,51 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeMobileMenu();
         initializeStickyNavigation();
         initializeScrollAnimations();
+        // Mount reusable mobile header if slot present; don't duplicate if page already includes one
+        (function mountMobileHeader() {
+            const slot = document.getElementById('mobile-header-slot');
+            const existingInNav = document.querySelector('.hero__nav .mobile-nav');
+            if (existingInNav) {
+                // Use the page-provided mobile nav; ensure CSS and JS are activated
+                document.body.classList.add('has-mobile-header');
+                try { initializeMobileMenu(); } catch {}
+                if (slot) slot.remove();
+                return;
+            }
+            if (!slot) return;
+            fetch('components/mobile-header.html')
+                .then(r => r.text())
+                .then(html => {
+                    // Inject component and apply theme to logo color if needed
+                    const theme = slot.dataset.theme || 'auto';
+                    const injected = html.replace('data-theme="auto"', `data-theme="${theme}"`);
+                    slot.outerHTML = injected;
+                    // If olive theme is requested, swap to olive logo if available
+                    if (theme === 'olive') {
+                        const logo = document.querySelector('.mobile-nav__logo img');
+                        if (logo) {
+                            try {
+                                logo.src = 'logo-olive.svg';
+                                logo.style.filter = 'none';
+                            } catch {}
+                        }
+                    }
+                    // Ensure CSS treats this as the active mobile header
+                    document.body.classList.add('has-mobile-header');
+                    // Ensure CSS/JS are active for injected header
+                    document.body.classList.add('has-mobile-header');
+                    // Ensure the newly injected hamburger has working toggle handlers
+                    try { initializeMobileMenu(); } catch {}
+                })
+                .catch(() => console.warn('Mobile header include failed'));
+        })();
         
         console.log('🎉 All functionality initialized successfully!');
         
     } catch (error) {
         console.error('❌ Error during initialization:', error);
     }
-});
+})();
 
 // Debug function
 window.testAnchors = function() {
