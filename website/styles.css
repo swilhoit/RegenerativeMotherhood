@@ -1681,8 +1681,13 @@ body {
   }
 
   .work.section .work__cta-text {
-    font-size: 12px !important;
-    line-height: 1.25 !important;
+    color: #FCF9F1 !important;
+    font-family: "ABC Diatype", sans-serif !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: normal !important;
+    letter-spacing: 0 !important;
     max-width: 334px !important;
     margin-bottom: 0 !important;
   }
