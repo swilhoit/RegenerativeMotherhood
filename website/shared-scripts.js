@@ -228,67 +228,129 @@ console.log('🌱 Regenerative Motherhood site loading...');
             }
         });
         
-        function bindMobileMenuAnchor(el) {
-            el.addEventListener('click', function(e) {
-                const href = el.getAttribute('href');
-                console.log('Mobile menu item clicked:', href);
-                
-                if (href && href.startsWith('#')) {
-                    // Handle anchor links
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const targetId = (el.getAttribute('data-target') || href).replace('#','');
-                    console.log('Scrolling to:', targetId);
-                    
-                    // Close menu first
-                    window.closeMobileMenu();
-                    
-                    // Then scroll after a delay
-                    setTimeout(() => {
-                        const elTarget = document.getElementById(targetId);
-                        if (elTarget) {
-                            const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-                            const offset = isMobile ? 80 : 120;
-                            const y = elTarget.getBoundingClientRect().top + window.pageYOffset - offset;
-                            window.scrollTo({ top: y, behavior: 'smooth' });
-                            try { history.replaceState(null, '', '#' + targetId); } catch {}
-                        } else {
-                            console.error('Target element not found:', targetId);
-                        }
-                    }, 300);
-                } else if (href && href.startsWith('mailto:')) {
-                    // Handle mailto links - just close menu, let default behavior happen
-                    window.closeMobileMenu();
-                    // Don't prevent default for mailto links
-                } else if (href) {
-                    // Handle external links - close menu and navigate
-                    window.closeMobileMenu();
-                    // Don't prevent default for external links
-                }
-            }, { passive: false });
-        }
-
-        document.querySelectorAll('.mobile-menu__item').forEach(bindMobileMenuAnchor);
-
-        // Delegated fallback: catch any hash links inside the popup even if listeners didn't bind
+        // Track if we're already handling a click to prevent duplicates
+        let isHandlingMenuClick = false;
+        
+        // Simpler approach - use event delegation for ALL mobile menu items
         document.addEventListener('click', function(e) {
-            const a = e.target && e.target.closest ? e.target.closest('.mobile-menu__content a[href^="#"]') : null;
-            if (!a) return;
-            const href = a.getAttribute('href');
-            const targetId = (a.getAttribute('data-target') || href).replace('#','');
-            const elTarget = document.getElementById(targetId);
-            if (!elTarget) return;
-            e.preventDefault();
-            e.stopPropagation();
-            if (hamburger) { try { hamburger.focus(); } catch {} }
-            window.closeMobileMenu();
-            setTimeout(() => {
-                const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-                const offset = isMobile ? 80 : 120;
-                const y = elTarget.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }, 200);
-        }, { passive: false });
+            // Check if clicked element is a mobile menu item or child of one
+            const menuItem = e.target.closest('.mobile-menu__item');
+            if (!menuItem) return;
+            
+            // Prevent duplicate handling
+            if (isHandlingMenuClick) {
+                console.log('Already handling menu click, skipping duplicate');
+                return;
+            }
+            
+            isHandlingMenuClick = true;
+            
+            const href = menuItem.getAttribute('href');
+            console.log('Mobile menu item clicked:', href);
+            
+            if (href && href.startsWith('#')) {
+                // Handle anchor links
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation(); // Stop any other handlers
+                
+                const targetId = (menuItem.getAttribute('data-target') || href).replace('#','');
+                console.log('Looking for element with ID:', targetId);
+                
+                // Close menu first
+                window.closeMobileMenu();
+                
+                // Ensure body overflow is restored (in case it was hidden for menu)
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+                
+                // Then scroll after a longer delay to ensure menu animation completes
+                setTimeout(() => {
+                    const elTarget = document.getElementById(targetId);
+                    if (elTarget) {
+                        console.log('Found target element:', elTarget);
+                        const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+                        const offset = isMobile ? 80 : 120;
+                        const y = elTarget.getBoundingClientRect().top + window.pageYOffset - offset;
+                        console.log('Scrolling to position:', y);
+                        
+                        // More robust scrolling approach for mobile
+                        // Force a reflow to ensure the DOM is ready
+                        void elTarget.offsetHeight;
+                        
+                        // Use requestAnimationFrame to ensure we're scrolling after render
+                        requestAnimationFrame(() => {
+                            console.log('Attempting scroll to:', y);
+                            
+                            // Try multiple scroll methods
+                            // Method 1: Standard smooth scroll
+                            window.scrollTo({
+                                top: y,
+                                left: 0,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Method 2: Also set on documentElement and body for compatibility
+                            document.documentElement.scrollTo({
+                                top: y,
+                                left: 0,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Method 3: Fallback for older browsers
+                            if (document.documentElement.scrollTop === 0 && document.body.scrollTop === 0) {
+                                console.log('Using fallback scroll');
+                                document.documentElement.scrollTop = y;
+                                document.body.scrollTop = y;
+                            }
+                            
+                            // Verify scroll happened
+                            setTimeout(() => {
+                                const currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+                                console.log('Scroll complete. Current position:', currentScroll, 'Target was:', y);
+                            }, 500);
+                        });
+                        
+                        try { history.replaceState(null, '', '#' + targetId); } catch {}
+                    } else {
+                        console.error('Target element not found:', targetId);
+                        // Try alternative IDs
+                        const altIds = [
+                            targetId.replace('-', ''),  // Remove dash
+                            targetId.replace('five-principles', 'fiveprinciples'),  // Alternative spelling
+                            targetId === 'welcome' ? 'story-intro' : null  // Alternative section name
+                        ];
+                        
+                        for (const altId of altIds) {
+                            if (altId) {
+                                const altTarget = document.getElementById(altId);
+                                if (altTarget) {
+                                    console.log('Found with alternate ID:', altId);
+                                    const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+                                    const offset = isMobile ? 80 : 120;
+                                    const y = altTarget.getBoundingClientRect().top + window.pageYOffset - offset;
+                                    window.scrollTo({ top: y, behavior: 'smooth' });
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Reset the flag after scrolling
+                    isHandlingMenuClick = false;
+                }, 600); // Increased delay to ensure menu closes completely
+            } else if (href && href.startsWith('mailto:')) {
+                // Handle mailto links - just close menu
+                window.closeMobileMenu();
+                setTimeout(() => { isHandlingMenuClick = false; }, 100);
+            } else if (href) {
+                // Handle external links - close menu and let navigation happen
+                window.closeMobileMenu();
+                setTimeout(() => { isHandlingMenuClick = false; }, 100);
+            }
+        }, true);  // Use capture phase
+
+        // Removed duplicate handler - now using the single delegated handler above
         
         // Close on escape key
         document.addEventListener('keydown', function(e) {

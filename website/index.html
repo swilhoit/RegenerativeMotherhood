@@ -6,6 +6,28 @@
     <title>Regenerative Motherhood - The Path to Generative Infant Sleep</title>
     <!-- Deployment trigger: 2025-01-11 -->
     <meta name="description" content="Because supporting your baby's sleep can and should feel mutually nourishing.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <link rel="shortcut icon" type="image/png" href="Favicon.png">
+    <link rel="apple-touch-icon" href="Favicon.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://regenerativemotherhood.com/">
+    <meta property="og:title" content="Regenerative Motherhood - The Path to Generative Infant Sleep">
+    <meta property="og:description" content="Because supporting your baby's sleep can and should feel mutually nourishing.">
+    <meta property="og:image" content="https://regenerativemotherhood.com/Link-Preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://regenerativemotherhood.com/">
+    <meta property="twitter:title" content="Regenerative Motherhood">
+    <meta property="twitter:description" content="Because supporting your baby's sleep can and should feel mutually nourishing.">
+    <meta property="twitter:image" content="https://regenerativemotherhood.com/Link-Preview.png">
+    
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -58,7 +80,7 @@
                     <span class="nav__text">ABOUT</span>
                 </button>
                 
-                <a href="work-with-me.html" class="nav__item" data-item="work">
+                <a href="work-with-me" class="nav__item" data-item="work">
                     <span class="nav__text">WORK WITH ME</span>
                 </a>
                 
@@ -83,7 +105,7 @@
                     <button class="nav__item" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'}); return false;">
                         <span class="nav__text">ABOUT</span>
                     </button>
-                    <a href="work-with-me.html" class="nav__item">
+                    <a href="work-with-me" class="nav__item">
                         <span class="nav__text">WORK WITH ME</span>
                     </a>
                 </div>
@@ -112,7 +134,7 @@
                 <div class="mobile-menu__content">
                         <a href="#welcome" class="mobile-menu__item" data-target="welcome"><span class="mobile-menu__text">STORY</span></a>
                         <a href="#five-principles" class="mobile-menu__item" data-target="five-principles"><span class="mobile-menu__text">PRINCIPLES</span></a>
-                        <a href="work-with-me.html" class="mobile-menu__item"><span class="mobile-menu__text">WORK WITH ME</span></a>
+                        <a href="work-with-me" class="mobile-menu__item"><span class="mobile-menu__text">WORK WITH ME</span></a>
                         <a href="#about" class="mobile-menu__item" data-target="about"><span class="mobile-menu__text">ABOUT</span></a>
                 <a href="mailto:clairefagin@gmail.com" class="mobile-menu__item"><span class="mobile-menu__text">CONTACT</span></a>
             </div>
@@ -126,7 +148,7 @@
                 <p class="hero__subtitle">BECAUSE SUPPORTING YOUR BABY'S SLEEP<br>CAN AND SHOULD FEEL MUTUALLY NOURISHING</p>
                 
                 <div class="hero__cta">
-                    <a href="work-with-me.html" class="cta-button">
+                    <a href="work-with-me" class="cta-button">
                         <span class="cta-button__text">WORK WITH ME</span>
                     </a>
                 </div>
@@ -246,7 +268,7 @@
                 <div class="work__cta">
                     <h4 class="work__cta-title">Not sure where to start?</h4>
                     <p class="work__cta-text">Sleep can feel big, I know. If you are looking for evidence-based information that respects biological rhythms, fosters secure attachment, and honors your child's nuanced needs, look no further.</p>
-                    <a class="work__cta-button" href="work-with-me.html">LEARN MORE</a>
+                    <a class="work__cta-button" href="work-with-me">LEARN MORE</a>
                 </div>
             </div>
         </div>
@@ -291,7 +313,7 @@
                 <img src="Layer_1.svg" alt="Regenerative Motherhood Logo" class="footer__logo" />
                 <p id="footer-tagline" class="footer__tagline">the paradigm of generative infant sleep</p>
                 <nav class="footer__links" aria-label="Footer links">
-                    <a href="work-with-me.html" class="footer-link">WORK WITH ME</a>
+                    <a href="work-with-me" class="footer-link">WORK WITH ME</a>
                     <a href="https://www.instagram.com/clairefagin/?hl=en" target="_blank" rel="noopener" class="footer-link">INSTAGRAM</a>
                     <a href="mailto:clairefagin@gmail.com" class="footer-link">CONTACT</a>
                 </nav>
@@ -625,15 +647,16 @@
 
     <!-- Scroll-Based Hover Navigation -->
     <script>
-        console.log('🚀 Enhanced hover nav loading...');
-        
-        const nav = document.querySelector('.hero__nav');
-        const heroSection = document.getElementById('hero');
-        
-        if (!nav || !heroSection) {
-            console.error('❌ Missing required elements');
-            return;
-        }
+        (function() {
+            console.log('🚀 Enhanced hover nav loading...');
+            
+            const nav = document.querySelector('.hero__nav');
+            const heroSection = document.getElementById('hero');
+            
+            if (!nav || !heroSection) {
+                console.error('❌ Missing required elements');
+                return;
+            }
         
         let isInHeroSection = true;
         let isHoveringTop = false;
@@ -724,6 +747,7 @@
         checkScroll();
         
         console.log('✨ Enhanced nav setup complete!');
+        })();
     </script>
     
     <!-- Bring back the glitter cursor! -->
