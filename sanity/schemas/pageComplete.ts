@@ -1,7 +1,7 @@
-// Generic page schema for non-homepage pages (About, Contact, etc.)
+// Page schema for static pages (Homepage, Work With Me, About, etc.)
 export default {
   name: 'pageComplete',
-  title: 'Other Pages',
+  title: 'Pages',
   type: 'document',
   groups: [
     {name: 'main', title: 'Main Content'},
@@ -35,15 +35,15 @@ export default {
       group: 'main',
       options: {
         list: [
+          {title: 'Homepage', value: 'homepage'},
+          {title: 'Work With Me', value: 'work-with-me'},
           {title: 'About', value: 'about'},
           {title: 'Contact', value: 'contact'},
-          {title: 'Blog Post', value: 'blog'},
-          {title: 'Resource', value: 'resource'},
           {title: 'Standard Page', value: 'standard'},
         ],
       },
       validation: (Rule: any) => Rule.required(),
-      description: 'Note: Homepage and Services have their own dedicated sections in the sidebar',
+      description: 'Note: Services are managed separately and populate the service template dynamically',
     },
     
     // Page sections - flexible content blocks

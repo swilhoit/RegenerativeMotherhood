@@ -1,17 +1,15 @@
-import homepage from './homepage'
-import service from './service'
 import pageComplete from './pageComplete'
+import service from './service'
 import siteSettings from './siteSettings'
 
-// Schema types for the CMS - organized by priority
+// Schema types for the CMS
 export const schemaTypes = [
-  // Main content types
-  homepage,        // Homepage - standalone
-  service,         // Services - manage all services
+  // Static pages (Homepage, Work With Me, etc.)
+  pageComplete,
   
-  // Secondary pages
-  pageComplete,    // Other pages (About, Contact, etc.)
+  // Dynamic content - populates service template
+  service,
   
   // Site configuration
-  siteSettings     // Global settings
+  siteSettings
 ]

@@ -13,6 +13,18 @@
   ],
   "rewrites": [
     {
+      "source": "/sleep-guidance-call",
+      "destination": "/website/service.html"
+    },
+    {
+      "source": "/3-call-sleep-support",
+      "destination": "/website/service.html"
+    },
+    {
+      "source": "/comprehensive-sleep-support",
+      "destination": "/website/service.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/website/$1"
     }
