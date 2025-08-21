@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Sanity Connection</title>
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f5f5f5;
+        }
+        .status {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .loading {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .data-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sanity Connection Test</h1>
+    
+    <div id="status" class="status loading">Connecting to Sanity...</div>
+    
+    <div>
+        <button onclick="testHomepage()">Test Homepage Data</button>
+        <button onclick="testAllContent()">Test All Content</button>
+        <button onclick="updateLiveContent()">Update Live Content</button>
+    </div>
+    
+    <div id="data-container" class="data-container">
+        <h2>Data from Sanity:</h2>
+        <pre id="data-display">No data loaded yet</pre>
+    </div>
+
+    <script>
+        // Sanity configuration
+        const SANITY_PROJECT_ID = '1q2kqdh2';
+        const SANITY_DATASET = 'production';
+        const SANITY_API_VERSION = '2024-01-01';
+        const SANITY_URL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v${SANITY_API_VERSION}/data/query/${SANITY_DATASET}`;
+
+        async function fetchFromSanity(query) {
+            const statusEl = document.getElementById('status');
+            const dataEl = document.getElementById('data-display');
+            
+            try {
+                statusEl.className = 'status loading';
+                statusEl.textContent = 'Fetching data from Sanity...';
+                
+                const encodedQuery = encodeURIComponent(query);
+                const url = `${SANITY_URL}?query=${encodedQuery}`;
+                
+                console.log('Fetching from:', url);
+                
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                statusEl.className = 'status success';
+                statusEl.textContent = '✓ Successfully connected to Sanity!';
+                
+                dataEl.textContent = JSON.stringify(data.result, null, 2);
+                
+                return data.result;
+            } catch (error) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '✗ Error: ' + error.message;
+                dataEl.textContent = 'Error: ' + error.message;
+                console.error('Error:', error);
+                return null;
+            }
+        }
+
+        async function testHomepage() {
+            const query = `*[_type == "homepage"][0]{
+                _id,
+                _type,
+                heroTitle,
+                heroSubtitle,
+                welcomeTitle,
+                welcomeContent,
+                aboutTitle,
+                aboutContent
+            }`;
+            
+            await fetchFromSanity(query);
+        }
+
+        async function testAllContent() {
+            const query = `{
+                "homepage": *[_type == "homepage"][0]{
+                    _id,
+                    heroTitle,
+                    heroSubtitle
+                },
+                "pages": *[_type == "page"]{
+                    _id,
+                    title,
+                    slug
+                },
+                "principles": *[_type == "principle"]{
+                    _id,
+                    title,
+                    description
+                },
+                "services": *[_type == "servicePackage"]{
+                    _id,
+                    title,
+                    price
+                }
+            }`;
+            
+            await fetchFromSanity(query);
+        }
+
+        async function updateLiveContent() {
+            const query = `*[_type == "homepage"][0]{
+                heroTitle,
+                heroSubtitle
+            }`;
+            
+            const data = await fetchFromSanity(query);
+            
+            if (data) {
+                // Try to update the actual page content if elements exist
+                const heroTitle = parent.document.querySelector('.hero__title');
+                if (heroTitle && data.heroTitle) {
+                    heroTitle.innerHTML = data.heroTitle.split('\n').map(line => 
+                        `<div class="hero__title-line">${line}</div>`
+                    ).join('');
+                    
+                    const statusEl = document.getElementById('status');
+                    statusEl.textContent += ' - Hero title updated on page!';
+                }
+            }
+        }
+
+        // Test on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            testHomepage();
+        });
+    </script>
+</body>
+</html>
