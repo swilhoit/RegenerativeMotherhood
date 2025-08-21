@@ -1,0 +1,95 @@
+{
+  "images": [
+    {
+      "file": "hero.jpg",
+      "title": "Hero Background"
+    },
+    {
+      "file": "gradient.jpg",
+      "title": "Hero Gradient Overlay"
+    },
+    {
+      "file": "welcome-1.jpg",
+      "title": "Welcome Section Image"
+    },
+    {
+      "file": "Frame 162781.jpg",
+      "title": "Why Section Image"
+    },
+    {
+      "file": "Frame 162781-1.jpg",
+      "title": "Solution Section Image"
+    },
+    {
+      "file": "Frame 162770.jpg",
+      "title": "Work Section Background"
+    },
+    {
+      "file": "Frame1627851.jpg",
+      "title": "About Image 1"
+    },
+    {
+      "file": "Frame 162783.jpg",
+      "title": "About Image 2"
+    },
+    {
+      "file": "Frame 162784.jpg",
+      "title": "About Image 3"
+    },
+    {
+      "file": "sleep-guidance.jpg",
+      "title": "Sleep Guidance Package"
+    },
+    {
+      "file": "Frame 1627810.jpg",
+      "title": "3-Call Support Package"
+    },
+    {
+      "file": "Frame 1162781.jpg",
+      "title": "Comprehensive Support Package"
+    },
+    {
+      "file": "Link-Preview.png",
+      "title": "SEO Share Image"
+    },
+    {
+      "file": "Favicon.png",
+      "title": "Favicon"
+    }
+  ],
+  "icons": [
+    {
+      "file": "icons/harmony.svg",
+      "title": "Harmony Icon"
+    },
+    {
+      "file": "icons/individuality.svg",
+      "title": "Individuality Icon"
+    },
+    {
+      "file": "icons/nourishment.svg",
+      "title": "Nourishment Icon"
+    },
+    {
+      "file": "icons/connection.svg",
+      "title": "Connection Icon"
+    },
+    {
+      "file": "icons/life.svg",
+      "title": "Life Icon"
+    },
+    {
+      "file": "Layer_1.svg",
+      "title": "Footer Logo"
+    },
+    {
+      "file": "logo.svg",
+      "title": "Main Logo"
+    },
+    {
+      "file": "Group 32212.svg",
+      "title": "Mobile Logo"
+    }
+  ],
+  "instructions": "Upload these images through Sanity Studio Media Library or directly in each page document"
+}

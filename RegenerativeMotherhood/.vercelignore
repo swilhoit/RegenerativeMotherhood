@@ -1,0 +1,32 @@
+# Ignore MCP server files
+src/
+dist/
+node_modules/
+package.json
+package-lock.json
+tsconfig.json
+start-server.sh
+
+# Ignore development files
+figma-config.json
+claude_desktop_config.example.json
+fetch-design.js
+env.example
+design-analysis.txt
+
+# Ignore font source directories (website/fonts/ will be included)
+ABC Diatype*/
+DM_Mono/
+DP_concrette_TRIAL/
+
+# Ignore large image directories (website images will be included)
+Images/
+
+# Ignore documentation
+README.md
+SETUP.md
+QUICK_START.md
+
+# Ignore SVG assets not in website
+*.svg
+!website/**/*.svg

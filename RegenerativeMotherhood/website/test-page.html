@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RM Website - Test Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .debug-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ff4444;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+        }
+        .test-nav {
+            position: fixed;
+            top: 50px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 999;
+            font-family: Arial, sans-serif;
+        }
+        .test-nav a {
+            display: block;
+            color: #4CAF50 !important;
+            margin: 5px 0;
+            text-decoration: underline !important;
+        }
+        .section-debug {
+            border: 3px solid #ff0000;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-banner">
+        🔧 NAVIGATION TEST PAGE - Check console for debug info
+    </div>
+    
+    <div class="test-nav">
+        <strong>Test Navigation:</strong><br>
+        <a href="#welcome">→ Story (Welcome)</a>
+        <a href="#five-principles">→ Principles</a>
+        <a href="#about">→ About</a>
+        <br>
+        <button onclick="window.testNavigation()" style="background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px;">Test Function</button>
+    </div>
+
+    <!-- Hero Section -->
+    <main id="hero" class="hero">
+        <div class="hero__background"></div>
+        <div class="hero__overlay"></div>
+        
+        <!-- Navigation Bar -->
+        <nav class="hero__nav" aria-label="Main navigation">
+            <div class="nav__container">
+                <a href="#welcome" class="nav__item" data-item="story">
+                    <span class="nav__text">STORY</span>
+                </a>
+                <a href="#five-principles" class="nav__item" data-item="principles">
+                    <span class="nav__text">PRINCIPLES</span>
+                </a>
+                <a href="#about" class="nav__item" data-item="about">
+                    <span class="nav__text">ABOUT</span>
+                </a>
+                
+                <div class="nav__logo">
+                    <div class="logo">
+                        <img src="logo.svg" alt="Regenerative Motherhood" width="273" height="64">
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Hero Content -->
+        <div class="hero__content">
+            <div class="hero__text-content">
+                <div class="hero__eyebrow">REGENERATIVE MOTHERHOOD</div>
+                <h1 class="hero__title">The Path to Generative Infant Sleep</h1>
+                <p class="hero__subtitle">Because supporting your baby's sleep can and should feel mutually nourishing.</p>
+                <a href="#welcome" class="hero__cta">LEARN MORE</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="section section--beige story-intro section-debug" aria-labelledby="story-eyebrow">
+        <div class="section__container story-intro__container">
+            <figure class="media-block media-block--story animate-on-scroll" aria-hidden="true"></figure>
+            <div class="story-intro__content animate-on-scroll">
+                <div class="eyebrow" id="story-eyebrow">WELCOME</div>
+                <h2 class="display-title display-title--48">Hi! I'm Claire Fagin — a mother, doula, birth educator, and pediatric sleep and development mentor.</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Five Principles Section -->
+    <section id="five-principles" class="section principles section-debug" aria-labelledby="principles-title">
+        <div class="section__container principles__container">
+            <div class="principles__header">
+                <div class="eyebrow eyebrow--light">PRINCIPLES</div>
+                <h3 id="principles-title" class="display-title display-title--48 light center">The 5 Principles Of Regenerative<br>Motherhood</h3>
+            </div>
+            <div class="principles__list">
+                <div class="principles__row animate-on-scroll">
+                    <img src="icons/harmony.svg" alt="Harmony" class="principle__icon" />
+                    <div class="principle__content">
+                        <div class="principle__eyebrow"><span class="mono">01</span><span class="concrete">HARMONY</span></div>
+                        <p class="principle__text">Working in harmony with nature rather than against it</p>
+                    </div>
+                </div>
+                <div class="principles__row animate-on-scroll">
+                    <img src="icons/individuality.svg" alt="Individuality" class="principle__icon" />
+                    <div class="principle__content">
+                        <div class="principle__eyebrow"><span class="mono">02</span><span class="concrete">INDIVIDUALITY</span></div>
+                        <p class="principle__text">Honoring nuance and individuality</p>
+                    </div>
+                </div>
+                <div class="principles__row animate-on-scroll">
+                    <img src="icons/nourishment.svg" alt="Nourishment" class="principle__icon" />
+                    <div class="principle__content">
+                        <div class="principle__eyebrow"><span class="mono">03</span><span class="concrete">NOURISHMENT</span></div>
+                        <p class="principle__text">Elevating mutual nourishment for both mom and baby</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section--beige about section-debug" aria-labelledby="about-eyebrow">
+        <div class="section__container about__container">
+            <div class="about__header">
+                <div class="about__intro">
+                    <div class="about__eyebrow" id="about-eyebrow">ABOUT ME</div>
+                    <h3 class="about__title">Claire Fagin</h3>
+                    <p class="about__subtitle">Pediatric Sleep & Development Mentor & Doula</p>
+                </div>
+                <div class="about__text-content">
+                    <div class="about__copy">
+                        <p class="about__copy-text">
+                            My name is Claire Fagin- I'm a mother to a beautiful one year old, partner to his father, a birth and postpartum doula, a childbirth educator & an infant sleep and development mentor. I am a certified Deep Delta Doula (The Matrona), a certified childbirth educator (ACBE), and a certified Pediatric Sleep and Development Practitioner (PSAD). Motherhood has expanded me in ways I could never have imagined- it has stretched me, shattered me, and asked me to pick back up the pieces and rebuild.
+                        </p>
+                    </div>
+                    <button type="button" class="about__toggle" aria-expanded="false">READ MORE</button>
+                </div>
+            </div>
+            <div class="about__images animate-on-scroll">
+                <figure class="about__image about__image--1" aria-hidden="true"></figure>
+                <figure class="about__image about__image--2" aria-hidden="true"></figure>
+                <figure class="about__image about__image--3" aria-hidden="true"></figure>
+            </div>
+        </div>
+    </section>
+
+    <div style="height: 500px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+        <p>End of page - scroll test complete</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script-new.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

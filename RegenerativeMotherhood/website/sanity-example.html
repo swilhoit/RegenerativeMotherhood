@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanity CMS Integration Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation with dynamic site settings -->
+    <nav class="navigation">
+        <div class="logo">
+            <!-- Logo will be loaded from Sanity Site Settings -->
+            <img src="logo.svg" alt="Regenerative Motherhood">
+        </div>
+    </nav>
+
+    <!-- Page content loaded from Sanity -->
+    <div data-sanity-page="home">
+        <!-- Hero section with dynamic background image -->
+        <section class="hero">
+            <div class="hero-image" style="background-image: url('hero.jpg');">
+                <!-- Hero image will be replaced from Sanity -->
+            </div>
+            <div class="content">
+                <!-- Page content will be loaded here from Sanity -->
+                <h1>Loading content...</h1>
+            </div>
+        </section>
+    </div>
+
+    <!-- Text blocks loaded by key -->
+    <section class="text-section">
+        <div data-sanity-text="welcome-message">
+            <!-- This content will be replaced with the "welcome-message" text block from Sanity -->
+            <p>Loading welcome message...</p>
+        </div>
+    </section>
+
+    <section class="text-section">
+        <div data-sanity-text="about-section">
+            <!-- This content will be replaced with the "about-section" text block from Sanity -->
+            <p>Loading about section...</p>
+        </div>
+    </section>
+
+    <!-- Image gallery loaded from Sanity -->
+    <section class="gallery">
+        <div data-sanity-gallery="main-gallery">
+            <!-- Gallery images will be loaded here -->
+            <p>Loading gallery...</p>
+        </div>
+    </section>
+
+    <!-- Sanity CMS Integration -->
+    <script src="sanity-bundle.js"></script>
+    <script>
+        // The content will automatically load when the page loads
+        // You can also manually trigger content loading:
+        // if (window.SanityIntegration) {
+        //     window.SanityIntegration.loadDynamicContent();
+        // }
+    </script>
+</body>
+</html>

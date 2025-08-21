@@ -1,0 +1,9 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <!-- 4-pointed star/sparkle shape -->
+    <path d="M20 4L22.5 17.5L20 20L17.5 17.5L20 4Z" fill="#FCF9F1"/>
+    <path d="M36 20L22.5 17.5L20 20L22.5 22.5L36 20Z" fill="#FCF9F1"/>
+    <path d="M20 36L17.5 22.5L20 20L22.5 22.5L20 36Z" fill="#FCF9F1"/>
+    <path d="M4 20L17.5 22.5L20 20L17.5 17.5L4 20Z" fill="#FCF9F1"/>
+  </g>
+</svg>

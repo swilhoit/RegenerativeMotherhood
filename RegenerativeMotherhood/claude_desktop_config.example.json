@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "figma": {
+      "command": "node",
+      "args": ["/Volumes/Elements/Cursor Projects/RM Website/dist/index.js"],
+      "cwd": "/Volumes/Elements/Cursor Projects/RM Website"
+    }
+  }
+}

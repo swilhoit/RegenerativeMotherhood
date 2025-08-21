@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Mobile Menu</title>
+</head>
+<body>
+    <h1>Mobile Menu Diagnostic</h1>
+    <button onclick="checkMenu()">Check Mobile Menu</button>
+    <pre id="output"></pre>
+    
+    <script>
+        function checkMenu() {
+            const output = document.getElementById('output');
+            let report = 'Mobile Menu Diagnostic Report\n';
+            report += '==============================\n\n';
+            
+            // Check if menu exists
+            const menu = document.querySelector('.mobile-menu');
+            if (!menu) {
+                report += '❌ Mobile menu not found!\n';
+                output.textContent = report;
+                return;
+            }
+            report += '✅ Mobile menu found\n';
+            
+            // Check menu content
+            const content = menu.querySelector('.mobile-menu__content');
+            if (!content) {
+                report += '❌ Mobile menu content not found!\n';
+                output.textContent = report;
+                return;
+            }
+            report += '✅ Mobile menu content found\n\n';
+            
+            // Check all menu items
+            const items = content.querySelectorAll('.mobile-menu__item');
+            report += `Found ${items.length} menu items:\n`;
+            report += '----------------------------\n';
+            
+            items.forEach((item, index) => {
+                const href = item.getAttribute('href');
+                const text = item.textContent.trim();
+                const display = window.getComputedStyle(item).display;
+                const visibility = window.getComputedStyle(item).visibility;
+                
+                report += `\nItem ${index + 1}: ${text}\n`;
+                report += `  href: ${href}\n`;
+                report += `  display: ${display}\n`;
+                report += `  visibility: ${visibility}\n`;
+                report += `  tag: ${item.tagName}\n`;
+            });
+            
+            // Check if closeMobileMenu exists
+            report += '\n\nJavaScript Functions:\n';
+            report += '----------------------------\n';
+            report += `window.closeMobileMenu: ${typeof window.closeMobileMenu}\n`;
+            report += `window.openMobileMenu: ${typeof window.openMobileMenu}\n`;
+            report += `window.toggleMobileMenu: ${typeof window.toggleMobileMenu}\n`;
+            
+            output.textContent = report;
+        }
+        
+        // Auto-check when iframe loads
+        window.addEventListener('message', function(e) {
+            if (e.data === 'loaded') {
+                setTimeout(checkMenu, 1000);
+            }
+        });
+    </script>
+    
+    <h2>Homepage in iframe:</h2>
+    <iframe src="index.html" style="width: 400px; height: 600px; border: 1px solid #ccc;" onload="this.contentWindow.postMessage('loaded', '*')"></iframe>
+</body>
+</html>
