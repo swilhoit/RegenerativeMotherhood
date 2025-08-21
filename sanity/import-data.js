@@ -1,0 +1,378 @@
+// This script creates NDJSON files that can be imported via Sanity CLI
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Generate unique IDs
+function generateId(type, slug) {
+  return `${type}_${slug.replace(/-/g, '_')}`;
+}
+
+// Create pages data
+const pages = [
+  {
+    _id: generateId('page', 'home'),
+    _type: 'page',
+    title: 'Home',
+    slug: { current: 'home' },
+    seoTitle: 'Regenerative Motherhood - The Path to Generative Infant Sleep',
+    seoDescription: 'Because supporting your baby\'s sleep can and should feel mutually nourishing.',
+    content: [
+      {
+        _type: 'block',
+        _key: 'block1',
+        style: 'h1',
+        children: [{ _type: 'span', _key: 'span1', text: 'The Path to Generative Infant Sleep' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block2',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span2', text: 'Because supporting your baby\'s sleep can and should feel mutually nourishing.' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block3',
+        style: 'h2',
+        children: [{ _type: 'span', _key: 'span3', text: 'Welcome to Regenerative Motherhood' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block4',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span4', text: 'I\'m Claire, and I\'m here to guide you through a transformative approach to infant sleep that honors both your needs and your baby\'s development.' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block5',
+        style: 'h2',
+        children: [{ _type: 'span', _key: 'span5', text: 'The 5 Principles' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block6',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span6', text: 'Connection: Building secure attachment through responsive care' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block7',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span7', text: 'Harmony: Finding balance between your needs and your baby\'s' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block8',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span8', text: 'Individuality: Honoring your unique baby\'s temperament and needs' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block9',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span9', text: 'Life: Integrating sleep support into your whole family\'s rhythm' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block10',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span10', text: 'Nourishment: Feeding your family\'s wellbeing through rest' }]
+      }
+    ]
+  },
+  {
+    _id: generateId('page', 'work-with-me'),
+    _type: 'page',
+    title: 'Work With Me',
+    slug: { current: 'work-with-me' },
+    seoTitle: 'Work With Me - Regenerative Motherhood',
+    seoDescription: 'Personalized sleep support packages designed to meet you where you are.',
+    content: [
+      {
+        _type: 'block',
+        _key: 'block1',
+        style: 'h1',
+        children: [{ _type: 'span', _key: 'span1', text: 'Work With Me' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block2',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span2', text: 'Choose the support package that best fits your family\'s needs.' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block3',
+        style: 'h2',
+        children: [{ _type: 'span', _key: 'span3', text: 'Sleep Guidance Call' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block4',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span4', text: 'A single 90-minute call to address your most pressing sleep concerns and create an actionable plan.' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block5',
+        style: 'h2',
+        children: [{ _type: 'span', _key: 'span5', text: '3-Call Sleep Support' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block6',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span6', text: 'Three calls over six weeks for ongoing support as you implement changes.' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block7',
+        style: 'h2',
+        children: [{ _type: 'span', _key: 'span7', text: 'Comprehensive Sleep Support' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block8',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span8', text: 'Six weeks of intensive support with calls, messaging, and personalized resources.' }]
+      }
+    ]
+  },
+  {
+    _id: generateId('page', 'sleep-guidance-call'),
+    _type: 'page',
+    title: 'Sleep Guidance Call',
+    slug: { current: 'sleep-guidance-call' },
+    seoTitle: 'Sleep Guidance Call - Regenerative Motherhood',
+    seoDescription: 'Get clarity and confidence with a single 90-minute consultation.',
+    content: [
+      {
+        _type: 'block',
+        _key: 'block1',
+        style: 'h1',
+        children: [{ _type: 'span', _key: 'span1', text: 'Sleep Guidance Call' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block2',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span2', text: 'Perfect for families who need expert guidance and a clear plan to move forward with confidence.' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block3',
+        style: 'h2',
+        children: [{ _type: 'span', _key: 'span3', text: 'What\'s Included' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block4',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span4', text: '90-minute video consultation to dive deep into your sleep challenges' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block5',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span5', text: 'Personalized sleep plan tailored to your baby\'s age and temperament' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block6',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span6', text: 'Follow-up email with call summary and resources' }]
+      }
+    ]
+  },
+  {
+    _id: generateId('page', '3-call-sleep-support'),
+    _type: 'page',
+    title: '3-Call Sleep Support',
+    slug: { current: '3-call-sleep-support' },
+    seoTitle: '3-Call Sleep Support - Regenerative Motherhood',
+    seoDescription: 'Ongoing support through three calls over six weeks.',
+    content: [
+      {
+        _type: 'block',
+        _key: 'block1',
+        style: 'h1',
+        children: [{ _type: 'span', _key: 'span1', text: '3-Call Sleep Support' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block2',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span2', text: 'Ideal for families who want ongoing support as they implement sleep changes.' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block3',
+        style: 'h2',
+        children: [{ _type: 'span', _key: 'span3', text: 'Package Includes' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block4',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span4', text: 'Three 60-minute calls spread over 6 weeks' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block5',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span5', text: 'Email support between calls for quick questions' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block6',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span6', text: 'Adjusted strategies based on your progress' }]
+      }
+    ]
+  },
+  {
+    _id: generateId('page', 'comprehensive-sleep-support'),
+    _type: 'page',
+    title: 'Comprehensive Sleep Support',
+    slug: { current: 'comprehensive-sleep-support' },
+    seoTitle: 'Comprehensive Sleep Support - Regenerative Motherhood',
+    seoDescription: 'Six weeks of intensive, personalized sleep transformation support.',
+    content: [
+      {
+        _type: 'block',
+        _key: 'block1',
+        style: 'h1',
+        children: [{ _type: 'span', _key: 'span1', text: 'Comprehensive Sleep Support' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block2',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span2', text: 'Our most complete package for families ready for a full sleep transformation.' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block3',
+        style: 'h2',
+        children: [{ _type: 'span', _key: 'span3', text: 'Everything You Get' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block4',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span4', text: 'Six weekly 60-minute calls for continuous support' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block5',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span5', text: 'Daily messaging support via Voxer or WhatsApp' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block6',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span6', text: 'Comprehensive sleep plan with week-by-week adjustments' }]
+      },
+      {
+        _type: 'block',
+        _key: 'block7',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span7', text: 'Resource library with guides, schedules, and troubleshooting tips' }]
+      }
+    ]
+  }
+];
+
+// Create text blocks data
+const textBlocks = [
+  {
+    _id: 'textBlock_hero_heading',
+    _type: 'textBlock',
+    key: 'hero-heading',
+    title: 'Hero Heading',
+    content: [
+      {
+        _type: 'block',
+        _key: 'block1',
+        style: 'h1',
+        children: [{ _type: 'span', _key: 'span1', text: 'The Path to Generative Infant Sleep' }]
+      }
+    ]
+  },
+  {
+    _id: 'textBlock_hero_subtitle',
+    _type: 'textBlock',
+    key: 'hero-subtitle',
+    title: 'Hero Subtitle',
+    content: [
+      {
+        _type: 'block',
+        _key: 'block1',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span1', text: 'Because supporting your baby\'s sleep can and should feel mutually nourishing.' }]
+      }
+    ]
+  },
+  {
+    _id: 'textBlock_welcome',
+    _type: 'textBlock',
+    key: 'welcome-message',
+    title: 'Welcome Message',
+    content: [
+      {
+        _type: 'block',
+        _key: 'block1',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span1', text: 'Welcome to Regenerative Motherhood, where we believe that supporting your baby\'s sleep should be a nurturing experience for both you and your child.' }]
+      }
+    ]
+  },
+  {
+    _id: 'textBlock_about',
+    _type: 'textBlock',
+    key: 'about-section',
+    title: 'About Section',
+    content: [
+      {
+        _type: 'block',
+        _key: 'block1',
+        style: 'normal',
+        children: [{ _type: 'span', _key: 'span1', text: 'Our approach to infant sleep is rooted in understanding, compassion, and evidence-based practices that honor both your needs and your baby\'s development.' }]
+      }
+    ]
+  }
+];
+
+// Create site settings data
+const siteSettings = {
+  _id: 'siteSettings_main',
+  _type: 'siteSettings',
+  title: 'Regenerative Motherhood',
+  description: 'The Path to Generative Infant Sleep - Because supporting your baby\'s sleep can and should feel mutually nourishing.',
+  socialMedia: {
+    instagram: 'https://instagram.com/regenerativemotherhood'
+  }
+};
+
+// Write to NDJSON file
+function writeNDJSON(filename, data) {
+  const ndjson = data.map(item => JSON.stringify(item)).join('\n');
+  fs.writeFileSync(path.join(__dirname, filename), ndjson);
+  console.log(`✅ Created ${filename}`);
+}
+
+// Create all data files
+console.log('📝 Creating Sanity import files...\n');
+
+// Combine all data
+const allData = [...pages, ...textBlocks, siteSettings];
+writeNDJSON('import-data.ndjson', allData);
+
+console.log('\n✨ Import files created!');
+console.log('\nTo import this data into Sanity, run:');
+console.log('cd sanity && sanity dataset import import-data.ndjson production --replace');
+console.log('\nThen visit https://regenmother.sanity.studio to see your content!');

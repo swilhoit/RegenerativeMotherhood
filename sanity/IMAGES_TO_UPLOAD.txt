@@ -1,0 +1,31 @@
+
+IMAGES TO UPLOAD TO SANITY STUDIO
+==================================
+
+Go to: https://regenmother.sanity.studio
+Click "Media" in top menu
+Upload these files:
+
+  • hero.jpg → /RegenerativeMotherhood/website/hero.jpg
+  • gradient.jpg → /RegenerativeMotherhood/website/gradient.jpg
+  • welcome-1.jpg → /RegenerativeMotherhood/website/welcome-1.jpg
+  • Frame 162781.jpg → /RegenerativeMotherhood/website/Frame 162781.jpg
+  • Frame 162781-1.jpg → /RegenerativeMotherhood/website/Frame 162781-1.jpg
+  • Frame 162770.jpg → /RegenerativeMotherhood/website/Frame 162770.jpg
+  • Frame1627851.jpg → /RegenerativeMotherhood/website/Frame1627851.jpg
+  • Frame 162783.jpg → /RegenerativeMotherhood/website/Frame 162783.jpg
+  • Frame 162784.jpg → /RegenerativeMotherhood/website/Frame 162784.jpg
+  • sleep-guidance.jpg → /RegenerativeMotherhood/website/sleep-guidance.jpg
+  • Frame 1627810.jpg → /RegenerativeMotherhood/website/Frame 1627810.jpg
+  • Frame 1162781.jpg → /RegenerativeMotherhood/website/Frame 1162781.jpg
+  • harmony.svg → /RegenerativeMotherhood/website/icons/harmony.svg
+  • individuality.svg → /RegenerativeMotherhood/website/individuality.svg
+  • nourishment.svg → /RegenerativeMotherhood/website/nourishment.svg
+  • connection.svg → /RegenerativeMotherhood/website/connection.svg
+  • life.svg → /RegenerativeMotherhood/website/life.svg
+  • Layer_1.svg → /RegenerativeMotherhood/website/Layer_1.svg
+  • logo.svg → /RegenerativeMotherhood/website/logo.svg
+  • Group 32212.svg → /RegenerativeMotherhood/website/Group 32212.svg
+
+After uploading, run:
+npx sanity dataset import final-with-images.ndjson production --replace
