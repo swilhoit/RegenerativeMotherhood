@@ -3,16 +3,40 @@
   "buildCommand": null,
   "outputDirectory": "website",
   "installCommand": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
   "builds": [
     {
       "src": "website/**",
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/website/$1"
+      "source": "/(.*)",
+      "destination": "/website/$1"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/work-with-me.html",
+      "destination": "/work-with-me",
+      "permanent": true
+    },
+    {
+      "source": "/3-call-sleep-support.html",
+      "destination": "/3-call-sleep-support",
+      "permanent": true
+    },
+    {
+      "source": "/comprehensive-sleep-support.html",
+      "destination": "/comprehensive-sleep-support",
+      "permanent": true
+    },
+    {
+      "source": "/sleep-guidance-call.html",
+      "destination": "/sleep-guidance-call",
+      "permanent": true
     }
   ]
 }

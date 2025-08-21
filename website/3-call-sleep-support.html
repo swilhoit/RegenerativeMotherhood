@@ -5,40 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1:1 Sleep Infant and Toddler 3 Call Sleep Support Package - Regenerative Motherhood</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <link rel="shortcut icon" type="image/png" href="Favicon.png">
+    <link rel="apple-touch-icon" href="Favicon.png">
+    
+    <!-- Open Graph / Link Preview -->
+    <meta property="og:title" content="3 Call Sleep Support Package - Regenerative Motherhood">
+    <meta property="og:description" content="Ongoing guidance for your child's sleep journey - 3 x 50 minute sessions">
+    <meta property="og:image" content="https://millanfabiola1.github.io/RegenerativeMotherhood/Link%20Preview.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="3 Call Sleep Support Package">
+    <meta name="twitter:description" content="Ongoing guidance for your child's sleep journey - 3 x 50 minute sessions">
+    <meta name="twitter:image" content="https://millanfabiola1.github.io/RegenerativeMotherhood/Link%20Preview.png">
+    
     <!-- Main styles from home page -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="website/styles.css">
     
     <!-- Page-specific styles -->
-    <link rel="stylesheet" href="service-page-styles.css?v=static-nav-2025">
-    <link rel="stylesheet" href="cursor-effects.css">
+    <link rel="stylesheet" href="website/service-page-styles.css?v=static-nav-2025">
+    <link rel="stylesheet" href="website/cursor-effects.css">
     
     <!-- Font imports -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Concrette TRIAL';
-            src: url('fonts/ConcretteMTRIAL-Light.woff2') format('woff2');
+            src: url('website/fonts/ConcretteMTRIAL-Light.woff2') format('woff2');
             font-weight: 200;
             font-display: swap;
         }
         @font-face {
             font-family: 'ABC Diatype';
-            src: url('fonts/ABCDiatype-Regular.ttf') format('truetype');
+            src: url('website/fonts/ABCDiatype-Regular.ttf') format('truetype');
             font-weight: 400;
             font-display: swap;
         }
         
         /* Use package 2 specific image */
         .service-main__image {
-            background-image: url('Frame 1627810.jpg?v=2025-fixed') !important;
+            background-image: url('website/Frame 1627810.jpg?v=2025-fixed') !important;
         }
     </style>
 </head>
 <body>
-    <!-- Reusable Mobile Header (olive on cream) -->
-    <div id="mobile-header-slot" data-theme="olive"></div>
-
-    <!-- Navigation Bar - desktop/tablet -->
+    <!-- Navigation Bar - EXACT SAME AS OTHER PAGES -->
     <nav class="hero__nav hero__nav--light" aria-label="Main navigation">
         <div class="nav__container">
             <!-- EXACT FIGMA POSITIONED ITEMS (Desktop) -->
@@ -54,7 +68,7 @@
                 <span class="nav__text">ABOUT</span>
             </div>
             
-            <a href="work-with-me.html" class="nav__item" data-item="work">
+            <a href="/work-with-me" class="nav__item" data-item="work">
                 <span class="nav__text">WORK WITH ME</span>
             </a>
             
@@ -71,8 +85,8 @@
             <!-- Logo/Brand - Responsive -->
             <div class="nav__logo">
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="logo-olive.svg" alt="Regenerative Motherhood" width="273" height="64">
+                    <a href="/">
+                        <img src="website/logo-olive.svg" alt="Regenerative Motherhood" width="273" height="64">
                     </a>
                 </div>
             </div>
@@ -81,41 +95,48 @@
                 <div class="nav__item">
                     <span class="nav__text">ABOUT</span>
                 </div>
-                <a href="work-with-me.html" class="nav__item">
+                <a href="/work-with-me" class="nav__item">
                     <span class="nav__text">WORK WITH ME</span>
                 </a>
             </div>
             
-            <!-- MOBILE HAMBURGER NAVIGATION (match homepage structure) -->
+            <!-- MOBILE HAMBURGER NAVIGATION -->
             <div class="mobile-nav">
                 <div class="mobile-nav__logo">
-                    <a href="index.html" aria-label="Home">
-                        <img src="logo-olive.svg" alt="Regenerative Motherhood" width="120" height="29">
+                    <a href="/">
+                        <img src="website/logo-olive.svg" alt="Regenerative Motherhood" width="120" height="29">
                     </a>
                 </div>
-                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" onclick="window.toggleMobileMenu && window.toggleMobileMenu(); return false;">
-                    <img src="menu-icon.svg" alt="Menu" width="24" height="20">
+                
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
                 </button>
             </div>
             
+            <!-- MOBILE MENU OVERLAY -->
+            <div class="mobile-menu" aria-hidden="true">
+                <div class="mobile-menu__content">
+                    <a href="index.html#welcome" class="mobile-menu__item">
+                        <span class="mobile-menu__text">STORY</span>
+                    </a>
+                    <a href="index.html#five-principles" class="mobile-menu__item">
+                        <span class="mobile-menu__text">PRINCIPLES</span>
+                    </a>
+                    <a href="index.html#about" class="mobile-menu__item">
+                        <span class="mobile-menu__text">ABOUT</span>
+                    </a>
+                    <a href="/work-with-me" class="mobile-menu__item">
+                        <span class="mobile-menu__text">WORK WITH ME</span>
+                    </a>
+                    <a href="mailto:clairefagin@gmail.com" class="mobile-menu__item">
+                        <span class="mobile-menu__text">CONTACT</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
-
-    <!-- MOBILE MENU OVERLAY (exact homepage structure) -->
-    <div class="mobile-menu" aria-hidden="true">
-        <button class="mobile-menu__close" aria-label="Close menu">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M6 6L18 18M6 18L18 6" stroke="#FCF9F1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-        <div class="mobile-menu__content">
-            <a href="index.html#welcome" class="mobile-menu__item"><span class="mobile-menu__text">STORY</span></a>
-            <a href="index.html#five-principles" class="mobile-menu__item"><span class="mobile-menu__text">PRINCIPLES</span></a>
-            <a href="work-with-me.html" class="mobile-menu__item"><span class="mobile-menu__text">WORK WITH ME</span></a>
-            <a href="index.html#about" class="mobile-menu__item"><span class="mobile-menu__text">ABOUT</span></a>
-            <a href="mailto:clairefagin@gmail.com" class="mobile-menu__item"><span class="mobile-menu__text">CONTACT</span></a>
-        </div>
-    </div>
 
 
 
@@ -136,7 +157,7 @@
                     <p class="service-main__price">3 x 50 Minute Sessions | $345</p>
                     <p class="service-main__description">I'm here to offer ONGOING guidance that honors, elevates, and supports you and your child as you both find mutually nourishing rest.</p>
                     
-                    <button class="service-main__cta">BOOK NOW</button>
+                    <a href="https://calendly.com/clairefagin/infantsleepguidance?month=2025-08" class="service-main__cta" target="_blank" style="display: inline-block; text-decoration: none;">BOOK NOW</a>
                     
                     <hr class="service-main__divider">
                 </div>
@@ -205,7 +226,7 @@
                 <img src="Layer_1.svg" alt="Regenerative Motherhood Logo" class="footer__logo" />
                 <p id="footer-tagline" class="footer__tagline">the paradigm of generative infant sleep</p>
                 <nav class="footer__links" aria-label="Footer links">
-                    <a href="work-with-me.html" class="footer-link">WORK WITH ME</a>
+                    <a href="/work-with-me" class="footer-link">WORK WITH ME</a>
                     <a href="https://www.instagram.com/clairefagin/?hl=en" target="_blank" rel="noopener" class="footer-link">INSTAGRAM</a>
                     <a href="mailto:clairefagin@gmail.com" class="footer-link">CONTACT</a>
                 </nav>
@@ -221,7 +242,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="shared-scripts.js"></script>
-    <script src="cursor-effects.js"></script>
+    <script src="website/cursor-effects.js"></script>
 </body>
 </html>

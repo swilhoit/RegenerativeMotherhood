@@ -2,6 +2,9 @@
   "permissions": {
     "additionalDirectories": [
       "/Volumes/LaCie/WEBDEV"
+    ],
+    "allow": [
+      "Bash(./update-links.sh)"
     ]
   }
 }
