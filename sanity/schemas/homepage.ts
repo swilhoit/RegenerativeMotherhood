@@ -4,6 +4,7 @@ export default {
   title: 'Homepage',
   type: 'document',
   groups: [
+    {name: 'navigation', title: 'Navigation'},
     {name: 'hero', title: 'Hero Section'},
     {name: 'story', title: 'Story Section'},
     {name: 'why', title: 'Why Section'},
@@ -15,6 +16,52 @@ export default {
     {name: 'seo', title: 'SEO'},
   ],
   fields: [
+    // NAVIGATION
+    {
+      name: 'navigationItems',
+      title: 'Navigation Menu Items',
+      type: 'array',
+      group: 'navigation',
+      of: [{
+        type: 'object',
+        fields: [
+          {
+            name: 'label',
+            title: 'Menu Label',
+            type: 'string',
+            validation: (Rule: any) => Rule.required(),
+          },
+          {
+            name: 'link',
+            title: 'Link/Anchor',
+            type: 'string',
+            description: 'Use #section-id for anchors or full URL for external links',
+            validation: (Rule: any) => Rule.required(),
+          },
+          {
+            name: 'isActive',
+            title: 'Active',
+            type: 'boolean',
+            description: 'Show this item in the navigation',
+            initialValue: true,
+          },
+        ],
+        preview: {
+          select: {
+            title: 'label',
+            subtitle: 'link',
+          },
+        },
+      }],
+      initialValue: [
+        {label: 'STORY', link: '#welcome', isActive: true},
+        {label: 'WHY', link: '#why', isActive: true},
+        {label: 'SOLUTION', link: '#solution', isActive: true},
+        {label: 'PRINCIPLES', link: '#principles', isActive: true},
+        {label: 'WORK WITH ME', link: '#work', isActive: true},
+        {label: 'ABOUT', link: '#about', isActive: true},
+      ],
+    },
     // HERO SECTION
     {
       name: 'heroBackgroundImage',
