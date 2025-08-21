@@ -1,7 +1,7 @@
-// Complete page schema that can handle all page types
+// Generic page schema for non-homepage pages (About, Contact, etc.)
 export default {
   name: 'pageComplete',
-  title: 'Page',
+  title: 'Other Pages',
   type: 'document',
   groups: [
     {name: 'main', title: 'Main Content'},
@@ -35,14 +35,15 @@ export default {
       group: 'main',
       options: {
         list: [
-          {title: 'Homepage', value: 'homepage'},
-          {title: 'Service Overview', value: 'service-overview'},
-          {title: 'Service Detail', value: 'service-detail'},
           {title: 'About', value: 'about'},
-          {title: 'Standard', value: 'standard'},
+          {title: 'Contact', value: 'contact'},
+          {title: 'Blog Post', value: 'blog'},
+          {title: 'Resource', value: 'resource'},
+          {title: 'Standard Page', value: 'standard'},
         ],
       },
       validation: (Rule: any) => Rule.required(),
+      description: 'Note: Homepage and Services have their own dedicated sections in the sidebar',
     },
     
     // Page sections - flexible content blocks
