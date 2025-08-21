@@ -1,8 +1,12 @@
 import pageComplete from './pageComplete'
 import siteSettings from './siteSettings'
+import homepage from './homepage'
+import service from './service'
 
-// Simplified schema - everything is organized by page
+// Schema types for the CMS
 export const schemaTypes = [
+  homepage,
+  service,
   pageComplete,
   siteSettings
 ]
