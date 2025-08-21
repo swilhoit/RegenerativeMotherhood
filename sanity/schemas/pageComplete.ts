@@ -59,6 +59,7 @@ export default {
           name: 'heroSection',
           title: 'Hero Section',
           fields: [
+            {name: 'sectionTitle', title: 'Section Name (for organization)', type: 'string', description: 'Name this section for easy identification'},
             {name: 'backgroundImage', title: 'Background Image', type: 'image', options: {hotspot: true}},
             {name: 'overlayImage', title: 'Overlay Image', type: 'image', options: {hotspot: true}},
             {name: 'title', title: 'Title Lines', type: 'array', of: [{type: 'string'}]},
@@ -66,6 +67,19 @@ export default {
             {name: 'ctaText', title: 'CTA Button Text', type: 'string'},
             {name: 'ctaLink', title: 'CTA Link', type: 'string'},
           ],
+          preview: {
+            select: {
+              title: 'sectionTitle',
+              subtitle: 'title'
+            },
+            prepare(selection: any) {
+              const {title, subtitle} = selection;
+              return {
+                title: title || 'Hero Section',
+                subtitle: subtitle ? subtitle.join(' ') : ''
+              }
+            }
+          }
         },
         
         // Marquee Section
@@ -74,8 +88,22 @@ export default {
           name: 'marqueeSection',
           title: 'Marquee Section',
           fields: [
+            {name: 'sectionTitle', title: 'Section Name (for organization)', type: 'string', description: 'Name this section for easy identification'},
             {name: 'texts', title: 'Marquee Texts', type: 'array', of: [{type: 'string'}]},
           ],
+          preview: {
+            select: {
+              title: 'sectionTitle',
+              texts: 'texts'
+            },
+            prepare(selection: any) {
+              const {title, texts} = selection;
+              return {
+                title: title || 'Marquee Section',
+                subtitle: texts ? texts.join(' • ') : ''
+              }
+            }
+          }
         },
         
         // Content Section (Story, Why, Solution, etc.)
@@ -84,6 +112,7 @@ export default {
           name: 'contentSection',
           title: 'Content Section',
           fields: [
+            {name: 'sectionTitle', title: 'Section Name (for organization)', type: 'string', description: 'Name this section for easy identification'},
             {name: 'layout', title: 'Layout', type: 'string', options: {
               list: [
                 {title: 'Image Left, Text Right', value: 'image-left'},
@@ -105,6 +134,20 @@ export default {
             {name: 'title', title: 'Section Title', type: 'text'},
             {name: 'content', title: 'Content', type: 'array', of: [{type: 'block'}]},
           ],
+          preview: {
+            select: {
+              title: 'sectionTitle',
+              eyebrow: 'eyebrow',
+              sectionTitle2: 'title'
+            },
+            prepare(selection: any) {
+              const {title, eyebrow, sectionTitle2} = selection;
+              return {
+                title: title || eyebrow || 'Content Section',
+                subtitle: sectionTitle2 || ''
+              }
+            }
+          }
         },
         
         // Principles Section
@@ -113,6 +156,7 @@ export default {
           name: 'principlesSection',
           title: 'Principles Section',
           fields: [
+            {name: 'sectionTitle', title: 'Section Name (for organization)', type: 'string', description: 'Name this section for easy identification'},
             {name: 'eyebrow', title: 'Eyebrow', type: 'string'},
             {name: 'title', title: 'Title', type: 'text'},
             {name: 'principles', title: 'Principles', type: 'array', of: [{
@@ -125,6 +169,20 @@ export default {
               ],
             }]},
           ],
+          preview: {
+            select: {
+              title: 'sectionTitle',
+              eyebrow: 'eyebrow',
+              sectionTitle2: 'title'
+            },
+            prepare(selection: any) {
+              const {title, eyebrow, sectionTitle2} = selection;
+              return {
+                title: title || eyebrow || 'Principles Section',
+                subtitle: sectionTitle2 || ''
+              }
+            }
+          }
         },
         
         // Service Packages Section
@@ -133,6 +191,7 @@ export default {
           name: 'servicesSection',
           title: 'Services Section',
           fields: [
+            {name: 'sectionTitle', title: 'Section Name (for organization)', type: 'string', description: 'Name this section for easy identification'},
             {name: 'eyebrow', title: 'Eyebrow', type: 'string'},
             {name: 'title', title: 'Title', type: 'string'},
             {name: 'services', title: 'Service Packages', type: 'array', of: [{
@@ -148,6 +207,20 @@ export default {
               ],
             }]},
           ],
+          preview: {
+            select: {
+              title: 'sectionTitle',
+              eyebrow: 'eyebrow',
+              sectionTitle2: 'title'
+            },
+            prepare(selection: any) {
+              const {title, eyebrow, sectionTitle2} = selection;
+              return {
+                title: title || eyebrow || 'Services Section',
+                subtitle: sectionTitle2 || ''
+              }
+            }
+          }
         },
         
         // About Section
@@ -156,12 +229,27 @@ export default {
           name: 'aboutSection',
           title: 'About Section',
           fields: [
+            {name: 'sectionTitle', title: 'Section Name (for organization)', type: 'string', description: 'Name this section for easy identification'},
             {name: 'images', title: 'Images', type: 'array', of: [{type: 'image', options: {hotspot: true}}]},
             {name: 'eyebrow', title: 'Eyebrow', type: 'string'},
             {name: 'title', title: 'Name', type: 'string'},
             {name: 'subtitle', title: 'Title/Role', type: 'string'},
             {name: 'content', title: 'Bio Content', type: 'array', of: [{type: 'block'}]},
           ],
+          preview: {
+            select: {
+              title: 'sectionTitle',
+              eyebrow: 'eyebrow',
+              name: 'title'
+            },
+            prepare(selection: any) {
+              const {title, eyebrow, name} = selection;
+              return {
+                title: title || eyebrow || 'About Section',
+                subtitle: name || ''
+              }
+            }
+          }
         },
         
         // CTA Section
@@ -170,6 +258,7 @@ export default {
           name: 'ctaSection',
           title: 'CTA Section',
           fields: [
+            {name: 'sectionTitle', title: 'Section Name (for organization)', type: 'string', description: 'Name this section for easy identification'},
             {name: 'backgroundImage', title: 'Background Image', type: 'image', options: {hotspot: true}},
             {name: 'eyebrow', title: 'Eyebrow', type: 'string'},
             {name: 'title', title: 'Title', type: 'string'},
@@ -178,19 +267,20 @@ export default {
             {name: 'ctaText', title: 'Button Text', type: 'string'},
             {name: 'ctaLink', title: 'Button Link', type: 'string'},
           ],
-        },
-        
-        // Footer Section
-        {
-          type: 'object',
-          name: 'footerSection',
-          title: 'Footer Section',
-          fields: [
-            {name: 'logo', title: 'Logo', type: 'image', options: {hotspot: true}},
-            {name: 'tagline', title: 'Tagline', type: 'string'},
-            {name: 'email', title: 'Email', type: 'string'},
-            {name: 'instagram', title: 'Instagram', type: 'string'},
-          ],
+          preview: {
+            select: {
+              title: 'sectionTitle',
+              eyebrow: 'eyebrow',
+              ctaTitle: 'title'
+            },
+            prepare(selection: any) {
+              const {title, eyebrow, ctaTitle} = selection;
+              return {
+                title: title || eyebrow || 'CTA Section',
+                subtitle: ctaTitle || ''
+              }
+            }
+          }
         },
       ],
     },

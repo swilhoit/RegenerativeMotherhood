@@ -1,6 +1,7 @@
 import pageComplete from './pageComplete'
 import service from './service'
 import siteSettings from './siteSettings'
+import footer from './footer'
 
 // Schema types for the CMS
 export const schemaTypes = [
@@ -11,5 +12,8 @@ export const schemaTypes = [
   service,
   
   // Site configuration
-  siteSettings
+  siteSettings,
+  
+  // Site-wide footer
+  footer
 ]

@@ -22,6 +22,7 @@ const pages = [
       {
         _type: 'heroSection',
         _key: 'hero1',
+        sectionTitle: 'Main Hero',
         title: ['THE PATH TO', 'GENERATIVE', 'INFANT SLEEP'],
         subtitle: 'Because supporting your baby\'s sleep can and should feel mutually nourishing.',
         ctaText: 'WORK WITH ME',
@@ -30,11 +31,13 @@ const pages = [
       {
         _type: 'marqueeSection',
         _key: 'marquee1',
+        sectionTitle: 'Marquee Banner',
         texts: ['NOURISH YOUR BABY', 'NOURISH YOURSELF', 'REST IS RECIPROCAL']
       },
       {
         _type: 'contentSection',
         _key: 'welcome1',
+        sectionTitle: 'Welcome Section',
         layout: 'image-left',
         backgroundColor: 'beige',
         eyebrow: 'WELCOME',
@@ -58,6 +61,7 @@ const pages = [
       {
         _type: 'contentSection',
         _key: 'why1',
+        sectionTitle: 'Why Section',
         layout: 'text-left',
         backgroundColor: 'beige',
         eyebrow: 'Why?',
@@ -80,6 +84,7 @@ const pages = [
       {
         _type: 'contentSection',
         _key: 'solution1',
+        sectionTitle: 'Solution Section',
         layout: 'image-left',
         backgroundColor: 'beige',
         eyebrow: 'Solution',
@@ -102,6 +107,7 @@ const pages = [
       {
         _type: 'principlesSection',
         _key: 'principles1',
+        sectionTitle: '5 Principles',
         eyebrow: 'PRINCIPLES',
         title: 'The 5 Principles Of Regenerative Motherhood',
         principles: [
@@ -140,6 +146,7 @@ const pages = [
       {
         _type: 'ctaSection',
         _key: 'cta1',
+        sectionTitle: 'Work With Me CTA',
         backgroundColor: 'tan',
         eyebrow: 'WORK WITH ME',
         title: '1:1 Sleep Guidance',
@@ -151,6 +158,7 @@ const pages = [
       {
         _type: 'aboutSection',
         _key: 'about1',
+        sectionTitle: 'About Claire',
         eyebrow: 'ABOUT ME',
         title: 'Claire Fagin',
         subtitle: 'Pediatric Sleep & Development Mentor & Doula',
@@ -199,12 +207,14 @@ const pages = [
       {
         _type: 'heroSection',
         _key: 'hero2',
+        sectionTitle: 'Services Hero',
         title: ['Work With Me'],
         subtitle: 'Choose the level of support that feels right for your family'
       },
       {
         _type: 'servicesSection',
         _key: 'services1',
+        sectionTitle: 'Services List',
         eyebrow: 'SERVICES',
         title: '1:1 Sleep Guidance',
         services: [] // This will reference the services from the Services collection
