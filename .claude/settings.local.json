@@ -3,7 +3,8 @@
     "allow": [
       "Bash(./update-links.sh)",
       "Bash(./fix-all-html-links.sh:*)",
-      "Bash(./fix-index-links.sh:*)"
+      "Bash(./fix-index-links.sh:*)",
+      "Bash(./add-favicon.sh:*)"
     ],
     "additionalDirectories": [
       "/Volumes/LaCie/WEBDEV"
