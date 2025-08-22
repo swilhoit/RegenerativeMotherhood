@@ -22,8 +22,8 @@ export default function ComprehensiveSleepSupport() {
       </section>
 
       {/* Content */}
-      <section className="bg-beige px-8 py-20">
-        <div className="max-w-[800px] mx-auto space-y-12">
+      <section className="bg-beige px-5 md:px-8 py-10 md:py-20">
+        <div className="max-w-[800px] mx-auto space-y-8 md:space-y-12">
           <div className="space-y-6">
             <h2 className="text-3xl font-concrette font-light text-darkBrown">
               Transform Your Family&apos;s Sleep

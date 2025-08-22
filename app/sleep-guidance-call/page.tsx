@@ -6,17 +6,29 @@ import Link from 'next/link'
 export default function SleepGuidanceCall() {
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section with Image */}
       <section className="relative min-h-[60vh] bg-cream">
         <Navigation />
-        <div className="flex items-center justify-center min-h-[60vh] px-8 pt-24">
-          <div className="max-w-[800px] text-center">
-            <h1 className="text-5xl lg:text-7xl font-concrette font-light text-darkBrown mb-6">
-              Sleep Guidance Call
-            </h1>
-            <p className="text-lg font-dm-sans text-brown">
-              90 minutes to transform your approach to baby sleep
-            </p>
+        <div className="relative min-h-[60vh]">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <Image
+              src="/Frame 1627810.jpg"
+              alt="Sleep Guidance Call"
+              fill
+              className="object-cover opacity-20"
+            />
+          </div>
+          {/* Content */}
+          <div className="relative flex items-center justify-center min-h-[60vh] px-5 md:px-8 pt-20 md:pt-24">
+            <div className="max-w-[800px] text-center">
+              <h1 className="text-[32px] md:text-5xl lg:text-7xl font-concrette font-[200] text-darkBrown mb-4 md:mb-6 tracking-[-1.6px] md:tracking-[-2.5px] lg:tracking-[-3.5px]">
+                Sleep Guidance Call
+              </h1>
+              <p className="text-sm md:text-lg font-dm-sans text-brown">
+                90 minutes to transform your approach to baby sleep
+              </p>
+            </div>
           </div>
         </div>
       </section>

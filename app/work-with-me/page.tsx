@@ -28,7 +28,7 @@ export default function WorkWithMe() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[400px]">
               <Image
-                src="/sleep-guidance.jpg"
+                src="/Frame 1627810.jpg"
                 alt="Sleep Guidance Call"
                 fill
                 className="object-cover rounded-lg"
