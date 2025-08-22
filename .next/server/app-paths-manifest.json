@@ -1,5 +1,6 @@
 {
-  "/comprehensive-sleep-support/page": "app/comprehensive-sleep-support/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
-  "/work-with-me/page": "app/work-with-me/page.js"
+  "/work-with-me/page": "app/work-with-me/page.js",
+  "/comprehensive-sleep-support/page": "app/comprehensive-sleep-support/page.js"
 }
