@@ -4,7 +4,9 @@
 @font-face {
   font-family: 'Concrette TRIAL';
   src: url('/fonts/ConcretteMTRIAL-Light.woff2') format('woff2'),
-       url('/fonts/ConcretteMTRIAL-Light.otf') format('opentype');
+       url('/fonts/ConcretteMTRIAL-Light.woff') format('woff'),
+       url('/fonts/ConcretteMTRIAL-Light.otf') format('opentype'),
+       url('/fonts/ConcretteMTRIAL-Light.ttf') format('truetype');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -27,6 +29,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 120px;
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -34,4 +38,21 @@ body {
   background-color: #EDE8D5;
   color: #fcf9f1;
   line-height: 1;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Remove default link styling globally */
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  text-decoration: none !important;
+  color: inherit !important;
+  outline: none;
 }
