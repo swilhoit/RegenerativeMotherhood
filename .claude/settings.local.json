@@ -4,7 +4,16 @@
       "Bash(./update-links.sh)",
       "Bash(./fix-all-html-links.sh:*)",
       "Bash(./fix-index-links.sh:*)",
-      "Bash(./add-favicon.sh:*)"
+      "Bash(./add-favicon.sh:*)",
+      "Bash(git checkout:*)",
+      "Bash(npx create-next-app:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "additionalDirectories": [
       "/Volumes/LaCie/WEBDEV"
