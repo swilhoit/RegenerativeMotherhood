@@ -13,7 +13,10 @@
       "Bash(npm install:*)",
       "Bash(rm:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm run dev:*)"
     ],
     "additionalDirectories": [
       "/Volumes/LaCie/WEBDEV"

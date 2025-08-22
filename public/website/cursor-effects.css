@@ -1,0 +1,162 @@
+/* CUSTOM CURSOR WITH SPARKLE TRAIL */
+
+/* Hide default cursor only on body and main containers */
+body, 
+.hero,
+.section,
+main {
+    cursor: none;
+}
+
+/* Keep default cursor on interactive elements */
+input,
+textarea,
+select,
+button,
+[contenteditable="true"] {
+    cursor: auto !important;
+}
+
+/* Custom cursor sparkle */
+.custom-cursor {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.05s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Zz4KICAgIDwhLS0gNC1wb2ludGVkIHN0YXIvc3BhcmtsZSBzaGFwZSAtLT4KICAgIDxwYXRoIGQ9Ik0yMCA0TDIyLjUgMTcuNUwyMCAyMEwxNy41IDE3LjVMMjAgNFoiIGZpbGw9IiM0OTQ5MkYiLz4KICAgIDxwYXRoIGQ9Ik0zNiAyMEwyMi41IDE3LjVMMjAgMjBMMjIuNSAyMi41TDM2IDIwWiIgZmlsbD0iIzQ5NDkyRiIvPgogICAgPHBhdGggZD0iTTIwIDM2TDE3LjUgMjIuNUwyMCAyMEwyMi41IDIyLjVMMjAgMzZaIiBmaWxsPSIjNDk0OTJGIi8+CiAgICA8cGF0aCBkPSJNNCAyMEwxNy41IDIyLjVMMjAgMjBMMTcuNUAxNy41TDQgMjBaIiBmaWxsPSIjNDk0OTJGIi8+CiAgPC9nPgo8L3N2Zz4K');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    will-change: transform;
+}
+
+/* Sparkle trail particles */
+.sparkle-trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 9998;
+    animation: sparkleFloat 1.5s ease-out forwards;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Zz4KICAgIDwhLS0gNC1wb2ludGVkIHN0YXIvc3BhcmtsZSBzaGFwZSAtLT4KICAgIDxwYXRoIGQ9Ik0yMCA0TDIyLjUgMTcuNUwyMCAyMEwxNy41IDE3LjVMMjAgNFoiIGZpbGw9IiM0OTQ5MkYiLz4KICAgIDxwYXRoIGQ9Ik0zNiAyMEwyMi41IDE3LjVMMjAgMjBMMjIuNSAyMi41TDM2IDIwWiIgZmlsbD0iIzQ5NDkyRiIvPgogICAgPHBhdGggZD0iTTIwIDM2TDE3LjUgMjIuNUwyMCAyMEwyMi41IDIyLjVMMjAgMzZaIiBmaWxsPSIjNDk0OTJGIi8+CiAgICA8cGF0aCBkPSJNNCAyMEwxNy41IDIyLjVMMjAgMjBMMTcuNSAxNy41TDQgMjBaIiBmaWxsPSIjNDk0OTJGIi8+CiAgPC9nPgo8L3N2Zz4K');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Sparkle animation */
+@keyframes sparkleFloat {
+    0% {
+        opacity: 0.9;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0px);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1.1) rotate(90deg);
+        filter: blur(0px);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.3) rotate(180deg);
+        filter: blur(0.2px);
+    }
+    75% {
+        opacity: 0.6;
+        transform: scale(0.8) rotate(270deg);
+        filter: blur(0.4px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.2) rotate(360deg);
+        filter: blur(0.8px);
+    }
+}
+
+/* Sparkle variants for visual interest */
+.sparkle-trail.variant-1 {
+    animation: sparkleFloat 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    width: 18px;
+    height: 18px;
+}
+
+.sparkle-trail.variant-2 {
+    animation: sparkleFloat 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    width: 24px;
+    height: 24px;
+}
+
+.sparkle-trail.variant-3 {
+    animation: sparkleFloat 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    width: 16px;
+    height: 16px;
+}
+
+/* Hover state for interactive elements */
+.custom-cursor.hover {
+    transform: scale(1.4) rotate(15deg);
+    filter: drop-shadow(0 0 8px rgba(252, 249, 241, 0.6));
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: sparkleHover 0.6s ease-in-out infinite;
+}
+
+/* Sparkle hover animation */
+@keyframes sparkleHover {
+    0%, 100% {
+        transform: scale(1.4) rotate(15deg);
+    }
+    50% {
+        transform: scale(1.6) rotate(25deg);
+    }
+}
+
+/* Special hover sparkle burst particles */
+.sparkle-burst {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+    z-index: 9997;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Zz4KICAgIDwhLS0gNC1wb2ludGVkIHN0YXIvc3BhcmtsZSBzaGFwZSAtLT4KICAgIDxwYXRoIGQ9Ik0yMCA0TDIyLjUgMTcuNUwyMCAyMEwxNy41IDE3LjVMMjAgNFoiIGZpbGw9IiNGQ0Y5RjEiLz4KICAgIDxwYXRoIGQ9Ik0zNiAyMEwyMi41IDE3LjVMMjAgMjBMMjIuNSAyMi41TDM2IDIwWiIgZmlsbD0iI0ZDRjlGMSIvPgogICAgPHBhdGggZD0iTTIwIDM2TDE3LjUgMjIuNUwyMCAyMEwyMi41IDIyLjVMMjAgMzZaIiBmaWxsPSIjRkNGOUYxIi8+CiAgICA8cGF0aCBkPSJNNCAyMEwxNy41IDIyLjVMMjAgMjBMMTcuNSAxNy41TDQgMjBaIiBmaWxsPSIjRkNGOUYxIi8+CiAgPC9nPgo8L3N2Zz4K');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: sparkleBurst 0.8s ease-out forwards;
+}
+
+/* Sparkle burst animation */
+@keyframes sparkleBurst {
+    0% {
+        opacity: 1;
+        transform: scale(0.5) rotate(0deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3) rotate(360deg);
+    }
+}
+
+/* Different cursor states for different backgrounds */
+.custom-cursor.on-dark {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Zz4KICAgIDwhLS0gNC1wb2ludGVkIHN0YXIvc3BhcmtsZSBzaGFwZSAtLT4KICAgIDxwYXRoIGQ9Ik0yMCA0TDIyLjUgMTcuNUwyMCAyMEwxNy41IDE3LjVMMjAgNFoiIGZpbGw9IiNGQ0Y5RjEiLz4KICAgIDxwYXRoIGQ9Ik0zNiAyMEwyMi41IDE3LjVMMjAgMjBMMjIuNSAyMi41TDM2IDIwWiIgZmlsbD0iI0ZDRjlGMSIvPgogICAgPHBhdGggZD0iTTIwIDM2TDE3LjUgMjIuNUwyMCAyMEwyMi41IDIyLjVMMjAgMzZaIiBmaWxsPSIjRkNGOUYxIi8+CiAgICA8cGF0aCBkPSJNNCAyMEwxNy41IDIyLjVMMjAgMjBMMTcuNSAxNy41TDQgMjBaIiBmaWxsPSIjRkNGOUYxIi8+CiAgPC9nPgo8L3N2Zz4K');
+}
+
+.custom-cursor.on-light {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Zz4KICAgIDwhLS0gNC1wb2ludGVkIHN0YXIvc3BhcmtsZSBzaGFwZSAtLT4KICAgIDxwYXRoIGQ9Ik0yMCA0TDIyLjUgMTcuNUwyMCAyMEwxNy41IDE3LjVMMjAgNFoiIGZpbGw9IiM0OTQ5MkYiLz4KICAgIDxwYXRoIGQ9Ik0zNiAyMEwyMi41IDE3LjVMMjAgMjBMMjIuNSAyMi41TDM2IDIwWiIgZmlsbD0iIzQ5NDkyRiIvPgogICAgPHBhdGggZD0iTTIwIDM2TDE3LjUgMjIuNUwyMCAyMEwyMi41IDIyLjVMMjAgMzZaIiBmaWxsPSIjNDk0OTJGIi8+CiAgICA8cGF0aCBkPSJNNCAyMEwxNy41IDIyLjVMMjAgMjBMMTcuNSAxNy41TDQgMjBaIiBmaWxsPSIjNDk0OTJGIi8+CiAgPC9nPgo8L3N2Zz4K');
+}
+
+/* Enhanced sparkles for dark backgrounds */
+.sparkle-trail.on-dark {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Zz4KICAgIDwhLS0gNC1wb2ludGVkIHN0YXIvc3BhcmtsZSBzaGFwZSAtLT4KICAgIDxwYXRoIGQ9Ik0yMCA0TDIyLjUgMTcuNUwyMCAyMEwxNy41IDE3LjVMMjAgNFoiIGZpbGw9IiNGQ0Y5RjEiLz4KICAgIDxwYXRoIGQ9Ik0zNiAyMEwyMi41IDE3LjVMMjAgMjBMMjIuNSAyMi41TDM2IDIwWiIgZmlsbD0iI0ZDRjlGMSIvPgogICAgPHBhdGggZD0iTTIwIDM2TDE3LjUgMjIuNUwyMCAyMEwyMi41IDIyLjVMMjAgMzZaIiBmaWxsPSIjRkNGOUYxIi8+CiAgICA8cGF0aCBkPSJNNCAyMEwxNy41IDIyLjVMMjAgMjBMMTcuNSAxNy41TDQgMjBaIiBmaWxsPSIjRkNGOUYxIi8+CiAgPC9nPgo8L3N2Zz4K');
+}
+
+/* Enhanced sparkles for light backgrounds */
+.sparkle-trail.on-light {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Zz4KICAgIDwhLS0gNC1wb2ludGVkIHN0YXIvc3BhcmtsZSBzaGFwZSAtLT4KICAgIDxwYXRoIGQ9Ik0yMCA0TDIyLjUgMTcuNUwyMCAyMEwxNy41IDE3LjVMMjAgNFoiIGZpbGw9IiM0OTQ5MkYiLz4KICAgIDxwYXRoIGQ9Ik0zNiAyMEwyMi41IDE3LjVMMjAgMjBMMjIuNSAyMi41TDM2IDIwWiIgZmlsbD0iIzQ5NDkyRiIvPgogICAgPHBhdGggZD0iTTIwIDM2TDE3LjUgMjIuNUwyMCAyMEwyMi41IDIyLjVMMjAgMzZaIiBmaWxsPSIjNDk0OTJGIi8+CiAgICA8cGF0aCBkPSJNNCAyMEwxNy41IDIyLjVMMjAgMjBMMTcuNSAxNy41TDQgMjBaIiBmaWxsPSIjNDk0OTJGIi8+CiAgPC9nPgo8L3N2Zz4K');
+}

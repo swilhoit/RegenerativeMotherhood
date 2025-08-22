@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regenerative Motherhood - The Path to Generative Infant Sleep</title>
+    <!-- Deployment trigger: 2025-01-11 -->
+    <meta name="description" content="Because supporting your baby's sleep can and should feel mutually nourishing.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Custom Fonts -->
+    <style>
+        @font-face {
+            font-family: 'Concrette TRIAL';
+            src: url('fonts/ConcretteMTRIAL-Light.woff2') format('woff2'),
+                 url('fonts/ConcretteMTRIAL-Light.otf') format('opentype');
+            font-weight: 200;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'ABC Diatype Mono';
+            src: url('fonts/ABCDiatypeMono-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css?v=20250813-1">
+    <link rel="stylesheet" href="cursor-effects.css">
+    
+    <!-- Sanity Content Renderer -->
+    <script src="sanity-renderer.js" defer></script>
+</head>
+<body>
+    
+    <!-- Hero Section -->
+    <main id="hero" class="hero">
+        <!-- Background Image with Overlay -->
+        <div class="hero__background"></div>
+        <div class="hero__overlay"></div>
+        
+        <!-- Navigation Bar -->
+        <nav class="hero__nav" aria-label="Main navigation">
+            <div class="nav__container">
+                <!-- EXACT FIGMA POSITIONED ITEMS (Desktop) -->
+                <button class="nav__item" data-item="story" onclick="document.querySelector('#welcome').scrollIntoView({behavior: 'smooth'}); return false;">
+                    <span class="nav__text">STORY</span>
+                </button>
+                
+                <button class="nav__item" data-item="principles" onclick="document.querySelector('#five-principles').scrollIntoView({behavior: 'smooth'}); return false;">
+                    <span class="nav__text">PRINCIPLES</span>
+                </button>
+                
+                <button class="nav__item" data-item="about" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'}); return false;">
+                    <span class="nav__text">ABOUT</span>
+                </button>
+                
+                <a href="/work-with-me" class="nav__item" data-item="work">
+                    <span class="nav__text">WORK WITH ME</span>
+                </a>
+                
+                <!-- RESPONSIVE NAVIGATION (Mobile/Tablet) -->
+                <div class="nav__left">
+                    <button class="nav__item" onclick="document.querySelector('#welcome').scrollIntoView({behavior: 'smooth'}); return false;">
+                        <span class="nav__text">STORY</span>
+                    </button>
+                    <button class="nav__item" onclick="document.querySelector('#five-principles').scrollIntoView({behavior: 'smooth'}); return false;">
+                        <span class="nav__text">PRINCIPLES</span>
+                    </button>
+                </div>
+                
+                <!-- Logo/Brand - Responsive -->
+                <div class="nav__logo">
+                    <div class="logo">
+                        <img src="logo.svg" alt="Regenerative Motherhood" width="273" height="64">
+                    </div>
+                </div>
+                
+                <div class="nav__right">
+                    <button class="nav__item" onclick="document.querySelector('#about').scrollIntoView({behavior: 'smooth'}); return false;">
+                        <span class="nav__text">ABOUT</span>
+                    </button>
+                    <a href="/work-with-me" class="nav__item">
+                        <span class="nav__text">WORK WITH ME</span>
+                    </a>
+                </div>
+                
+                 <!-- MOBILE HAMBURGER NAVIGATION (hidden when component mounted) -->
+                 <div class="mobile-nav">
+                     <div class="mobile-nav__logo">
+                         <img src="Group 32212.svg" alt="Regenerative Motherhood" width="120" height="29">
+                     </div>
+                     
+                     <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" onclick="window.toggleMobileMenu && window.toggleMobileMenu(); return false;">
+                         <img src="Menu Icon.svg" alt="Menu" width="24" height="20">
+                     </button>
+                 </div>
+                
+            </div>
+        </nav>
+        
+        <!-- MOBILE MENU OVERLAY (moved outside nav for reliability) -->
+        <div class="mobile-menu" aria-hidden="true">
+            <button class="mobile-menu__close" aria-label="Close menu">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M6 6L18 18M6 18L18 6" stroke="#FCF9F1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+                <div class="mobile-menu__content">
+                        <a href="#welcome" class="mobile-menu__item" data-target="welcome"><span class="mobile-menu__text">STORY</span></a>
+                        <a href="#five-principles" class="mobile-menu__item" data-target="five-principles"><span class="mobile-menu__text">PRINCIPLES</span></a>
+                        <a href="/work-with-me" class="mobile-menu__item"><span class="mobile-menu__text">WORK WITH ME</span></a>
+                        <a href="#about" class="mobile-menu__item" data-target="about"><span class="mobile-menu__text">ABOUT</span></a>
+                <a href="mailto:clairefagin@gmail.com" class="mobile-menu__item"><span class="mobile-menu__text">CONTACT</span></a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="hero__content">
+            <div class="content__container">
+                <h1 class="hero__title">The Path To<br>Generative<br>Infant Sleep</h1>
+                
+                <p class="hero__subtitle">BECAUSE SUPPORTING YOUR BABY'S SLEEP<br>CAN AND SHOULD FEEL MUTUALLY NOURISHING</p>
+                
+                <div class="hero__cta">
+                    <a href="/work-with-me" class="cta-button">
+                        <span class="cta-button__text">WORK WITH ME</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Marquee - Now part of hero -->
+        <section class="hero__marquee marquee" aria-label="Nourish marquee">
+        <div class="marquee__track">
+            <div class="marquee__group">
+                <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
+                <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
+            </div>
+            <div class="marquee__group" aria-hidden="true">
+                <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
+                <span class="marquee__text">NOURISH YOUR BABY <span class="marquee-symbol">꩜</span>&nbsp;NOURISH YOURSELF <span class="marquee-symbol">꩜</span>&nbsp;REST IS RECIPROCAL <span class="marquee-symbol">꩜</span>&nbsp;</span>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- STORY INTRO (314:216) -->
+    <section id="welcome" class="section section--beige story-intro" aria-labelledby="story-eyebrow">
+        <div class="section__container story-intro__container">
+            <figure class="media-block media-block--story animate-on-scroll" aria-hidden="true"></figure>
+            <div class="story-intro__content animate-on-scroll">
+                <div class="eyebrow" id="story-eyebrow">WELCOME</div>
+                <h2 class="display-title display-title--48">Hi! I'm Claire Fagin — a mother, doula, birth educator, and pediatric sleep and development mentor.</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY (314:177) -->
+    <section id="why" class="section section--beige why" aria-labelledby="why-eyebrow">
+        <div class="section__container why__container">
+            <div class="why__content animate-on-scroll">
+                <div class="eyebrow" id="why-eyebrow">Why?</div>
+                <p class="body-text body-text--16 body-text--diatype olive">
+                    We live in a time where there's a profound disconnect between the evolutionary needs of babies and the ways we, as parents, are told to meet those needs. This modern approach often leaves us fragmented and disconnected — both within ourselves and as a collective.
+                </p>
+            </div>
+            <figure class="media-block media-block--why animate-on-scroll" aria-hidden="true"></figure>
+        </div>
+    </section>
+
+    <!-- SOLUTION (315:264) -->
+    <section id="solution" class="section section--beige solution" aria-labelledby="solution-eyebrow">
+        <div class="section__container solution__container">
+            <figure class="media-block media-block--solution animate-on-scroll" aria-hidden="true"></figure>
+            <div class="solution__content animate-on-scroll">
+                <div class="eyebrow" id="solution-eyebrow">Solution</div>
+                <p class="body-text body-text--16 body-text--diatype olive">
+                    An approach that fosters co-regulation, thriving, and wholeness. The time has come for a shift in how we understand infant sleep, and for a return to supporting our babies in ways that are attuned, holistic, and deeply responsive.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- PRINCIPLES (317:284) -->
+    <div id="principles"></div>
+    <section id="five-principles" class="section principles" aria-labelledby="principles-title">
+        <div class="section__container principles__container">
+            <div class="principles__header">
+                <div class="eyebrow eyebrow--light">PRINCIPLES</div>
+                <h3 id="principles-title" class="display-title display-title--48 light center">The 5 Principles Of Regenerative<br>Motherhood</h3>
+            </div>
+            <div class="principles__list">
+                <div class="principles__row animate-on-scroll">
+                    <img src="icons/harmony.svg" alt="Harmony" class="principle__icon" />
+                    <div class="principle__content">
+                        <div class="principle__eyebrow"><span class="mono">01</span><span class="concrete">HARMONY</span></div>
+                        <p class="principle__text">Working in harmony with nature rather than against it</p>
+                    </div>
+                </div>
+                <div class="principles__row animate-on-scroll">
+                    <img src="icons/individuality.svg" alt="Individuality" class="principle__icon" />
+                    <div class="principle__content">
+                        <div class="principle__eyebrow"><span class="mono">02</span><span class="concrete">INDIVIDUALITY</span></div>
+                        <p class="principle__text">Honoring nuance and individuality</p>
+                    </div>
+                </div>
+                <div class="principles__row animate-on-scroll">
+                    <img src="icons/nourishment.svg" alt="Nourishment" class="principle__icon" />
+                    <div class="principle__content">
+                        <div class="principle__eyebrow"><span class="mono">03</span><span class="concrete">NOURISHMENT</span></div>
+                        <p class="principle__text">Elevating mutual nourishment for both mom and baby</p>
+                    </div>
+                </div>
+                <div class="principles__row animate-on-scroll">
+                    <img src="icons/connection.svg" alt="Connection" class="principle__icon" />
+                    <div class="principle__content">
+                        <div class="principle__eyebrow"><span class="mono">04</span><span class="concrete">CONNECTION</span></div>
+                        <p class="principle__text">Putting connection at the forefront of all decisions</p>
+                    </div>
+                </div>
+                <div class="principles__row animate-on-scroll">
+                    <img src="icons/life.svg" alt="Life" class="principle__icon" />
+                    <div class="principle__content">
+                        <div class="principle__eyebrow"><span class="mono">05</span><span class="concrete">LIFE</span></div>
+                        <p class="principle__text">Recognizing the interconnectedness of all life</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK WITH ME (324:1418) -->
+    <section id="work-with-me" class="section section--tan work" aria-labelledby="work-eyebrow">
+        <div class="section__container work__container">
+            <div class="work__intro">
+                <div class="work__eyebrow">WORK WITH ME</div>
+                <h3 class="work__title">1:1 Sleep Guidance</h3>
+            </div>
+            <div class="work__image">
+                <div class="work__cta">
+                    <h4 class="work__cta-title">Not sure where to start?</h4>
+                    <p class="work__cta-text">Sleep can feel big, I know. If you are looking for evidence-based information that respects biological rhythms, fosters secure attachment, and honors your child's nuanced needs, look no further.</p>
+                    <a class="work__cta-button" href="/work-with-me">LEARN MORE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT (325:221) -->
+    <section id="about" class="section section--beige about" aria-labelledby="about-eyebrow">
+        <div class="section__container about__container">
+            <div class="about__header">
+                <div class="about__intro">
+                    <div class="about__eyebrow" id="about-eyebrow">ABOUT ME</div>
+                    <h3 class="about__title">Claire Fagin</h3>
+                    <p class="about__subtitle">Pediatric Sleep & Development Mentor & Doula</p>
+                </div>
+                <div class="about__text-content">
+                    <div class="about__copy is-clamped">
+                        <p class="about__copy-text">
+                            My name is Claire Fagin- I'm a mother to a beautiful one year old, partner to his father, a birth and postpartum doula, a childbirth educator & an infant sleep and development mentor. I am a certified Deep Delta Doula (The Matrona), a certified childbirth educator (ACBE), and a certified Pediatric Sleep and Development Practitioner (PSAD). Motherhood has expanded me in ways I could never have imagined- it has stretched me, shattered me, and asked me to pick back up the pieces and rebuild. My son, Bixby, has been my clearest mirror and greatest teacher, asking me time and time again to call into question who I am, what I believe, and how I relate to this big, wild world and the realms beyond.
+                            <br><br>
+                            Before becoming a mother, I left behind a career in florals to become a birth and postpartum doula. I thought I understood birth because I had witnessed it many times and I thought I understood babies because I had been around them my entire life. When I fell pregnant, however, I heard a soft but palpable whisper that there was more- so much more- than the programming that I had been exposed to, and this started me on my journey of uncovering my own authenticity as a woman, as a mother, and as an educator. I birthed my baby at home and quickly found out that my understanding of infants and their needs was rooted in deception. My baby didn't need gadgets, swaddles, bottles, or training. He needed me. My skin, my smell, my voice, my heartbeat, my attuned presence. The rest was just noise- a fear based narrative that was created to lead us mothers and our babies to a place of scarcity, lack, sickness and fragmentation. It is my calling to stand as an advocate for the mutual nourishment, inspiration, fulfillment, and abundance that motherhood can bring. The time has come to leave the drained, exhausted, victimized mother archetype in the past- we don't need it any longer. Regenerative motherhood is the way forward.
+                        </p>
+                    </div>
+                    <button type="button" class="about__toggle" aria-expanded="false">READ MORE</button>
+                </div>
+            </div>
+            <div class="about__images animate-on-scroll">
+                <figure class="about__image about__image--1" aria-hidden="true"></figure>
+                <figure class="about__image about__image--2" aria-hidden="true"></figure>
+                <figure class="about__image about__image--3" aria-hidden="true"></figure>
+            </div>
+            <div class="about__contact" id="contact">
+                <div class="about__contact-eyebrow">CONTACT ME</div>
+                <h4 class="about__contact-title">Send Me An <a href="mailto:clairefagin@gmail.com" class="underlined">Email</a>. I Can't Wait To Hear From You!</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (326:652) -->
+    <footer class="site-footer" aria-labelledby="footer-tagline">
+        <div class="site-footer__container">
+            <div class="footer__content">
+                <img src="Layer_1.svg" alt="Regenerative Motherhood Logo" class="footer__logo" />
+                <p id="footer-tagline" class="footer__tagline">the paradigm of generative infant sleep</p>
+                <nav class="footer__links" aria-label="Footer links">
+                    <a href="/work-with-me" class="footer-link">WORK WITH ME</a>
+                    <a href="https://www.instagram.com/clairefagin/?hl=en" target="_blank" rel="noopener" class="footer-link">INSTAGRAM</a>
+                    <a href="mailto:clairefagin@gmail.com" class="footer-link">CONTACT</a>
+                </nav>
+            </div>
+            <div class="footer__bottom">
+                <hr class="footer__rule" />
+                <div class="footer__meta">
+                    <span class="footer__meta-left">Regenerative Motherhood</span>
+                    <span class="footer__meta-right">Copyright © 2025</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Advanced Animation System -->
+    <style>
+        /* Full Height Hero with Marquee at Bottom */
+        .hero {
+            min-height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            position: relative !important;
+        }
+        
+        .hero__content {
+            flex: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding-bottom: 120px !important; /* Move content up more from marquee */
+        }
+        
+        .hero__marquee {
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 10 !important;
+        }
+        
+        /* Set marquee height - override main styles */
+        .hero__marquee {
+            padding: 0 !important; /* Remove the 32px padding from styles.css */
+        }
+        
+        .hero__marquee .marquee__track {
+            display: flex !important;
+            align-items: center !important;
+            padding: 20px 0 !important; /* A little more for the perfect height */
+        }
+        /* Global Animation Base Classes - Hardware Accelerated */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px) translateZ(0);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transition-delay: 0s;
+            will-change: opacity, transform;
+        }
+        
+        .animate-on-scroll.animate-visible {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+            will-change: auto; /* Reset will-change after animation */
+        }
+        
+        /* Staggered Animation Delays */
+        .animate-on-scroll:nth-child(1) { transition-delay: 0.05s; }
+        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { transition-delay: 0.15s; }
+        .animate-on-scroll:nth-child(4) { transition-delay: 0.2s; }
+        .animate-on-scroll:nth-child(5) { transition-delay: 0.25s; }
+        
+        /* Typography Animations */
+        
+        /* Title Reveal Animations - Hardware Accelerated */
+        .hero__title,
+        .display-title,
+        .about__title,
+        .work__title,
+        .service-package__title {
+            opacity: 0;
+            transform: translateY(25px) translateZ(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+        
+        .hero__title.animate-visible,
+        .display-title.animate-visible,
+        .about__title.animate-visible,
+        .work__title.animate-visible,
+        .service-package__title.animate-visible {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+            will-change: auto;
+        }
+        
+        /* Subtitle Fade-in */
+        .hero__subtitle,
+        .eyebrow,
+        .about__subtitle,
+        .service-package__subtitle,
+        .portal-cta__title {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease-out;
+            transition-delay: 0.1s;
+        }
+        
+        .hero__subtitle.animate-visible,
+        .eyebrow.animate-visible,
+        .about__subtitle.animate-visible,
+        .service-package__subtitle.animate-visible,
+        .portal-cta__title.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Body Text Gentle Reveal */
+        .body-text,
+        .about__copy-text,
+        .service-package__description,
+        .principle__text {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease-out;
+            transition-delay: 0.2s;
+        }
+        
+        .body-text.animate-visible,
+        .about__copy-text.animate-visible,
+        .service-package__description.animate-visible,
+        .principle__text.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Letter Spacing removed - no hover effects on text */
+        
+        /* Eyebrow Text Highlight Effect - Only for principles section */
+        .principles .eyebrow {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .principles .eyebrow::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition-delay: 0.8s;
+        }
+        
+        .principles .eyebrow.animate-visible::after {
+            width: 100%;
+        }
+        
+        /* Hero Title - Clean and Simple */
+        .hero__title {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeUp 1s ease-out forwards;
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes heroFadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hero Subtitle - Simple follow */
+        .hero__subtitle {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeUp 0.8s ease-out forwards;
+            animation-delay: 1.0s;
+        }
+        
+        /* Hero CTA Button - Clean appearance */
+        .hero__cta {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: heroFadeUp 0.7s ease-out forwards;
+            animation-delay: 1.0s;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Link hover effects removed */
+        
+        /* 5 Principles Enhanced Animations - Hardware Accelerated */
+        .principles__row {
+            opacity: 0;
+            transform: translateX(-40px) translateZ(0);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            position: relative;
+            will-change: opacity, transform;
+        }
+        
+        .principles__row.animate-visible {
+            opacity: 1;
+            transform: translateX(0) translateZ(0);
+            will-change: auto;
+        }
+        
+        /* Principle Icon Animation */
+        .principle__icon {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.4s ease-out;
+            transition-delay: 0.1s;
+        }
+        
+        .principles__row.animate-visible .principle__icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Principle Content Animation */
+        .principle__content {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.5s ease-out;
+            transition-delay: 0.15s;
+        }
+        
+        .principles__row.animate-visible .principle__content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Remove all principle divider lines */
+        .principles__row::after {
+            display: none;
+        }
+        
+        /* Additional Content Animations */
+        .story-intro__content,
+        .why__content,
+        .solution__content,
+        .portal-cta__container,
+        .about__header,
+        .about__contact,
+        .work__intro {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease-out;
+        }
+        
+        .story-intro__content.animate-visible,
+        .why__content.animate-visible,
+        .solution__content.animate-visible,
+        .portal-cta__container.animate-visible,
+        .about__header.animate-visible,
+        .about__contact.animate-visible,
+        .work__intro.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Subtle Button Hover Effects */
+        .cta-button,
+        .service-package__cta,
+        .about__toggle {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .cta-button:hover,
+        .service-package__cta:hover,
+        .about__toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Ensure smooth scrolling works */
+        html {
+            scroll-behavior: smooth !important;
+        }
+        
+        /* Add offset for sticky navigation */
+        #welcome, #five-principles, #about {
+            scroll-margin-top: 0px;
+        }
+        
+        /* Button styling - filled selected state */
+        .nav__item:active,
+        .nav__item:focus {
+            background-color: rgba(73, 73, 47, 0.7) !important;
+            color: #EDE8D5 !important;
+            border: 1px solid rgba(73, 73, 47, 0.7) !important;
+            outline: none !important;
+        }
+        
+        .mobile-menu__item:active,
+        .mobile-menu__item:focus {
+            background-color: rgba(73, 73, 47, 0.7) !important;
+            color: #EDE8D5 !important;
+            border: 1px solid rgba(73, 73, 47, 0.7) !important;
+            outline: none !important;
+        }
+        
+        /* Hover Navigation Styles */
+        .hero__nav.nav--visible {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            background: rgba(237, 232, 213, 0.85) !important;
+            backdrop-filter: blur(10px) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+            border-radius: 0 0 12px 12px !important;
+            z-index: 1000 !important;
+            padding: 15px 63px !important;
+        }
+        
+        /* Ensure smooth transitions */
+        .hero__nav {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+    </style>
+
+
+    <!-- Scroll-Based Hover Navigation -->
+    <script>
+        console.log('🚀 Enhanced hover nav loading...');
+        
+        const nav = document.querySelector('.hero__nav');
+        const heroSection = document.getElementById('hero');
+        
+        if (!nav || !heroSection) {
+            console.error('❌ Missing required elements');
+            return;
+        }
+        
+        let isInHeroSection = true;
+        let isHoveringTop = false;
+        let hideTimeout = null;
+        
+        // Force initial state
+        nav.style.transition = 'all 0.3s ease';
+        nav.style.position = 'absolute'; // Start as absolute in hero
+        
+        function showHoverNav() {
+            console.log('✅ SHOWING hover nav');
+            clearTimeout(hideTimeout);
+            nav.classList.add('nav--visible');
+            nav.style.opacity = '1';
+            nav.style.transform = 'translateY(0)';
+            nav.style.pointerEvents = 'auto';
+        }
+        
+        function hideHoverNav() {
+            console.log('❌ HIDING hover nav');
+            nav.classList.remove('nav--visible');
+            nav.style.opacity = '0';
+            nav.style.transform = 'translateY(-30px)';
+            nav.style.pointerEvents = 'none';
+        }
+        
+        function showNormalNav() {
+            console.log('📍 NORMAL nav (hero section)');
+            clearTimeout(hideTimeout);
+            nav.classList.remove('nav--visible');
+            nav.style.position = 'absolute';
+            nav.style.opacity = '1';
+            nav.style.transform = 'translateY(0)';
+            nav.style.pointerEvents = 'auto';
+        }
+        
+        // Check scroll position
+        function checkScroll() {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+            const scrollY = window.pageYOffset || window.scrollY;
+            const wasInHero = isInHeroSection;
+            
+            isInHeroSection = (scrollY + 100) < heroBottom; // Add 100px buffer
+            
+            console.log('📊 Scroll:', scrollY, 'Hero bottom:', heroBottom, 'In hero:', isInHeroSection);
+            
+            if (isInHeroSection && !wasInHero) {
+                // Just entered hero
+                showNormalNav();
+            } else if (!isInHeroSection && wasInHero) {
+                // Just left hero
+                if (!isHoveringTop) {
+                    hideHoverNav();
+                }
+            }
+        }
+        
+        // Handle mouse movement
+        function handleMouseMove(e) {
+            if (isInHeroSection) return;
+            
+            const mouseY = e.clientY;
+            const hoverZone = 120; // Reduced for easier testing
+            const inTopZone = mouseY <= hoverZone;
+            
+            console.log('🖱️ Mouse Y:', mouseY, 'In top zone:', inTopZone, 'Currently hovering:', isHoveringTop);
+            
+            if (inTopZone && !isHoveringTop) {
+                isHoveringTop = true;
+                console.log('🎯 ENTERING hover zone');
+                showHoverNav();
+            } else if (!inTopZone && isHoveringTop) {
+                isHoveringTop = false;
+                console.log('🚪 LEAVING hover zone');
+                hideTimeout = setTimeout(() => {
+                    if (!isHoveringTop && !isInHeroSection) {
+                        hideHoverNav();
+                    }
+                }, 200);
+            }
+        }
+        
+        // Event listeners
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        document.addEventListener('mousemove', handleMouseMove, { passive: true });
+        
+        // Initial setup
+        checkScroll();
+        
+        console.log('✨ Enhanced nav setup complete!');
+    </script>
+    
+    <!-- Bring back the glitter cursor! -->
+    <script src="cursor-effects.js"></script>
+    
+    <!-- About section Read More functionality -->
+    <script src="shared-scripts.js"></script>
+    
+
+    
+    <!-- Advanced Animation Controller -->
+    <script>
+        console.log('🎬 Advanced Animation System Loading...');
+        
+        // Optimized Intersection Observer with requestAnimationFrame
+        const animationObserver = new IntersectionObserver((entries) => {
+            // Use requestAnimationFrame to prevent scroll lag
+            requestAnimationFrame(() => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-visible');
+                        animationObserver.unobserve(entry.target);
+                    }
+                });
+            });
+        }, {
+            threshold: 0.1, // Lower threshold for smoother performance
+            rootMargin: '0px 0px -50px 0px' // Reduced margin for better performance
+        });
+        
+        // Remove separate principles observer for better performance
+        // Use single observer for all elements
+        
+        // Optimized single initialization function
+        function initializeAnimations() {
+            // Single query for all animated elements - better performance
+            const allElements = document.querySelectorAll(`
+                .animate-on-scroll,
+                .principles__row,
+                .story-intro__content,
+                .why__content,
+                .solution__content,
+                .portal-cta__container,
+                .about__header,
+                .about__contact,
+                .work__intro
+            `);
+            
+            // Batch observe for better performance
+            allElements.forEach(el => animationObserver.observe(el));
+            
+            console.log(`✨ Observing ${allElements.length} elements with optimized observer`);
+        }
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeAnimations);
+        } else {
+            initializeAnimations();
+        }
+        
+        // Merge typography into main initialization for better performance
+        function initializeTypographyAnimations() {
+            const typographyElements = document.querySelectorAll(`
+                .display-title,
+                .eyebrow,
+                .about__title,
+                .about__subtitle,
+                .work__title,
+                .service-package__title,
+                .service-package__subtitle,
+                .body-text,
+                .about__copy-text,
+                .service-package__description,
+                .principle__text,
+                .portal-cta__title
+            `);
+            
+            typographyElements.forEach(el => animationObserver.observe(el));
+            
+            console.log(`📝 Observing ${typographyElements.length} typography elements`);
+        }
+        
+        // Initialize typography with main animations
+        initializeTypographyAnimations();
+        
+        console.log('⚡ Optimized animation system ready!');
+    </script>
+
+    <!-- Mobile Responsive Styles -->
+    <style>
+        /* Mobile Navigation - Based on Figma frames */
+        @media (max-width: 768px) {
+            .hero__nav {
+                padding: 20px !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100vw !important;
+                background: transparent !important;
+                backdrop-filter: none !important;
+                box-shadow: none !important;
+                z-index: 1000 !important;
+            }
+            
+            .nav__container {
+                display: block !important;
+                position: relative !important;
+                width: 100% !important;
+                height: auto !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .nav__item[data-item],
+            .nav__left,
+            .nav__right,
+            .nav__logo {
+                display: none !important;
+            }
+            
+            .mobile-nav {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            .mobile-nav__logo {
+                display: flex !important;
+                align-items: center !important;
+            }
+            
+            .mobile-nav__logo img {
+                height: 56px !important;
+                width: auto !important;
+                filter: brightness(0) invert(1) !important;
+            }
+            
+            .hamburger {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 40px !important;
+                height: 40px !important;
+                background: none !important;
+                border: none !important;
+                cursor: pointer !important;
+                padding: 0 !important;
+            }
+            
+            .hamburger img {
+                width: 48px !important;
+                height: 42px !important;
+                filter: brightness(0) invert(1) !important;
+            }
+            
+            /* Mobile Menu Overlay */
+            .mobile-menu {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                background: url('gradient.jpg') center/cover no-repeat, rgba(0,0,0,0.85) !important;
+                backdrop-filter: blur(6px) !important;
+                z-index: 2000 !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: opacity 0.3s ease, visibility 0.3s ease !important;
+            }
+            
+            .mobile-menu.active {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .mobile-menu__content {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                height: 100% !important;
+                gap: 40px !important;
+                padding: 40px 20px !important;
+            }
+            
+            .mobile-menu__item {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 16px 24px !important;
+                border-radius: 12px !important;
+                border: 1px solid transparent !important;
+                cursor: pointer !important;
+                transition: all 0.3s ease !important;
+                min-width: 200px !important;
+                text-decoration: none !important;
+                color: inherit !important;
+                background: transparent !important;
+            }
+            
+            .mobile-menu__item:hover {
+                background: rgba(252, 249, 241, 0.1) !important;
+                border: 1px solid rgba(252, 249, 241, 0.2) !important;
+            }
+            
+            .mobile-menu__text {
+                font-family: 'ABC Diatype Mono', 'DM Mono', monospace !important;
+                font-size: 18px !important;
+                font-weight: 400 !important;
+                color: #fcf9f1 !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.36px !important;
+                text-align: center !important;
+                white-space: nowrap !important;
+            }
+            
+            .nav__item {
+                padding: 10px 20px !important;
+                min-width: auto !important;
+                font-size: 12px !important;
+            }
+            
+            /* Hide desktop nav items, show mobile versions */
+            .nav__item[data-item] {
+                display: none !important;
+            }
+            
+            .nav__left,
+            .nav__right {
+                display: flex !important;
+                gap: 15px !important;
+            }
+            
+            /* Mobile Hero Content */
+            .hero {
+                min-height: 100svh !important; /* ensure marquee is visible in the initial viewport */
+                height: 100svh !important;
+                padding-bottom: 0 !important;
+            }
+            
+            .hero__content {
+                padding: 0 !important;
+                text-align: left !important;
+                left: 50% !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                width: calc(100vw - 64px) !important;
+                max-width: 400px !important;
+                margin: 0 !important;
+                position: absolute !important;
+            }
+            
+            .content__container {
+                max-width: 100% !important;
+                gap: 24px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                text-align: left !important;
+            }
+            
+            .hero__title {
+                font-size: 48px !important;
+                line-height: 90% !important;
+                letter-spacing: -1.6px !important;
+                font-weight: 200 !important;
+                text-transform: none !important;
+                max-width: 320px !important;
+                color: #FCF9F1 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+            
+            .hero__subtitle {
+                font-size: 14px !important;
+                line-height: 18px !important;
+                letter-spacing: 0.24px !important;
+                text-transform: uppercase !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            .hero__cta {
+                margin-top: 0 !important;
+                align-self: flex-start !important;
+                text-align: left !important;
+            }
+            
+            .cta-button {
+                padding: 12px 24px !important;
+                font-size: 14px !important;
+                width: auto !important;
+                min-width: 160px !important;
+                height: 44px !important;
+                border: 1px solid #ffffff !important;
+                border-radius: 0 !important;
+            }
+            /* First CTA (hero) should have rounded corners */
+            .hero__cta .cta-button { border-radius: 12px !important; }
+            
+            .cta-button__text {
+                font-size: 14px !important;
+                font-weight: 400 !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.28px !important;
+                text-decoration: none !important;
+            }
+            
+            /* Mobile Marquee */
+            .hero__marquee .marquee__track {
+                height: 60px !important;
+                padding: 16px 0 !important;
+            }
+            
+            .marquee__text {
+                font-size: 16px !important;
+                line-height: 28px !important;
+            }
+            
+            /* Mobile Sections */
+            .section {
+                padding: 60px 0 !important;
+            }
+            
+            /* Reduce space between Story text and following image (Why section) */
+            #welcome.section {
+                padding-bottom: 8px !important;
+            }
+            #why.section {
+                padding-top: 8px !important;
+            }
+            
+            .section__container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            /* Mobile Welcome Section — Figma (node 350-210) */
+            #welcome.section {
+                padding: 36px 20px !important; /* 36 top/bottom, 20 sides */
+            }
+            
+            .story-intro__container {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100% !important;
+                padding: 0 !important;
+                gap: 21px !important; /* spacing between image and text */
+                text-align: center !important;
+                margin: 0 auto !important;
+            }
+            
+            .media-block--story {
+                order: 1 !important;
+                width: 171px !important;
+                height: 200px !important; /* taller image per Figma */
+                border-radius: 0 !important;
+                margin: 0 !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .story-intro__content {
+                order: 2 !important;
+                width: 334px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+                text-align: center !important;
+                margin: 0 auto !important;
+            }
+            
+            .story-intro__content .eyebrow {
+                font-family: "DM Mono", monospace !important;
+                font-size: 14px !important;
+                font-weight: 400 !important;
+                letter-spacing: 0 !important; /* remove character spacing */
+                text-transform: uppercase !important;
+                color: #49492F !important;
+                margin: 0 !important;
+                line-height: normal !important;
+            }
+            
+            .story-intro__content .display-title {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 20px !important;
+                line-height: 1.2 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.4px !important;
+                color: #49492F !important;
+                margin: 0 !important;
+                text-transform: none !important;
+                max-width: 100% !important;
+            }
+            
+            .media-block--story {
+                order: 1 !important;
+                height: 300px !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            .eyebrow { font-size: 14px !important; letter-spacing: 0 !important; }
+            
+            .display-title {
+                font-size: 28px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .body-text {
+                color: #49492F !important;
+                font-family: "ABC Diatype", sans-serif !important;
+                font-size: 16px !important;
+                font-style: normal !important;
+                font-weight: 400 !important;
+                line-height: normal !important;
+            }
+            
+            /* Mobile Why & Solution Sections */
+            .why__container,
+            .solution__container {
+                flex-direction: column !important;
+                gap: 40px !important;
+                text-align: center !important;
+                padding: 0 !important;
+                max-width: 374px !important;
+                margin: 0 auto !important;
+            }
+            
+            .why__content,
+            .solution__content {
+                order: 2 !important;
+                width: 100% !important;           /* match image width */
+                margin: 0 !important;
+                padding: 0 !important;
+                text-align: left !important;       /* left align text */
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important; /* align to left edge */
+                gap: 12px !important;
+            }
+
+            /* Ensure headings and body copy align left inside Why/Solution */
+            #why .eyebrow, #solution .eyebrow { text-align: left !important; }
+            #why .body-text, #solution .body-text { text-align: left !important; }
+
+            /* Section-specific padding adjustments */
+            .solution.section { padding-top: 30px !important; }
+            .why.section { padding-bottom: 30px !important; }
+            
+            .media-block--why,
+            .media-block--solution {
+                order: 1 !important;
+                height: 300px !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            /* Mobile Principles Section */
+            .principles__container {
+                padding: 0 !important; /* remove side padding */
+                margin: 0 auto !important;  /* keep container centered */
+                max-width: 374px !important;
+            }
+            .principles__list {
+                max-width: 335px !important;
+                margin: 0 auto !important;
+            }
+            
+            .principles__header {
+                text-align: center !important;
+                margin-bottom: 40px !important;
+            }
+            /* Principles title size on mobile */
+            #principles-title { font-size: 24px !important; }
+            
+            .principles__row {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 20px !important;
+                padding: 30px 0 !important;
+                transform: translateX(0) !important;
+            }
+            .principles__row:first-child { padding-top: 12px !important; }
+            
+            .principle__icon {
+                align-self: center !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .principle__content {
+                transform: translateX(0) !important;
+            }
+            
+            .principle__text {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* Mobile About Section ONLY */
+            #about.section {
+                padding: 36px 20px 60px 20px !important;
+            }
+            
+            .about__container {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 21px !important;
+                max-width: 374px !important;
+                margin: 0 auto !important;
+                padding: 0 !important;
+                align-items: flex-start !important;
+                text-align: left !important;
+            }
+            
+            .about__images {
+                display: flex !important;
+                gap: 12px !important;
+                order: 2 !important;
+                justify-content: flex-start !important;
+                width: 334px !important;
+                margin-left: 0 !important;
+                margin-right: auto !important;
+            }
+            
+            .about__image {
+                flex: 1 !important;
+                height: 180px !important;
+                border-radius: 0 !important;
+            }
+            
+            .about__contact {
+                order: 3 !important;
+                text-align: center !important;
+                padding: 36px 0 0 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+            }
+
+            .about__header {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 24px !important;
+                text-align: left !important;
+                width: 334px !important;
+                margin-left: 0 !important;
+                margin-right: auto !important;
+            }
+
+            .about__intro { 
+                align-items: flex-start !important; 
+                text-align: left !important; 
+                width: 334px !important;
+                margin-left: 0 !important;
+                margin-right: auto !important;
+            }
+
+            .about__text-content {
+                width: 334px !important;
+                margin-left: 0 !important;
+                margin-right: auto !important;
+                text-align: left !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 16px !important;
+            }
+
+            .about__toggle { align-self: flex-start !important; }
+            
+
+            
+            .about__title {
+                font-size: 28px !important;
+            }
+            
+            .about__subtitle {
+                font-size: 18px !important;
+            }
+            
+            .about__copy-text {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+            }
+            
+            .about__toggle {
+                padding: 12px 24px !important;
+                font-size: 12px !important;
+            }
+            
+            /* Mobile Work Section — exact Figma screenshot match */
+            #work-with-me.section {
+                padding: 0 !important;
+                min-height: auto !important;
+            }
+            
+            .work__container {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 374px !important;
+                margin: 32px auto !important;
+                position: relative !important;
+                gap: 28px !important;
+                padding: 0 !important;
+            }
+            
+            .work__intro {
+                order: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important; /* center on mobile */
+                gap: 16px !important;
+                text-align: center !important; /* center on mobile */
+                margin-left: auto !important;
+                margin-right: auto !important;
+                width: 334px !important;
+                z-index: 10 !important;
+                position: relative !important;
+            }
+            
+            .work__eyebrow {
+                font-family: "DM Mono", monospace !important;
+                font-size: 14px !important;
+                font-weight: 400 !important;
+                letter-spacing: 0 !important; /* remove character spacing on mobile */
+                text-transform: uppercase !important;
+                color: #49492F !important;
+                text-align: center !important;
+            }
+            
+            .work__title {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 24px !important;
+                line-height: 1.2 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.48px !important;
+                color: #49492F !important;
+                text-align: center !important; /* center on mobile */
+            }
+            
+            .work__image {
+                order: 2 !important;
+                position: relative !important;
+                width: 334px !important;
+                height: 400px !important;
+                border-radius: 0 !important;
+                background-size: cover !important;
+                background-position: center !important;
+                margin: 0 !important;
+            }
+            
+            .work__cta {
+                position: absolute !important;
+                bottom: 28px !important;
+                left: 17px !important;
+                right: 17px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                align-items: flex-start !important;
+                text-align: left !important;
+                padding: 0 !important;
+                background: transparent !important;
+                color: #FCF9F1 !important;
+                z-index: 10 !important;
+            }
+            
+            .work__cta-title {
+                font-family: "Concrette TRIAL", serif !important;
+                font-size: 24px !important;
+                line-height: 1.2 !important;
+                font-weight: 400 !important;
+                letter-spacing: -0.48px !important;
+                color: #FCF9F1 !important;
+            }
+            
+            .work__cta-text {
+                color: #FCF9F1 !important;
+                font-family: "ABC Diatype", sans-serif !important;
+                font-size: 16px !important;
+                font-style: normal !important;
+                font-weight: 400 !important;
+                line-height: normal !important;
+                letter-spacing: 0 !important;
+                margin: 0 0 16px 0 !important;
+            }
+            
+            .work__cta-button {
+                padding: 12px 24px !important;
+                height: 44px !important;
+                font-size: 12px !important;
+                letter-spacing: 2.4px !important;
+                border: 1px solid #FCF9F1 !important;
+                background: transparent !important;
+                color: #FCF9F1 !important;
+                border-radius: 12px !important;
+                text-transform: uppercase !important;
+            }
+
+            /* Principles: enforce single-line for title phrase and white dividers */
+            .principles__header .display-title br { display: none !important; }
+            .principles__row { border-bottom: 1px solid #FCF9F1 !important; }
+            /* Remove top line above Harmony and bottom line below Life */
+            .principles__row:first-child { border-top: 0 !important; }
+            .principles__row:last-child { border-bottom: 0 !important; }
+            
+            .work__title {
+                font-size: 28px !important;
+            }
+            
+            .service-package__container {
+                grid-template-columns: 1fr !important;
+                gap: 0 !important;
+            }
+            
+            .service-package__image {
+                height: 300px !important;
+                order: 1 !important;
+            }
+            
+            .service-package__content {
+                order: 2 !important;
+                padding: 40px 20px !important;
+                text-align: center !important;
+            }
+            
+            .service-package__title {
+                font-size: 24px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .service-package__subtitle {
+                font-size: 16px !important;
+            }
+            
+            .service-package__description {
+                font-size: 14px !important;
+                line-height: 1.4 !important;
+            }
+            
+            .service-package__cta {
+                padding: 12px 24px !important;
+                font-size: 12px !important;
+                margin-top: 20px !important;
+            }
+            
+
+        }
+        
+        /* Tablet Styles */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .hero__title {
+                font-size: 42px !important;
+            }
+            
+            .hero__subtitle {
+                font-size: 18px !important;
+            }
+            
+            .section {
+                padding: 80px 40px !important;
+            }
+            
+            .display-title {
+                font-size: 32px !important;
+            }
+            
+            .service-package__container {
+                grid-template-columns: 1fr !important;
+                gap: 0 !important;
+            }
+            
+            .service-package__content {
+                padding: 60px 40px !important;
+            }
+        }
+    </style>
+    
+    <!-- Sanity Client Script -->
+    <script src="sanity-client-complete.js"></script>
+</body>
+</html>

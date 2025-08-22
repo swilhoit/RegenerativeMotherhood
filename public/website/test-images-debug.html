@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Debug Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; border: 2px solid #ccc; padding: 15px; }
+        .test-image { 
+            width: 300px; 
+            height: 200px; 
+            background-size: cover; 
+            background-position: center; 
+            border: 2px solid red;
+            margin: 10px 0;
+        }
+        .working { border-color: green; }
+        .broken { border-color: red; }
+    </style>
+</head>
+<body>
+    <h1>Image Loading Debug Test</h1>
+    
+    <div class="test-section">
+        <h2>Working Image (sleep-guidance.jpg)</h2>
+        <div class="test-image working" style="background-image: url('sleep-guidance.jpg');"></div>
+        <p>URL: sleep-guidance.jpg</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Problem Image 1 (Frame 1627810.jpg)</h2>
+        <div class="test-image broken" style="background-image: url('Frame 1627810.jpg');"></div>
+        <p>URL: Frame 1627810.jpg</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Problem Image 2 (Frame 1162781.jpg)</h2>
+        <div class="test-image broken" style="background-image: url('Frame 1162781.jpg');"></div>
+        <p>URL: Frame 1162781.jpg</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test: Rename Files Without Spaces</h2>
+        <p>Let's try copying these files with different names...</p>
+    </div>
+    
+    <script>
+        // Test if images load
+        const testUrls = [
+            'sleep-guidance.jpg',
+            'Frame 1627810.jpg', 
+            'Frame 1162781.jpg'
+        ];
+        
+        testUrls.forEach(url => {
+            const img = new Image();
+            img.onload = () => console.log(`✅ ${url} loaded successfully`);
+            img.onerror = () => console.log(`❌ ${url} failed to load`);
+            img.src = url;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service - Regenerative Motherhood</title>
+    <meta name="description" content="Personalized sleep guidance for your family">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles.css">
+    
+    <style>
+        /* Service Page Specific Styles */
+        .service-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #FCF9F1 0%, #F5F1E8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-hero__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-title {
+            font-family: 'Concrette TRIAL', 'DM Sans', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 200;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #49421F;
+        }
+        
+        .service-subtitle {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.25rem;
+            text-align: center;
+            color: #7D6D3A;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .service-price {
+            font-family: 'DM Mono', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            color: #49421F;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .service-description {
+            font-family: 'ABC Diatype', 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #49421F;
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .service-cta {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .service-cta-button {
+            background: #7D6D3A;
+            color: #FCF9F1;
+            padding: 16px 40px;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.875rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .service-cta-button:hover {
+            background: #49421F;
+            transform: translateY(-2px);
+        }
+        
+        .service-details {
+            background: #F5F1E8;
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+        
+        .service-details__container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .service-details__title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.5rem;
+            color: #49421F;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .service-details__list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-details__item {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(125, 109, 58, 0.2);
+            font-family: 'ABC Diatype', 'DM Sans', sans-serif;
+            color: #49421F;
+        }
+        
+        .service-details__item:last-child {
+            border-bottom: none;
+        }
+        
+        .service-details__item strong {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .service-booking-info {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: #7D6D3A;
+            text-align: center;
+            padding: 40px 20px;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .service-testimonials {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(125, 109, 58, 0.05);
+            border-left: 3px solid #7D6D3A;
+        }
+        
+        .testimonial__quote {
+            font-family: 'ABC Diatype', 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #49421F;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial__author {
+            font-family: 'DM Sans', sans-serif;
+            color: #7D6D3A;
+            font-size: 0.95rem;
+        }
+        
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            font-family: 'DM Sans', sans-serif;
+            color: #7D6D3A;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (same as other pages) -->
+    <nav class="hero__nav hero__nav--light" aria-label="Main navigation">
+        <div class="nav__container">
+            <a href="/#welcome" class="nav__item">
+                <span class="nav__text">STORY</span>
+            </a>
+            <a href="/#five-principles" class="nav__item">
+                <span class="nav__text">PRINCIPLES</span>
+            </a>
+            <a href="/#about" class="nav__item">
+                <span class="nav__text">ABOUT</span>
+            </a>
+            <a href="/work-with-me" class="nav__item">
+                <span class="nav__text">WORK WITH ME</span>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Service Hero Section -->
+    <section class="service-hero">
+        <div class="service-hero__background"></div>
+        <div class="service-content">
+            <h1 class="service-title">Loading...</h1>
+            <p class="service-subtitle"></p>
+            <p class="service-price"></p>
+            <p class="service-description"></p>
+            <div class="service-cta">
+                <a href="#" class="service-cta-button" target="_blank">BOOK NOW</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What You Get Section -->
+    <section class="service-details" style="display: none;">
+        <div class="service-details__container">
+            <h2 class="service-details__title">What You Get</h2>
+            <ul class="service-details__list"></ul>
+        </div>
+    </section>
+    
+    <!-- Booking Info -->
+    <div class="service-booking-info" style="display: none;"></div>
+    
+    <!-- Testimonials Section -->
+    <section class="service-testimonials" style="display: none;">
+        <h2 class="service-details__title">What Parents Say</h2>
+        <div class="testimonials-container"></div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="site-footer__container">
+            <div class="footer__content">
+                <img src="/Layer_1.svg" alt="Regenerative Motherhood Logo" class="footer__logo" />
+                <p class="footer__tagline">the paradigm of generative infant sleep</p>
+                <nav class="footer__links">
+                    <a href="/work-with-me" class="footer-link">WORK WITH ME</a>
+                    <a href="https://www.instagram.com/clairefagin/?hl=en" target="_blank" rel="noopener" class="footer-link">INSTAGRAM</a>
+                    <a href="mailto:clairefagin@gmail.com" class="footer-link">CONTACT</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Sanity Client for Dynamic Content -->
+    <script>
+        // Sanity configuration
+        const SANITY_PROJECT_ID = '1q2kqdh2';
+        const SANITY_DATASET = 'production';
+        const SANITY_API_VERSION = '2024-01-01';
+        const SANITY_URL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v${SANITY_API_VERSION}/data/query/${SANITY_DATASET}`;
+        
+        // Get service slug from URL
+        function getServiceSlug() {
+            const path = window.location.pathname;
+            const slug = path.split('/').pop() || path.split('/').slice(-2, -1)[0];
+            return slug;
+        }
+        
+        // Fetch service data from Sanity
+        async function fetchServiceData(slug) {
+            const query = `*[_type == "service" && slug.current == "${slug}"][0]{
+                _id,
+                title,
+                slug,
+                subtitle,
+                price,
+                shortDescription,
+                fullDescription,
+                whatYouGet,
+                ctaButton,
+                bookingInfo,
+                testimonials,
+                packageDetails,
+                seo
+            }`;
+            
+            try {
+                const encodedQuery = encodeURIComponent(query);
+                const url = `${SANITY_URL}?query=${encodedQuery}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                return data.result;
+            } catch (error) {
+                console.error('Error fetching service:', error);
+                return null;
+            }
+        }
+        
+        // Update page with service data
+        function updateServicePage(service) {
+            if (!service) {
+                document.querySelector('.service-title').textContent = 'Service Not Found';
+                document.querySelector('.service-description').textContent = 'Please check the URL or return to our services page.';
+                return;
+            }
+            
+            // Update meta tags
+            document.title = `${service.title} - Regenerative Motherhood`;
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc && service.seo?.metaDescription) {
+                metaDesc.content = service.seo.metaDescription;
+            } else if (metaDesc) {
+                metaDesc.content = service.shortDescription;
+            }
+            
+            // Update hero section
+            document.querySelector('.service-title').textContent = service.title;
+            document.querySelector('.service-subtitle').textContent = service.subtitle || '';
+            document.querySelector('.service-price').textContent = service.price;
+            document.querySelector('.service-description').textContent = service.shortDescription;
+            
+            // Update CTA button
+            if (service.ctaButton) {
+                const ctaButton = document.querySelector('.service-cta-button');
+                ctaButton.href = service.ctaButton.link;
+                ctaButton.textContent = service.ctaButton.text;
+                if (service.ctaButton.openInNewTab) {
+                    ctaButton.target = '_blank';
+                }
+            }
+            
+            // Update What You Get section
+            if (service.whatYouGet && service.whatYouGet.length > 0) {
+                const detailsSection = document.querySelector('.service-details');
+                const detailsList = document.querySelector('.service-details__list');
+                
+                detailsList.innerHTML = service.whatYouGet.map(item => `
+                    <li class="service-details__item">
+                        <strong>${item.item}</strong>
+                        ${item.description || ''}
+                    </li>
+                `).join('');
+                
+                detailsSection.style.display = 'block';
+            }
+            
+            // Update booking info
+            if (service.bookingInfo) {
+                const bookingInfo = document.querySelector('.service-booking-info');
+                bookingInfo.textContent = service.bookingInfo;
+                bookingInfo.style.display = 'block';
+            }
+            
+            // Update testimonials
+            if (service.testimonials && service.testimonials.length > 0) {
+                const testimonialsSection = document.querySelector('.service-testimonials');
+                const testimonialsContainer = document.querySelector('.testimonials-container');
+                
+                testimonialsContainer.innerHTML = service.testimonials.map(testimonial => `
+                    <div class="testimonial">
+                        <p class="testimonial__quote">"${testimonial.quote}"</p>
+                        <cite class="testimonial__author">
+                            — ${testimonial.author}
+                            ${testimonial.context ? `, ${testimonial.context}` : ''}
+                        </cite>
+                    </div>
+                `).join('');
+                
+                testimonialsSection.style.display = 'block';
+            }
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            const slug = getServiceSlug();
+            
+            if (!slug || slug === 'service') {
+                // Redirect to work-with-me if no specific service
+                window.location.href = '/work-with-me';
+                return;
+            }
+            
+            const serviceData = await fetchServiceData(slug);
+            updateServicePage(serviceData);
+        });
+    </script>
+</body>
+</html>
